@@ -12,6 +12,7 @@
     "@angular/router": "9.1.1",
     "@angular/upgrade": "9.1.1",
     "ngx-monaco-editor": "^8.1.0",
+    "patch-package": "6.4.7",
     "rxjs": "6.5.5",
     "tsickle": "0.37.1",
     "typescript": "3.7.5"
