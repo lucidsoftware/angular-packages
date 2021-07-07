@@ -1,0 +1,464 @@
+diff --git a/node_modules/@angular/core/fesm2015/core.js b/node_modules/@angular/core/fesm2015/core.js
+index e837396..0dc3877 100755
+--- a/node_modules/@angular/core/fesm2015/core.js
++++ b/node_modules/@angular/core/fesm2015/core.js
+@@ -473,24 +473,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
+  *
+  * @publicApi
+  */
+-var InjectFlags;
+-(function (InjectFlags) {
++const InjectFlags = {
+     // TODO(alxhub): make this 'const' (and remove `InternalInjectFlags` enum) when ngc no longer
+     // writes exports of it into ngfactory files.
+     /** Check self and check parent injector if needed */
+-    InjectFlags[InjectFlags["Default"] = 0] = "Default";
++    Default: 0,
+     /**
+      * Specifies that an injector should retrieve a dependency from any injector until reaching the
+      * host element of the current component. (Only used with Element Injector)
+      */
+-    InjectFlags[InjectFlags["Host"] = 1] = "Host";
++    Host: 1,
+     /** Don't ascend to ancestors of the node requesting injection. */
+-    InjectFlags[InjectFlags["Self"] = 2] = "Self";
++    Self: 2,
+     /** Skip the node that is requesting injection. */
+-    InjectFlags[InjectFlags["SkipSelf"] = 4] = "SkipSelf";
++    SkipSelf: 4,
+     /** Inject `defaultValue` instead if token not found. */
+-    InjectFlags[InjectFlags["Optional"] = 8] = "Optional";
+-})(InjectFlags || (InjectFlags = {}));
++    Optional: 8,
++}
++InjectFlags[InjectFlags.Default] = 'Default';
++InjectFlags[InjectFlags.Host] = 'Host';
++InjectFlags[InjectFlags.Self] = 'Self';
++InjectFlags[InjectFlags.SkipSelf] = 'SkipSelf';
++InjectFlags[InjectFlags.Optional] = 'Optional';
+ 
+ /**
+  * @license
+@@ -586,58 +590,64 @@ function noSideEffects(fn) {
+  *
+  * @publicApi
+  */
+-var ChangeDetectionStrategy;
+-(function (ChangeDetectionStrategy) {
++const ChangeDetectionStrategy = {
+     /**
+      * Use the `CheckOnce` strategy, meaning that automatic change detection is deactivated
+      * until reactivated by setting the strategy to `Default` (`CheckAlways`).
+      * Change detection can still be explicitly invoked.
+      * This strategy applies to all child directives and cannot be overridden.
+      */
+-    ChangeDetectionStrategy[ChangeDetectionStrategy["OnPush"] = 0] = "OnPush";
++    OnPush: 0,
+     /**
+      * Use the default `CheckAlways` strategy, in which change detection is automatic until
+      * explicitly deactivated.
+      */
+-    ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 1] = "Default";
+-})(ChangeDetectionStrategy || (ChangeDetectionStrategy = {}));
++    Default: 1,
++};
++ChangeDetectionStrategy[ChangeDetectionStrategy.OnPush] = 'OnPush';
++ChangeDetectionStrategy[ChangeDetectionStrategy.Default] = 'Default';
+ /**
+  * Defines the possible states of the default change detector.
+  * @see `ChangeDetectorRef`
+  */
+-var ChangeDetectorStatus;
+-(function (ChangeDetectorStatus) {
++const ChangeDetectorStatus = {
+     /**
+      * A state in which, after calling `detectChanges()`, the change detector
+      * state becomes `Checked`, and must be explicitly invoked or reactivated.
+      */
+-    ChangeDetectorStatus[ChangeDetectorStatus["CheckOnce"] = 0] = "CheckOnce";
++    CheckOnce: 0,
+     /**
+      * A state in which change detection is skipped until the change detector mode
+      * becomes `CheckOnce`.
+      */
+-    ChangeDetectorStatus[ChangeDetectorStatus["Checked"] = 1] = "Checked";
++    Checked: 1,
+     /**
+      * A state in which change detection continues automatically until explicitly
+      * deactivated.
+      */
+-    ChangeDetectorStatus[ChangeDetectorStatus["CheckAlways"] = 2] = "CheckAlways";
++    CheckAlways: 2,
+     /**
+      * A state in which a change detector sub tree is not a part of the main tree and
+      * should be skipped.
+      */
+-    ChangeDetectorStatus[ChangeDetectorStatus["Detached"] = 3] = "Detached";
++    Detached: 3,
+     /**
+      * Indicates that the change detector encountered an error checking a binding
+      * or calling a directive lifecycle method and is now in an inconsistent state. Change
+      * detectors in this state do not detect changes.
+      */
+-    ChangeDetectorStatus[ChangeDetectorStatus["Errored"] = 4] = "Errored";
++    Errored: 4,
+     /**
+      * Indicates that the change detector has been destroyed.
+      */
+-    ChangeDetectorStatus[ChangeDetectorStatus["Destroyed"] = 5] = "Destroyed";
+-})(ChangeDetectorStatus || (ChangeDetectorStatus = {}));
++    Destroyed: 5,
++};
++ChangeDetectorStatus[ChangeDetectorStatus.CheckOnce] = 'CheckOnce';
++ChangeDetectorStatus[ChangeDetectorStatus.Checked] = 'Checked';
++ChangeDetectorStatus[ChangeDetectorStatus.CheckAlways] = 'CheckAlways';
++ChangeDetectorStatus[ChangeDetectorStatus.Detached] = 'Detached';
++ChangeDetectorStatus[ChangeDetectorStatus.Errored] = 'Errored';
++ChangeDetectorStatus[ChangeDetectorStatus.Destroyed] = 'Destroyed';
+ /**
+  * Reports whether a given strategy is currently the default for change detection.
+  * @param changeDetectionStrategy The strategy to check.
+@@ -669,8 +679,7 @@ function isDefaultChangeDetectionStrategy(changeDetectionStrategy) {
+  *
+  * @publicApi
+  */
+-var ViewEncapsulation;
+-(function (ViewEncapsulation) {
++const ViewEncapsulation = {
+     /**
+      * Emulate `Native` scoping of styles by adding an attribute containing surrogate id to the Host
+      * Element and pre-processing the style rules provided via {@link Component#styles styles} or
+@@ -679,12 +688,12 @@ var ViewEncapsulation;
+      *
+      * This is the default option.
+      */
+-    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
++    Emulated: 0,
+     // Historically the 1 value was for `Native` encapsulation which has been removed as of v11.
+     /**
+      * Don't provide any template or style encapsulation.
+      */
+-    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
++    None: 2,
+     /**
+      * Use Shadow DOM to encapsulate styles.
+      *
+@@ -692,8 +701,12 @@ var ViewEncapsulation;
+      * DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and
+      * creating a ShadowRoot for Component's Host Element.
+      */
+-    ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
+-})(ViewEncapsulation || (ViewEncapsulation = {}));
++    ShadowDom: 3,
++};
++ViewEncapsulation[ViewEncapsulation.Emulated] = 'Emulated';
++ViewEncapsulation[ViewEncapsulation.Native] = 'Native';
++ViewEncapsulation[ViewEncapsulation.None] = 'None';
++ViewEncapsulation[ViewEncapsulation.ShadowDom] = 'ShadowDom';
+ 
+ /**
+  * @license
+@@ -1625,11 +1638,12 @@ function getDocument() {
+  * found in the LICENSE file at https://angular.io/license
+  */
+ // TODO: cleanup once the code is merged in angular/angular
+-var RendererStyleFlags3;
+-(function (RendererStyleFlags3) {
+-    RendererStyleFlags3[RendererStyleFlags3["Important"] = 1] = "Important";
+-    RendererStyleFlags3[RendererStyleFlags3["DashCase"] = 2] = "DashCase";
+-})(RendererStyleFlags3 || (RendererStyleFlags3 = {}));
++const RendererStyleFlags3 = {
++    Important: 1,
++    DashCase: 2,
++}
++RendererStyleFlags3[RendererStyleFlags3.Important] = 'Important';
++RendererStyleFlags3[RendererStyleFlags3.DashCase] = 'DashCase';
+ /** Returns whether the `renderer` is a `ProceduralRenderer3` */
+ function isProceduralRenderer(renderer) {
+     return !!(renderer.listen);
+@@ -4002,21 +4016,27 @@ const ViewChild = makePropDecorator('ViewChild', ɵ3, Query);
+  * Use of this source code is governed by an MIT-style license that can be
+  * found in the LICENSE file at https://angular.io/license
+  */
+-var FactoryTarget;
+-(function (FactoryTarget) {
+-    FactoryTarget[FactoryTarget["Directive"] = 0] = "Directive";
+-    FactoryTarget[FactoryTarget["Component"] = 1] = "Component";
+-    FactoryTarget[FactoryTarget["Injectable"] = 2] = "Injectable";
+-    FactoryTarget[FactoryTarget["Pipe"] = 3] = "Pipe";
+-    FactoryTarget[FactoryTarget["NgModule"] = 4] = "NgModule";
+-})(FactoryTarget || (FactoryTarget = {}));
+-var ViewEncapsulation$1;
+-(function (ViewEncapsulation) {
+-    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
++const FactoryTarget = {
++    Directive: 0,
++    Component: 1,
++    Injectable: 2,
++    Pipe: 3,
++    NgModule: 4,
++}
++FactoryTarget[FactoryTarget.Directive] = 'Directive';
++FactoryTarget[FactoryTarget.Component] = 'Component';
++FactoryTarget[FactoryTarget.Injectable] = 'Injectable';
++FactoryTarget[FactoryTarget.Pipe] = 'Pipe';
++FactoryTarget[FactoryTarget.NgModule] = 'NgModule';
++const ViewEncapsulation$1 = {
++    Emulated: 0,
+     // Historically the 1 value was for `Native` encapsulation which has been removed as of v11.
+-    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
+-    ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
+-})(ViewEncapsulation$1 || (ViewEncapsulation$1 = {}));
++    None: 2,
++    ShadowDom: 3,
++}
++ViewEncapsulation$1[ViewEncapsulation$1.Emulated] = 'Emulated';
++ViewEncapsulation$1[ViewEncapsulation$1.None] = 'None';
++ViewEncapsulation$1[ViewEncapsulation$1.ShadowDom] = 'ShadowDom';
+ 
+ /**
+  * @license
+@@ -5873,15 +5893,20 @@ function isTemplateElement(el) {
+  *
+  * @publicApi
+  */
+-var SecurityContext;
+-(function (SecurityContext) {
+-    SecurityContext[SecurityContext["NONE"] = 0] = "NONE";
+-    SecurityContext[SecurityContext["HTML"] = 1] = "HTML";
+-    SecurityContext[SecurityContext["STYLE"] = 2] = "STYLE";
+-    SecurityContext[SecurityContext["SCRIPT"] = 3] = "SCRIPT";
+-    SecurityContext[SecurityContext["URL"] = 4] = "URL";
+-    SecurityContext[SecurityContext["RESOURCE_URL"] = 5] = "RESOURCE_URL";
+-})(SecurityContext || (SecurityContext = {}));
++const SecurityContext = {
++    NONE: 0,
++    HTML: 1,
++    STYLE: 2,
++    SCRIPT: 3,
++    URL: 4,
++    RESOURCE_URL: 5,
++};
++SecurityContext[SecurityContext.NONE] = 'NONE';
++SecurityContext[SecurityContext.HTML] = 'HTML';
++SecurityContext[SecurityContext.STYLE] = 'STYLE';
++SecurityContext[SecurityContext.SCRIPT] = 'SCRIPT';
++SecurityContext[SecurityContext.URL] = 'URL';
++SecurityContext[SecurityContext.RESOURCE_URL] = 'RESOURCE_URL';
+ 
+ /**
+  * @license
+@@ -6814,20 +6839,21 @@ function getExpressionChangedErrorDetails(lView, bindingIndex, oldValue, newValu
+  * Flags for renderer-specific style modifiers.
+  * @publicApi
+  */
+-var RendererStyleFlags2;
+-(function (RendererStyleFlags2) {
++const RendererStyleFlags2 = {
+     // TODO(misko): This needs to be refactored into a separate file so that it can be imported from
+     // `node_manipulation.ts` Currently doing the import cause resolution order to change and fails
+     // the tests. The work around is to have hard coded value in `node_manipulation.ts` for now.
+     /**
+      * Marks a style as important.
+      */
+-    RendererStyleFlags2[RendererStyleFlags2["Important"] = 1] = "Important";
++    Important: 1,
+     /**
+      * Marks a style as using dash case naming (this-is-dash-case).
+      */
+-    RendererStyleFlags2[RendererStyleFlags2["DashCase"] = 2] = "DashCase";
+-})(RendererStyleFlags2 || (RendererStyleFlags2 = {}));
++    DashCase: 2,
++};
++RendererStyleFlags2[RendererStyleFlags2.Important] = 'Important';
++RendererStyleFlags2[RendererStyleFlags2.DashCase] = 'DashCase';
+ 
+ /**
+  * @license
+@@ -18923,31 +18949,52 @@ function unregisterAllLocaleData() {
+ /**
+  * Index of each type of locale data from the locale data array
+  */
+-var LocaleDataIndex;
+-(function (LocaleDataIndex) {
+-    LocaleDataIndex[LocaleDataIndex["LocaleId"] = 0] = "LocaleId";
+-    LocaleDataIndex[LocaleDataIndex["DayPeriodsFormat"] = 1] = "DayPeriodsFormat";
+-    LocaleDataIndex[LocaleDataIndex["DayPeriodsStandalone"] = 2] = "DayPeriodsStandalone";
+-    LocaleDataIndex[LocaleDataIndex["DaysFormat"] = 3] = "DaysFormat";
+-    LocaleDataIndex[LocaleDataIndex["DaysStandalone"] = 4] = "DaysStandalone";
+-    LocaleDataIndex[LocaleDataIndex["MonthsFormat"] = 5] = "MonthsFormat";
+-    LocaleDataIndex[LocaleDataIndex["MonthsStandalone"] = 6] = "MonthsStandalone";
+-    LocaleDataIndex[LocaleDataIndex["Eras"] = 7] = "Eras";
+-    LocaleDataIndex[LocaleDataIndex["FirstDayOfWeek"] = 8] = "FirstDayOfWeek";
+-    LocaleDataIndex[LocaleDataIndex["WeekendRange"] = 9] = "WeekendRange";
+-    LocaleDataIndex[LocaleDataIndex["DateFormat"] = 10] = "DateFormat";
+-    LocaleDataIndex[LocaleDataIndex["TimeFormat"] = 11] = "TimeFormat";
+-    LocaleDataIndex[LocaleDataIndex["DateTimeFormat"] = 12] = "DateTimeFormat";
+-    LocaleDataIndex[LocaleDataIndex["NumberSymbols"] = 13] = "NumberSymbols";
+-    LocaleDataIndex[LocaleDataIndex["NumberFormats"] = 14] = "NumberFormats";
+-    LocaleDataIndex[LocaleDataIndex["CurrencyCode"] = 15] = "CurrencyCode";
+-    LocaleDataIndex[LocaleDataIndex["CurrencySymbol"] = 16] = "CurrencySymbol";
+-    LocaleDataIndex[LocaleDataIndex["CurrencyName"] = 17] = "CurrencyName";
+-    LocaleDataIndex[LocaleDataIndex["Currencies"] = 18] = "Currencies";
+-    LocaleDataIndex[LocaleDataIndex["Directionality"] = 19] = "Directionality";
+-    LocaleDataIndex[LocaleDataIndex["PluralCase"] = 20] = "PluralCase";
+-    LocaleDataIndex[LocaleDataIndex["ExtraData"] = 21] = "ExtraData";
+-})(LocaleDataIndex || (LocaleDataIndex = {}));
++const LocaleDataIndex = {
++    LocaleId: 0,
++    DayPeriodsFormat: 1,
++    DayPeriodsStandalone: 2,
++    DaysFormat: 3,
++    DaysStandalone: 4,
++    MonthsFormat: 5,
++    MonthsStandalone: 6,
++    Eras: 7,
++    FirstDayOfWeek: 8,
++    WeekendRange: 9,
++    DateFormat: 10,
++    TimeFormat: 11,
++    DateTimeFormat: 12,
++    NumberSymbols: 13,
++    NumberFormats: 14,
++    CurrencyCode: 15,
++    CurrencySymbol: 16,
++    CurrencyName: 17,
++    Currencies: 18,
++    Directionality: 19,
++    PluralCase: 20,
++    ExtraData: 21,
++};
++LocaleDataIndex[LocaleDataIndex.LocaleId] = 'LocaleId';
++LocaleDataIndex[LocaleDataIndex.DayPeriodsFormat] = 'DayPeriodsFormat';
++LocaleDataIndex[LocaleDataIndex.DayPeriodsStandalone] = 'DayPeriodsStandalone';
++LocaleDataIndex[LocaleDataIndex.DaysFormat] = 'DaysFormat';
++LocaleDataIndex[LocaleDataIndex.DaysStandalone] = 'DaysStandalone';
++LocaleDataIndex[LocaleDataIndex.MonthsFormat] = 'MonthsFormat';
++LocaleDataIndex[LocaleDataIndex.MonthsStandalone] = 'MonthsStandalone';
++LocaleDataIndex[LocaleDataIndex.Eras] = 'Eras';
++LocaleDataIndex[LocaleDataIndex.FirstDayOfWeek] = 'FirstDayOfWeek';
++LocaleDataIndex[LocaleDataIndex.WeekendRange] = 'WeekendRange';
++LocaleDataIndex[LocaleDataIndex.DateFormat] = 'DateFormat';
++LocaleDataIndex[LocaleDataIndex.TimeFormat] = 'TimeFormat';
++LocaleDataIndex[LocaleDataIndex.DateTimeFormat] = 'DateTimeFormat';
++LocaleDataIndex[LocaleDataIndex.NumberSymbols] = 'NumberSymbols';
++LocaleDataIndex[LocaleDataIndex.NumberFormats] = 'NumberFormats';
++LocaleDataIndex[LocaleDataIndex.CurrencyCode] = 'CurrencyCode';
++LocaleDataIndex[LocaleDataIndex.CurrencySymbol] = 'CurrencySymbol';
++LocaleDataIndex[LocaleDataIndex.CurrencyName] = 'CurrencyName';
++LocaleDataIndex[LocaleDataIndex.Currencies] = 'Currencies';
++LocaleDataIndex[LocaleDataIndex.Directionality] = 'Directionality';
++LocaleDataIndex[LocaleDataIndex.PluralCase] = 'PluralCase';
++LocaleDataIndex[LocaleDataIndex.ExtraData] = 'ExtraData';
+ /**
+  * Returns the canonical form of a locale name - lowercase with `_` replaced with `-`.
+  */
+@@ -19007,22 +19054,24 @@ const ICU_MARKER = {
+ /**
+  * See `I18nCreateOpCodes`
+  */
+-var I18nCreateOpCode;
+-(function (I18nCreateOpCode) {
++const I18nCreateOpCode = {
+     /**
+      * Number of bits to shift index so that it can be combined with the `APPEND_EAGERLY` and
+      * `COMMENT`.
+      */
+-    I18nCreateOpCode[I18nCreateOpCode["SHIFT"] = 2] = "SHIFT";
++    SHIFT: 2,
+     /**
+      * Should the node be appended to parent imedditatly after creation.
+      */
+-    I18nCreateOpCode[I18nCreateOpCode["APPEND_EAGERLY"] = 1] = "APPEND_EAGERLY";
++    APPEND_EAGERLY: 1,
+     /**
+      * If set the node should be comment (rather than a text) node.
+      */
+-    I18nCreateOpCode[I18nCreateOpCode["COMMENT"] = 2] = "COMMENT";
+-})(I18nCreateOpCode || (I18nCreateOpCode = {}));
++    COMMENT: 2,
++};
++I18nCreateOpCode[I18nCreateOpCode.SHIFT] = 'SHIFT';
++I18nCreateOpCode[I18nCreateOpCode.APPEND_EAGERLY] = 'APPEND_EAGERLY';
++I18nCreateOpCode[I18nCreateOpCode.COMMENT] = 'COMMENT';
+ // Note: This hack is necessary so we don't erroneously get a circular dependency
+ // failure based on types.
+ const unusedValueExportToPlacateAjd$6 = 1;
+@@ -28175,12 +28224,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
+  *
+  * @publicApi
+  */
+-var MissingTranslationStrategy;
+-(function (MissingTranslationStrategy) {
+-    MissingTranslationStrategy[MissingTranslationStrategy["Error"] = 0] = "Error";
+-    MissingTranslationStrategy[MissingTranslationStrategy["Warning"] = 1] = "Warning";
+-    MissingTranslationStrategy[MissingTranslationStrategy["Ignore"] = 2] = "Ignore";
+-})(MissingTranslationStrategy || (MissingTranslationStrategy = {}));
++const MissingTranslationStrategy = {
++    Error: 0,
++    Warning: 1,
++    Ignore: 2,
++};
++MissingTranslationStrategy[MissingTranslationStrategy.Error] = 'Error';
++MissingTranslationStrategy[MissingTranslationStrategy.Warning] = 'Warning';
++MissingTranslationStrategy[MissingTranslationStrategy.Ignore] = 'Ignore';
+ 
+ /**
+  * @license
+@@ -32041,15 +32092,20 @@ function destroyViewNodes(view) {
+         }
+     }
+ }
+-var ViewAction;
+-(function (ViewAction) {
+-    ViewAction[ViewAction["CreateViewNodes"] = 0] = "CreateViewNodes";
+-    ViewAction[ViewAction["CheckNoChanges"] = 1] = "CheckNoChanges";
+-    ViewAction[ViewAction["CheckNoChangesProjectedViews"] = 2] = "CheckNoChangesProjectedViews";
+-    ViewAction[ViewAction["CheckAndUpdate"] = 3] = "CheckAndUpdate";
+-    ViewAction[ViewAction["CheckAndUpdateProjectedViews"] = 4] = "CheckAndUpdateProjectedViews";
+-    ViewAction[ViewAction["Destroy"] = 5] = "Destroy";
+-})(ViewAction || (ViewAction = {}));
++const ViewAction = {
++    CreateViewNodes: 0,
++    CheckNoChanges: 1,
++    CheckNoChangesProjectedViews: 2,
++    CheckAndUpdate: 3,
++    CheckAndUpdateProjectedViews: 4,
++    Destroy: 5,
++};
++ViewAction[ViewAction.CreateViewNodes] = 'CreateViewNodes';
++ViewAction[ViewAction.CheckNoChanges] = 'CheckNoChanges';
++ViewAction[ViewAction.CheckNoChangesProjectedViews] = 'CheckNoChangesProjectedViews';
++ViewAction[ViewAction.CheckAndUpdate] = 'CheckAndUpdate';
++ViewAction[ViewAction.CheckAndUpdateProjectedViews] = 'CheckAndUpdateProjectedViews';
++ViewAction[ViewAction.Destroy] = 'Destroy';
+ function execComponentViewsAction(view, action) {
+     const def = view.def;
+     if (!(def.nodeFlags & 33554432 /* ComponentView */)) {
+@@ -32457,14 +32513,18 @@ function debugCheckNoChangesView(view) {
+ function debugDestroyView(view) {
+     return callWithDebugContext(DebugAction.destroy, destroyView, null, [view]);
+ }
+-var DebugAction;
+-(function (DebugAction) {
+-    DebugAction[DebugAction["create"] = 0] = "create";
+-    DebugAction[DebugAction["detectChanges"] = 1] = "detectChanges";
+-    DebugAction[DebugAction["checkNoChanges"] = 2] = "checkNoChanges";
+-    DebugAction[DebugAction["destroy"] = 3] = "destroy";
+-    DebugAction[DebugAction["handleEvent"] = 4] = "handleEvent";
+-})(DebugAction || (DebugAction = {}));
++const DebugAction = {
++    create: 0,
++    detectChanges: 1,
++    checkNoChanges: 2,
++    destroy: 3,
++    handleEvent: 4,
++};
++DebugAction[DebugAction.create] = 'create'
++DebugAction[DebugAction.detectChanges] = 'detectChanges'
++DebugAction[DebugAction.checkNoChanges] = 'checkNoChanges'
++DebugAction[DebugAction.destroy] = 'destroy'
++DebugAction[DebugAction.handleEvent] = 'handleEvent'
+ let _currentAction;
+ let _currentView;
+ let _currentNodeIndex;
