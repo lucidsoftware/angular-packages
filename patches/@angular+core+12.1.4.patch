@@ -1,5 +1,5 @@
 diff --git a/node_modules/@angular/core/fesm2015/core.js b/node_modules/@angular/core/fesm2015/core.js
-index e837396..0dc3877 100755
+index ae563cc..65f9d1c 100755
 --- a/node_modules/@angular/core/fesm2015/core.js
 +++ b/node_modules/@angular/core/fesm2015/core.js
 @@ -473,24 +473,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
@@ -143,7 +143,7 @@ index e837396..0dc3877 100755
      /**
       * Use Shadow DOM to encapsulate styles.
       *
-@@ -692,8 +701,12 @@ var ViewEncapsulation;
+@@ -692,8 +701,11 @@ var ViewEncapsulation;
       * DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and
       * creating a ShadowRoot for Component's Host Element.
       */
@@ -152,13 +152,12 @@ index e837396..0dc3877 100755
 +    ShadowDom: 3,
 +};
 +ViewEncapsulation[ViewEncapsulation.Emulated] = 'Emulated';
-+ViewEncapsulation[ViewEncapsulation.Native] = 'Native';
 +ViewEncapsulation[ViewEncapsulation.None] = 'None';
 +ViewEncapsulation[ViewEncapsulation.ShadowDom] = 'ShadowDom';
  
  /**
   * @license
-@@ -1625,11 +1638,12 @@ function getDocument() {
+@@ -1625,11 +1637,12 @@ function getDocument() {
   * found in the LICENSE file at https://angular.io/license
   */
  // TODO: cleanup once the code is merged in angular/angular
@@ -176,7 +175,7 @@ index e837396..0dc3877 100755
  /** Returns whether the `renderer` is a `ProceduralRenderer3` */
  function isProceduralRenderer(renderer) {
      return !!(renderer.listen);
-@@ -4002,21 +4016,27 @@ const ViewChild = makePropDecorator('ViewChild', ɵ3, Query);
+@@ -4002,21 +4015,27 @@ const ViewChild = makePropDecorator('ViewChild', ɵ3, Query);
   * Use of this source code is governed by an MIT-style license that can be
   * found in the LICENSE file at https://angular.io/license
   */
@@ -197,7 +196,7 @@ index e837396..0dc3877 100755
 +    Injectable: 2,
 +    Pipe: 3,
 +    NgModule: 4,
-+}
++};
 +FactoryTarget[FactoryTarget.Directive] = 'Directive';
 +FactoryTarget[FactoryTarget.Component] = 'Component';
 +FactoryTarget[FactoryTarget.Injectable] = 'Injectable';
@@ -211,14 +210,14 @@ index e837396..0dc3877 100755
 -})(ViewEncapsulation$1 || (ViewEncapsulation$1 = {}));
 +    None: 2,
 +    ShadowDom: 3,
-+}
++};
 +ViewEncapsulation$1[ViewEncapsulation$1.Emulated] = 'Emulated';
 +ViewEncapsulation$1[ViewEncapsulation$1.None] = 'None';
 +ViewEncapsulation$1[ViewEncapsulation$1.ShadowDom] = 'ShadowDom';
  
  /**
   * @license
-@@ -5873,15 +5893,20 @@ function isTemplateElement(el) {
+@@ -5896,15 +5915,20 @@ function isTemplateElement(el) {
   *
   * @publicApi
   */
@@ -248,7 +247,7 @@ index e837396..0dc3877 100755
  
  /**
   * @license
-@@ -6814,20 +6839,21 @@ function getExpressionChangedErrorDetails(lView, bindingIndex, oldValue, newValu
+@@ -6837,20 +6861,21 @@ function getExpressionChangedErrorDetails(lView, bindingIndex, oldValue, newValu
   * Flags for renderer-specific style modifiers.
   * @publicApi
   */
@@ -275,7 +274,7 @@ index e837396..0dc3877 100755
  
  /**
   * @license
-@@ -18923,31 +18949,52 @@ function unregisterAllLocaleData() {
+@@ -18949,31 +18974,52 @@ function unregisterAllLocaleData() {
  /**
   * Index of each type of locale data from the locale data array
   */
@@ -353,7 +352,7 @@ index e837396..0dc3877 100755
  /**
   * Returns the canonical form of a locale name - lowercase with `_` replaced with `-`.
   */
-@@ -19007,22 +19054,24 @@ const ICU_MARKER = {
+@@ -19033,22 +19079,24 @@ const ICU_MARKER = {
  /**
   * See `I18nCreateOpCodes`
   */
@@ -384,7 +383,7 @@ index e837396..0dc3877 100755
  // Note: This hack is necessary so we don't erroneously get a circular dependency
  // failure based on types.
  const unusedValueExportToPlacateAjd$6 = 1;
-@@ -28175,12 +28224,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
+@@ -28213,12 +28261,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
   *
   * @publicApi
   */
@@ -405,7 +404,7 @@ index e837396..0dc3877 100755
  
  /**
   * @license
-@@ -32041,15 +32092,20 @@ function destroyViewNodes(view) {
+@@ -32104,15 +32154,20 @@ function destroyViewNodes(view) {
          }
      }
  }
@@ -435,7 +434,7 @@ index e837396..0dc3877 100755
  function execComponentViewsAction(view, action) {
      const def = view.def;
      if (!(def.nodeFlags & 33554432 /* ComponentView */)) {
-@@ -32457,14 +32513,18 @@ function debugCheckNoChangesView(view) {
+@@ -32520,14 +32575,18 @@ function debugCheckNoChangesView(view) {
  function debugDestroyView(view) {
      return callWithDebugContext(DebugAction.destroy, destroyView, null, [view]);
  }
@@ -454,11 +453,11 @@ index e837396..0dc3877 100755
 +    destroy: 3,
 +    handleEvent: 4,
 +};
-+DebugAction[DebugAction.create] = 'create'
-+DebugAction[DebugAction.detectChanges] = 'detectChanges'
-+DebugAction[DebugAction.checkNoChanges] = 'checkNoChanges'
-+DebugAction[DebugAction.destroy] = 'destroy'
-+DebugAction[DebugAction.handleEvent] = 'handleEvent'
++DebugAction[DebugAction.create] = 'create';
++DebugAction[DebugAction.detectChanges] = 'detectChanges';
++DebugAction[DebugAction.checkNoChanges] = 'checkNoChanges';
++DebugAction[DebugAction.destroy] = 'destroy';
++DebugAction[DebugAction.handleEvent] = 'handleEvent';
  let _currentAction;
  let _currentView;
  let _currentNodeIndex;

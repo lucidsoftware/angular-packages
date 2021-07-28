@@ -1,5 +1,5 @@
 diff --git a/node_modules/@angular/common/fesm2015/common.js b/node_modules/@angular/common/fesm2015/common.js
-index e6dfde6..90f0f42 100755
+index 9ff5ca4..a275d2a 100755
 --- a/node_modules/@angular/common/fesm2015/common.js
 +++ b/node_modules/@angular/common/fesm2015/common.js
 @@ -941,13 +941,16 @@ const CURRENCIES_EN = {
@@ -123,15 +123,13 @@ index e6dfde6..90f0f42 100755
 +    Medium: 1,
      /**
       * For `en-US`, `'MMMM d, y, h:mm:ss a z'`
--     * (Example: `June 15, 2015 at 9:03:01 AM GMT+1`)
-+     * (Example: `June 15, 2015 at 9:03:01 AM GMT1`)
+      * (Example: `June 15, 2015 at 9:03:01 AM GMT+1`)
       */
 -    FormatWidth[FormatWidth["Long"] = 2] = "Long";
 +    Long: 2,
      /**
       * For `en-US`, `'EEEE, MMMM d, y, h:mm:ss a zzzz'`
--     * (Example: `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00`)
-+     * (Example: `Monday, June 15, 2015 at 9:03:01 AM GMT01:00`)
+      * (Example: `Monday, June 15, 2015 at 9:03:01 AM GMT+01:00`)
       */
 -    FormatWidth[FormatWidth["Full"] = 3] = "Full";
 -})(FormatWidth || (FormatWidth = {}));
@@ -358,10 +356,10 @@ index e6dfde6..90f0f42 100755
   * @ngModule CommonModule
   * @description
 diff --git a/node_modules/@angular/common/fesm2015/http.js b/node_modules/@angular/common/fesm2015/http.js
-index d88011d..63284e7 100755
+index 5db1b73..bab9898 100755
 --- a/node_modules/@angular/common/fesm2015/http.js
 +++ b/node_modules/@angular/common/fesm2015/http.js
-@@ -920,33 +920,38 @@ class HttpRequest {
+@@ -928,33 +928,38 @@ class HttpRequest {
   *
   * @publicApi
   */
