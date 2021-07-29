@@ -3,7 +3,6 @@ set -euo pipefail
 
 PACKAGES=(
   "@angular/animations"
-  "@angular/bazel"
   "@angular/common"
   "@angular/compiler-cli"
   "@angular/compiler"
