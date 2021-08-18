@@ -1,0 +1,13 @@
+diff --git a/node_modules/@angular/platform-browser/platform-browser.d.ts b/node_modules/@angular/platform-browser/platform-browser.d.ts
+index 3eb0c01..a78bf07 100755
+--- a/node_modules/@angular/platform-browser/platform-browser.d.ts
++++ b/node_modules/@angular/platform-browser/platform-browser.d.ts
+@@ -487,7 +487,7 @@ export declare type MetaDefinition = {
+  *
+  * @publicApi
+  */
+-export declare const platformBrowser: (extraProviders?: StaticProvider[]) => PlatformRef;
++export declare const platformBrowser: (extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef;
+ 
+ /**
+  * Marker interface for a value that's safe to use as HTML.

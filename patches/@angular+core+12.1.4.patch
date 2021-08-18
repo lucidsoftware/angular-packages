@@ -1,5 +1,18 @@
+diff --git a/node_modules/@angular/core/core.d.ts b/node_modules/@angular/core/core.d.ts
+index 97bda5a..390f06c 100755
+--- a/node_modules/@angular/core/core.d.ts
++++ b/node_modules/@angular/core/core.d.ts
+@@ -1546,7 +1546,7 @@ export declare function createPlatform(injector: Injector): PlatformRef;
+  *
+  * @publicApi
+  */
+-export declare function createPlatformFactory(parentPlatformFactory: ((extraProviders?: StaticProvider[]) => PlatformRef) | null, name: string, providers?: StaticProvider[]): (extraProviders?: StaticProvider[]) => PlatformRef;
++export declare function createPlatformFactory(parentPlatformFactory: ((extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef) | null, name: string, providers?: StaticProvider[]): (extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef;
+ 
+ 
+ /**
 diff --git a/node_modules/@angular/core/fesm2015/core.js b/node_modules/@angular/core/fesm2015/core.js
-index ae563cc..65f9d1c 100755
+index ae563cc..fee9880 100755
 --- a/node_modules/@angular/core/fesm2015/core.js
 +++ b/node_modules/@angular/core/fesm2015/core.js
 @@ -473,24 +473,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
@@ -404,6 +417,28 @@ index ae563cc..65f9d1c 100755
  
  /**
   * @license
+@@ -29184,18 +29234,18 @@ function createPlatform(injector) {
+ function createPlatformFactory(parentPlatformFactory, name, providers = []) {
+     const desc = `Platform: ${name}`;
+     const marker = new InjectionToken(desc);
+-    return (extraProviders = []) => {
++    return (extraProviders = [], parentInjector) => {
+         let platform = getPlatform();
+         if (!platform || platform.injector.get(ALLOW_MULTIPLE_PLATFORMS, false)) {
+             if (parentPlatformFactory) {
+-                parentPlatformFactory(providers.concat(extraProviders).concat({ provide: marker, useValue: true }));
++                parentPlatformFactory(providers.concat(extraProviders).concat({ provide: marker, useValue: true }), parentInjector);
+             }
+             else {
+                 const injectedProviders = providers.concat(extraProviders).concat({ provide: marker, useValue: true }, {
+                     provide: INJECTOR_SCOPE,
+                     useValue: 'platform'
+                 });
+-                createPlatform(Injector.create({ providers: injectedProviders, name: desc }));
++                createPlatform(Injector.create({ providers: injectedProviders, name: desc, parent: parentInjector }));
+             }
+         }
+         return assertPlatform(marker);
 @@ -32104,15 +32154,20 @@ function destroyViewNodes(view) {
          }
      }
