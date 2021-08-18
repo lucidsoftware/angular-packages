@@ -19,5 +19,8 @@ mkdir -p dist
 
 for p in "${PACKAGES[@]}"; do
   echo "$p"
-  tar --create --gzip --file "dist/${p//\//_}.tgz" --directory "node_modules/${p}" --transform 's:^\.:package:' .
+
+  package=${p//\//_} # Replace / with _
+  package=${package/@/} # Replace @ with nothing (@ is interpreted as a version delimiter in Yarn2)
+  tar --create --gzip --file "dist/${package}.tgz" --directory "node_modules/${p}" --transform 's:^\.:package:' .
 done
