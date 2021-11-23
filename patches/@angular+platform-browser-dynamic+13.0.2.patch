@@ -1,8 +1,8 @@
 diff --git a/node_modules/@angular/platform-browser-dynamic/platform-browser-dynamic.d.ts b/node_modules/@angular/platform-browser-dynamic/platform-browser-dynamic.d.ts
-index 7750a40..55912ed 100755
+index 454600d..c954a67 100755
 --- a/node_modules/@angular/platform-browser-dynamic/platform-browser-dynamic.d.ts
 +++ b/node_modules/@angular/platform-browser-dynamic/platform-browser-dynamic.d.ts
-@@ -39,7 +39,7 @@ export declare class JitCompilerFactory implements CompilerFactory {
+@@ -45,7 +45,7 @@ export declare class JitCompilerFactory implements CompilerFactory {
  /**
   * @publicApi
   */
@@ -12,7 +12,7 @@ index 7750a40..55912ed 100755
  /**
   * @publicApi
 diff --git a/node_modules/@angular/platform-browser-dynamic/testing/testing.d.ts b/node_modules/@angular/platform-browser-dynamic/testing/testing.d.ts
-index 819967e..53a189d 100755
+index 8f20631..7750cb2 100755
 --- a/node_modules/@angular/platform-browser-dynamic/testing/testing.d.ts
 +++ b/node_modules/@angular/platform-browser-dynamic/testing/testing.d.ts
 @@ -24,7 +24,7 @@ export declare class BrowserDynamicTestingModule {
@@ -22,5 +22,5 @@ index 819967e..53a189d 100755
 -export declare const platformBrowserDynamicTesting: (extraProviders?: StaticProvider[] | undefined) => PlatformRef;
 +export declare const platformBrowserDynamicTesting: (extraProviders?: StaticProvider[] | undefined, parentInjector?: Injector) => PlatformRef;
  
- export declare const ɵangular_packages_platform_browser_dynamic_testing_testing_a: StaticProvider[];
- 
+ /**
+  * A DOM based implementation of the TestComponentRenderer.

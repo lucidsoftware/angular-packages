@@ -1,8 +1,8 @@
 diff --git a/node_modules/@angular/core/core.d.ts b/node_modules/@angular/core/core.d.ts
-index 97bda5a..390f06c 100755
+index 3faf34d..3291bae 100755
 --- a/node_modules/@angular/core/core.d.ts
 +++ b/node_modules/@angular/core/core.d.ts
-@@ -1546,7 +1546,7 @@ export declare function createPlatform(injector: Injector): PlatformRef;
+@@ -1619,7 +1619,7 @@ export declare function createPlatform(injector: Injector): PlatformRef;
   *
   * @publicApi
   */
@@ -11,11 +11,11 @@ index 97bda5a..390f06c 100755
  
  
  /**
-diff --git a/node_modules/@angular/core/fesm2015/core.js b/node_modules/@angular/core/fesm2015/core.js
-index ae563cc..fee9880 100755
---- a/node_modules/@angular/core/fesm2015/core.js
-+++ b/node_modules/@angular/core/fesm2015/core.js
-@@ -473,24 +473,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
+diff --git a/node_modules/@angular/core/fesm2015/core.mjs b/node_modules/@angular/core/fesm2015/core.mjs
+index 14dbdf6..5f34331 100755
+--- a/node_modules/@angular/core/fesm2015/core.mjs
++++ b/node_modules/@angular/core/fesm2015/core.mjs
+@@ -485,24 +485,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
   *
   * @publicApi
   */
@@ -52,7 +52,7 @@ index ae563cc..fee9880 100755
  
  /**
   * @license
-@@ -586,58 +590,64 @@ function noSideEffects(fn) {
+@@ -598,58 +602,64 @@ function noSideEffects(fn) {
   *
   * @publicApi
   */
@@ -73,11 +73,12 @@ index ae563cc..fee9880 100755
       */
 -    ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 1] = "Default";
 -})(ChangeDetectionStrategy || (ChangeDetectionStrategy = {}));
+-/**
 +    Default: 1,
 +};
 +ChangeDetectionStrategy[ChangeDetectionStrategy.OnPush] = 'OnPush';
 +ChangeDetectionStrategy[ChangeDetectionStrategy.Default] = 'Default';
- /**
++     /**
   * Defines the possible states of the default change detector.
   * @see `ChangeDetectorRef`
   */
@@ -131,17 +132,17 @@ index ae563cc..fee9880 100755
  /**
   * Reports whether a given strategy is currently the default for change detection.
   * @param changeDetectionStrategy The strategy to check.
-@@ -669,8 +679,7 @@ function isDefaultChangeDetectionStrategy(changeDetectionStrategy) {
+@@ -681,8 +691,7 @@ function isDefaultChangeDetectionStrategy(changeDetectionStrategy) {
   *
   * @publicApi
   */
--var ViewEncapsulation;
+-var ViewEncapsulation$1;
 -(function (ViewEncapsulation) {
-+const ViewEncapsulation = {
++const ViewEncapsulation$1 = {
+     // TODO: consider making `ViewEncapsulation` a `const enum` instead. See
+     // https://github.com/angular/angular/issues/44119 for additional information.
      /**
-      * Emulate `Native` scoping of styles by adding an attribute containing surrogate id to the Host
-      * Element and pre-processing the style rules provided via {@link Component#styles styles} or
-@@ -679,12 +688,12 @@ var ViewEncapsulation;
+@@ -693,12 +702,12 @@ var ViewEncapsulation$1;
       *
       * This is the default option.
       */
@@ -156,21 +157,22 @@ index ae563cc..fee9880 100755
      /**
       * Use Shadow DOM to encapsulate styles.
       *
-@@ -692,8 +701,11 @@ var ViewEncapsulation;
+@@ -706,8 +715,12 @@ var ViewEncapsulation$1;
       * DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) and
       * creating a ShadowRoot for Component's Host Element.
       */
 -    ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
--})(ViewEncapsulation || (ViewEncapsulation = {}));
+-})(ViewEncapsulation$1 || (ViewEncapsulation$1 = {}));
 +    ShadowDom: 3,
 +};
-+ViewEncapsulation[ViewEncapsulation.Emulated] = 'Emulated';
-+ViewEncapsulation[ViewEncapsulation.None] = 'None';
-+ViewEncapsulation[ViewEncapsulation.ShadowDom] = 'ShadowDom';
++ViewEncapsulation$1[ViewEncapsulation$1.Emulated] = 'Emulated';
++ViewEncapsulation$1[ViewEncapsulation$1.None] = 'None';
++ViewEncapsulation$1[ViewEncapsulation$1.ShadowDom] = 'ShadowDom';
++
  
  /**
   * @license
-@@ -1625,11 +1637,12 @@ function getDocument() {
+@@ -1626,11 +1639,12 @@ function getDocument() {
   * found in the LICENSE file at https://angular.io/license
   */
  // TODO: cleanup once the code is merged in angular/angular
@@ -188,7 +190,7 @@ index ae563cc..fee9880 100755
  /** Returns whether the `renderer` is a `ProceduralRenderer3` */
  function isProceduralRenderer(renderer) {
      return !!(renderer.listen);
-@@ -4002,21 +4015,27 @@ const ViewChild = makePropDecorator('ViewChild', ɵ3, Query);
+@@ -4005,21 +4019,27 @@ const ViewChild = makePropDecorator('ViewChild', (selector, data) => (Object.ass
   * Use of this source code is governed by an MIT-style license that can be
   * found in the LICENSE file at https://angular.io/license
   */
@@ -200,7 +202,7 @@ index ae563cc..fee9880 100755
 -    FactoryTarget[FactoryTarget["Pipe"] = 3] = "Pipe";
 -    FactoryTarget[FactoryTarget["NgModule"] = 4] = "NgModule";
 -})(FactoryTarget || (FactoryTarget = {}));
--var ViewEncapsulation$1;
+-var ViewEncapsulation;
 -(function (ViewEncapsulation) {
 -    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
 +const FactoryTarget = {
@@ -210,27 +212,27 @@ index ae563cc..fee9880 100755
 +    Pipe: 3,
 +    NgModule: 4,
 +};
-+FactoryTarget[FactoryTarget.Directive] = 'Directive';
-+FactoryTarget[FactoryTarget.Component] = 'Component';
-+FactoryTarget[FactoryTarget.Injectable] = 'Injectable';
-+FactoryTarget[FactoryTarget.Pipe] = 'Pipe';
-+FactoryTarget[FactoryTarget.NgModule] = 'NgModule';
-+const ViewEncapsulation$1 = {
++FactoryTarget[FactoryTarget.Directive] = "Directive";
++FactoryTarget[FactoryTarget.Component] = "Component";
++FactoryTarget[FactoryTarget.Injectable] = "Injectable";
++FactoryTarget[FactoryTarget.Pipe] = "Pipe";
++FactoryTarget[FactoryTarget.NgModule] = "NgModule";
++const ViewEncapsulation = {
 +    Emulated: 0,
      // Historically the 1 value was for `Native` encapsulation which has been removed as of v11.
 -    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
 -    ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
--})(ViewEncapsulation$1 || (ViewEncapsulation$1 = {}));
+-})(ViewEncapsulation || (ViewEncapsulation = {}));
 +    None: 2,
 +    ShadowDom: 3,
 +};
-+ViewEncapsulation$1[ViewEncapsulation$1.Emulated] = 'Emulated';
-+ViewEncapsulation$1[ViewEncapsulation$1.None] = 'None';
-+ViewEncapsulation$1[ViewEncapsulation$1.ShadowDom] = 'ShadowDom';
++ViewEncapsulation[ViewEncapsulation.Emulated] = 'Emulated';
++ViewEncapsulation[ViewEncapsulation.None] = 'None';
++ViewEncapsulation[ViewEncapsulation.ShadowDom] = 'ShadowDom';
  
  /**
   * @license
-@@ -5896,15 +5915,20 @@ function isTemplateElement(el) {
+@@ -5897,15 +5917,20 @@ function isTemplateElement(el) {
   *
   * @publicApi
   */
@@ -260,7 +262,7 @@ index ae563cc..fee9880 100755
  
  /**
   * @license
-@@ -6837,20 +6861,21 @@ function getExpressionChangedErrorDetails(lView, bindingIndex, oldValue, newValu
+@@ -6799,20 +6824,21 @@ function getExpressionChangedErrorDetails(lView, bindingIndex, oldValue, newValu
   * Flags for renderer-specific style modifiers.
   * @publicApi
   */
@@ -282,12 +284,12 @@ index ae563cc..fee9880 100755
 -})(RendererStyleFlags2 || (RendererStyleFlags2 = {}));
 +    DashCase: 2,
 +};
-+RendererStyleFlags2[RendererStyleFlags2.Important] = 'Important';
-+RendererStyleFlags2[RendererStyleFlags2.DashCase] = 'DashCase';
++RendererStyleFlags2[RendererStyleFlags2.Important] = "Important";
++RendererStyleFlags2[RendererStyleFlags2.DashCase] = "DashCase";
  
  /**
   * @license
-@@ -18949,31 +18974,52 @@ function unregisterAllLocaleData() {
+@@ -18885,31 +18911,52 @@ function unregisterAllLocaleData() {
  /**
   * Index of each type of locale data from the locale data array
   */
@@ -365,7 +367,7 @@ index ae563cc..fee9880 100755
  /**
   * Returns the canonical form of a locale name - lowercase with `_` replaced with `-`.
   */
-@@ -19033,22 +19079,24 @@ const ICU_MARKER = {
+@@ -18969,23 +19016,25 @@ const ICU_MARKER = {
  /**
   * See `I18nCreateOpCodes`
   */
@@ -388,15 +390,17 @@ index ae563cc..fee9880 100755
       */
 -    I18nCreateOpCode[I18nCreateOpCode["COMMENT"] = 2] = "COMMENT";
 -})(I18nCreateOpCode || (I18nCreateOpCode = {}));
+-// Note: This hack is necessary so we don't erroneously get a circular dependency
 +    COMMENT: 2,
 +};
 +I18nCreateOpCode[I18nCreateOpCode.SHIFT] = 'SHIFT';
 +I18nCreateOpCode[I18nCreateOpCode.APPEND_EAGERLY] = 'APPEND_EAGERLY';
 +I18nCreateOpCode[I18nCreateOpCode.COMMENT] = 'COMMENT';
- // Note: This hack is necessary so we don't erroneously get a circular dependency
++    // Note: This hack is necessary so we don't erroneously get a circular dependency
  // failure based on types.
- const unusedValueExportToPlacateAjd$6 = 1;
-@@ -28213,12 +28261,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
+ const unusedValueExportToPlacateAjd$2 = 1;
+ 
+@@ -25350,12 +25399,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
   *
   * @publicApi
   */
@@ -417,7 +421,7 @@ index ae563cc..fee9880 100755
  
  /**
   * @license
-@@ -29184,18 +29234,18 @@ function createPlatform(injector) {
+@@ -26344,18 +26395,18 @@ function createPlatform(injector) {
  function createPlatformFactory(parentPlatformFactory, name, providers = []) {
      const desc = `Platform: ${name}`;
      const marker = new InjectionToken(desc);
@@ -439,7 +443,7 @@ index ae563cc..fee9880 100755
              }
          }
          return assertPlatform(marker);
-@@ -32104,15 +32154,20 @@ function destroyViewNodes(view) {
+@@ -32014,15 +32065,20 @@ function destroyViewNodes(view) {
          }
      }
  }
@@ -469,7 +473,7 @@ index ae563cc..fee9880 100755
  function execComponentViewsAction(view, action) {
      const def = view.def;
      if (!(def.nodeFlags & 33554432 /* ComponentView */)) {
-@@ -32520,14 +32575,18 @@ function debugCheckNoChangesView(view) {
+@@ -32430,14 +32486,18 @@ function debugCheckNoChangesView(view) {
  function debugDestroyView(view) {
      return callWithDebugContext(DebugAction.destroy, destroyView, null, [view]);
  }

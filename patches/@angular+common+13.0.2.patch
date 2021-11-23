@@ -1,8 +1,8 @@
-diff --git a/node_modules/@angular/common/fesm2015/common.js b/node_modules/@angular/common/fesm2015/common.js
-index 9ff5ca4..a275d2a 100755
---- a/node_modules/@angular/common/fesm2015/common.js
-+++ b/node_modules/@angular/common/fesm2015/common.js
-@@ -941,13 +941,16 @@ const CURRENCIES_EN = {
+diff --git a/node_modules/@angular/common/fesm2015/common.mjs b/node_modules/@angular/common/fesm2015/common.mjs
+index 4c0f041..0f22c13 100755
+--- a/node_modules/@angular/common/fesm2015/common.mjs
++++ b/node_modules/@angular/common/fesm2015/common.mjs
+@@ -819,13 +819,16 @@ const CURRENCIES_EN = { "ADP": [undefined, undefined, 0], "AFN": [undefined, "؋
   *
   * @publicApi
   */
@@ -26,7 +26,7 @@ index 9ff5ca4..a275d2a 100755
  /**
   * Plurality cases used for translating plurals to different languages.
   *
-@@ -957,15 +960,20 @@ var NumberFormatStyle;
+@@ -835,15 +838,20 @@ var NumberFormatStyle;
   *
   * @publicApi
   */
@@ -56,7 +56,7 @@ index 9ff5ca4..a275d2a 100755
  /**
   * Context-dependant translation forms for strings.
   * Typically the standalone version is for the nominative form of the word,
-@@ -975,11 +983,12 @@ var Plural;
+@@ -853,11 +861,12 @@ var Plural;
   *
   * @publicApi
   */
@@ -74,7 +74,7 @@ index 9ff5ca4..a275d2a 100755
  /**
   * String widths available for translations.
   * The specific character widths are locale-specific.
-@@ -987,17 +996,20 @@ var FormStyle;
+@@ -865,17 +874,20 @@ var FormStyle;
   *
   * @publicApi
   */
@@ -93,7 +93,7 @@ index 9ff5ca4..a275d2a 100755
      /** 2 characters for `en-US`, For example: "Su" */
 -    TranslationWidth[TranslationWidth["Short"] = 3] = "Short";
 -})(TranslationWidth || (TranslationWidth = {}));
-+    Short: 3,
++    Short: 3
 +};
 +TranslationWidth[TranslationWidth.Narrow] = 'Narrow';
 +TranslationWidth[TranslationWidth.Abbreviated] = 'Abbreviated';
@@ -102,8 +102,8 @@ index 9ff5ca4..a275d2a 100755
  /**
   * String widths available for date-time formats.
   * The specific character widths are locale-specific.
-@@ -1009,29 +1021,32 @@ var TranslationWidth;
-  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n)
+@@ -887,29 +899,32 @@ var TranslationWidth;
+  * @see [Internationalization (i18n) Guide](https://angular.io/guide/i18n-overview)
   * @publicApi
   */
 -var FormatWidth;
@@ -142,7 +142,7 @@ index 9ff5ca4..a275d2a 100755
  /**
   * Symbols that can be used to replace placeholders in number patterns.
   * Examples are based on `en-US` values.
-@@ -1041,96 +1056,115 @@ var FormatWidth;
+@@ -919,96 +934,115 @@ var FormatWidth;
   *
   * @publicApi
   */
@@ -285,7 +285,7 @@ index 9ff5ca4..a275d2a 100755
  /**
   * Retrieves the locale ID from the currently loaded locale.
   * The loaded locale could be, for example, a global one rather than a regional one.
-@@ -1567,31 +1601,44 @@ const ISO8601_DATE_REGEX = /^(\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\
+@@ -1445,31 +1479,44 @@ const ISO8601_DATE_REGEX = /^(\d{4})-?(\d\d)-?(\d\d)(?:T(\d\d)(?::?(\d\d)(?::?(\
  //    1        2       3         4          5          6          7          8  9     10      11
  const NAMED_FORMATS = {};
  const DATE_FORMATS_SPLIT = /((?:[^BEGHLMOSWYZabcdhmswyz']+)|(?:'(?:[^']|'')*')|(?:G{1,5}|y{1,4}|Y{1,4}|M{1,5}|L{1,5}|w{1,2}|W{1}|d{1,2}|E{1,6}|c{1,6}|a{1,5}|b{1,5}|B{1,5}|h{1,2}|H{1,2}|m{1,2}|s{1,2}|S{1,3}|z{1,4}|Z{1,5}|O{1,4}))([\s\S]*)/;
@@ -355,11 +355,11 @@ index 9ff5ca4..a275d2a 100755
  /**
   * @ngModule CommonModule
   * @description
-diff --git a/node_modules/@angular/common/fesm2015/http.js b/node_modules/@angular/common/fesm2015/http.js
-index 5db1b73..bab9898 100755
---- a/node_modules/@angular/common/fesm2015/http.js
-+++ b/node_modules/@angular/common/fesm2015/http.js
-@@ -928,33 +928,38 @@ class HttpRequest {
+diff --git a/node_modules/@angular/common/fesm2015/http.mjs b/node_modules/@angular/common/fesm2015/http.mjs
+index aabf47f..de55217 100755
+--- a/node_modules/@angular/common/fesm2015/http.mjs
++++ b/node_modules/@angular/common/fesm2015/http.mjs
+@@ -936,33 +936,38 @@ class HttpRequest {
   *
   * @publicApi
   */
