@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "@angular/animations": "13.0.2",
     "@angular/common": "13.0.2",
     "@angular/compiler": "13.0.2",
     "@angular/compiler-cli": "13.0.2",
