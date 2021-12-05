@@ -1,5 +1,5 @@
 diff --git a/node_modules/@angular/core/core.d.ts b/node_modules/@angular/core/core.d.ts
-index 3faf34d..3291bae 100755
+index 3faf34d..eb9a632 100755
 --- a/node_modules/@angular/core/core.d.ts
 +++ b/node_modules/@angular/core/core.d.ts
 @@ -1619,7 +1619,7 @@ export declare function createPlatform(injector: Injector): PlatformRef;
@@ -11,8 +11,35 @@ index 3faf34d..3291bae 100755
  
  
  /**
+@@ -2700,7 +2700,7 @@ export declare class ErrorHandler {
+  * @see [Observables in Angular](guide/observables-in-angular)
+  * @publicApi
+  */
+-export declare interface EventEmitter<T> extends Subject<T> {
++export declare interface EventEmitter<T = void> extends Subject<T> {
+     /**
+      * Creates an instance of this class that can
+      * deliver events synchronously or asynchronously.
+@@ -2713,7 +2713,7 @@ export declare interface EventEmitter<T> extends Subject<T> {
+      * Emits an event containing a given value.
+      * @param value The value to emit.
+      */
+-    emit(value?: T): void;
++    emit(value: T): void;
+     /**
+      * Registers handlers for events emitted by this instance.
+      * @param next When supplied, a custom handler for emitted events.
+@@ -2737,7 +2737,7 @@ export declare interface EventEmitter<T> extends Subject<T> {
+  * @publicApi
+  */
+ export declare const EventEmitter: {
+-    new (isAsync?: boolean): EventEmitter<any>;
++    new (isAsync?: boolean): EventEmitter<void>;
+     new <T>(isAsync?: boolean): EventEmitter<T>;
+     readonly prototype: EventEmitter<any>;
+ };
 diff --git a/node_modules/@angular/core/fesm2015/core.mjs b/node_modules/@angular/core/fesm2015/core.mjs
-index 14dbdf6..5f34331 100755
+index 14dbdf6..4359a63 100755
 --- a/node_modules/@angular/core/fesm2015/core.mjs
 +++ b/node_modules/@angular/core/fesm2015/core.mjs
 @@ -485,24 +485,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
