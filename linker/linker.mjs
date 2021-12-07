@@ -6,7 +6,19 @@ import * as path from "path";
 const inputPath = process.argv[2];
 const outputPath = process.argv[3];
 console.error(`Linking ${inputPath} with Angular Babel linker plugin`);
-const result = babel.transformFileSync(inputPath, { plugins: [babel_1.default] });
+const result = babel.transformFileSync(inputPath, {
+    compact: false,
+    plugins: [
+        [
+            babel_1.default,
+            {
+                sourceMapping: false,
+                linkerJitMode: true,
+                unknownDeclarationVersionHandling: 'error'
+            }
+        ]
+    ]
+});
 if (false) {
     // Set this to true to write the files before and after transformation
     fs.mkdirSync(`diff/${path.dirname(inputPath)}`, {recursive: true});
