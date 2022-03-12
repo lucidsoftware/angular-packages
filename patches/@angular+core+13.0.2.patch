@@ -1,5 +1,5 @@
 diff --git a/node_modules/@angular/core/core.d.ts b/node_modules/@angular/core/core.d.ts
-index 3faf34d..eb9a632 100755
+index 3faf34d..f150095 100755
 --- a/node_modules/@angular/core/core.d.ts
 +++ b/node_modules/@angular/core/core.d.ts
 @@ -1619,7 +1619,7 @@ export declare function createPlatform(injector: Injector): PlatformRef;
@@ -39,7 +39,7 @@ index 3faf34d..eb9a632 100755
      readonly prototype: EventEmitter<any>;
  };
 diff --git a/node_modules/@angular/core/fesm2015/core.mjs b/node_modules/@angular/core/fesm2015/core.mjs
-index 14dbdf6..4359a63 100755
+index 14dbdf6..9439a21 100755
 --- a/node_modules/@angular/core/fesm2015/core.mjs
 +++ b/node_modules/@angular/core/fesm2015/core.mjs
 @@ -485,24 +485,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
@@ -316,7 +316,15 @@ index 14dbdf6..4359a63 100755
  
  /**
   * @license
-@@ -18885,31 +18911,52 @@ function unregisterAllLocaleData() {
+@@ -10146,6 +10172,7 @@ function matchingSchemas(tView, tagName) {
+ function logUnknownPropertyError(propName, tNode) {
+     let message = `Can't bind to '${propName}' since it isn't a known property of '${tNode.value}'.`;
+     console.error(formatRuntimeError("303" /* UNKNOWN_BINDING */, message));
++    throw new Error(message);
+ }
+ /**
+  * Instantiate a root component.
+@@ -18885,31 +18912,52 @@ function unregisterAllLocaleData() {
  /**
   * Index of each type of locale data from the locale data array
   */
@@ -394,7 +402,7 @@ index 14dbdf6..4359a63 100755
  /**
   * Returns the canonical form of a locale name - lowercase with `_` replaced with `-`.
   */
-@@ -18969,23 +19016,25 @@ const ICU_MARKER = {
+@@ -18969,23 +19017,25 @@ const ICU_MARKER = {
  /**
   * See `I18nCreateOpCodes`
   */
@@ -427,7 +435,7 @@ index 14dbdf6..4359a63 100755
  // failure based on types.
  const unusedValueExportToPlacateAjd$2 = 1;
  
-@@ -25350,12 +25399,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
+@@ -25350,12 +25400,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
   *
   * @publicApi
   */
@@ -448,7 +456,7 @@ index 14dbdf6..4359a63 100755
  
  /**
   * @license
-@@ -26344,18 +26395,18 @@ function createPlatform(injector) {
+@@ -26344,18 +26396,18 @@ function createPlatform(injector) {
  function createPlatformFactory(parentPlatformFactory, name, providers = []) {
      const desc = `Platform: ${name}`;
      const marker = new InjectionToken(desc);
@@ -470,7 +478,7 @@ index 14dbdf6..4359a63 100755
              }
          }
          return assertPlatform(marker);
-@@ -32014,15 +32065,20 @@ function destroyViewNodes(view) {
+@@ -32014,15 +32066,20 @@ function destroyViewNodes(view) {
          }
      }
  }
@@ -500,7 +508,7 @@ index 14dbdf6..4359a63 100755
  function execComponentViewsAction(view, action) {
      const def = view.def;
      if (!(def.nodeFlags & 33554432 /* ComponentView */)) {
-@@ -32430,14 +32486,18 @@ function debugCheckNoChangesView(view) {
+@@ -32430,14 +32487,18 @@ function debugCheckNoChangesView(view) {
  function debugDestroyView(view) {
      return callWithDebugContext(DebugAction.destroy, destroyView, null, [view]);
  }
