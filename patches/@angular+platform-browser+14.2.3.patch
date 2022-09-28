@@ -1,0 +1,21 @@
+diff --git a/node_modules/@angular/platform-browser/index.d.ts b/node_modules/@angular/platform-browser/index.d.ts
+index b1432ec..7984720 100755
+--- a/node_modules/@angular/platform-browser/index.d.ts
++++ b/node_modules/@angular/platform-browser/index.d.ts
+@@ -14,6 +14,7 @@ import * as i0 from '@angular/core';
+ import * as i1 from '@angular/common';
+ import { ImportedNgModuleProviders } from '@angular/core';
+ import { InjectionToken } from '@angular/core';
++import { Injector } from '@angular/core';
+ import { ModuleWithProviders } from '@angular/core';
+ import { NgZone } from '@angular/core';
+ import { OnDestroy } from '@angular/core';
+@@ -615,7 +616,7 @@ export declare type MetaDefinition = {
+  *
+  * @publicApi
+  */
+-export declare const platformBrowser: (extraProviders?: StaticProvider[]) => PlatformRef;
++export declare const platformBrowser: (extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef;
+ 
+ /**
+  * Returns a set of providers required to setup [Testability](api/core/Testability) for an
