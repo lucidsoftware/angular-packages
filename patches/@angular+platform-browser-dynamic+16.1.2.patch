@@ -1,0 +1,94 @@
+diff --git a/node_modules/@angular/platform-browser-dynamic/fesm2022/platform-browser-dynamic.mjs b/node_modules/@angular/platform-browser-dynamic/fesm2022/platform-browser-dynamic.mjs
+index 20d0979..fec8e42 100755
+--- a/node_modules/@angular/platform-browser-dynamic/fesm2022/platform-browser-dynamic.mjs
++++ b/node_modules/@angular/platform-browser-dynamic/fesm2022/platform-browser-dynamic.mjs
+@@ -129,9 +129,9 @@ class ResourceLoaderImpl extends ResourceLoader {
+         xhr.send();
+         return promise;
+     }
+-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: ResourceLoaderImpl, deps: null, target: i0.ɵɵFactoryTarget.Injectable }); }
+-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: ResourceLoaderImpl }); }
+ }
++ResourceLoaderImpl.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: ResourceLoaderImpl, deps: null, target: i0.ɵɵFactoryTarget.Injectable });
++ResourceLoaderImpl.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: ResourceLoaderImpl });
+ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: ResourceLoaderImpl, decorators: [{
+             type: Injectable
+         }] });
+diff --git a/node_modules/@angular/platform-browser-dynamic/fesm2022/testing.mjs b/node_modules/@angular/platform-browser-dynamic/fesm2022/testing.mjs
+index 31e2339..3860a3f 100755
+--- a/node_modules/@angular/platform-browser-dynamic/fesm2022/testing.mjs
++++ b/node_modules/@angular/platform-browser-dynamic/fesm2022/testing.mjs
+@@ -32,9 +32,9 @@ class DOMTestComponentRenderer extends TestComponentRenderer {
+             ɵgetDOM().remove(oldRoots[i]);
+         }
+     }
+-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: DOMTestComponentRenderer, deps: [{ token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Injectable }); }
+-    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: DOMTestComponentRenderer }); }
+ }
++DOMTestComponentRenderer.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: DOMTestComponentRenderer, deps: [{ token: DOCUMENT }], target: i0.ɵɵFactoryTarget.Injectable });
++DOMTestComponentRenderer.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: DOMTestComponentRenderer });
+ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: DOMTestComponentRenderer, decorators: [{
+             type: Injectable
+         }], ctorParameters: function () { return [{ type: undefined, decorators: [{
+@@ -58,13 +58,12 @@ const platformBrowserDynamicTesting = createPlatformFactory(platformCoreDynamicT
+  *
+  * @publicApi
+  */
+-class BrowserDynamicTestingModule {
+-    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: BrowserDynamicTestingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+-    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.1.2", ngImport: i0, type: BrowserDynamicTestingModule, exports: [BrowserTestingModule] }); }
+-    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: BrowserDynamicTestingModule, providers: [
+-            { provide: TestComponentRenderer, useClass: DOMTestComponentRenderer },
+-        ], imports: [BrowserTestingModule] }); }
+-}
++class BrowserDynamicTestingModule {}
++BrowserDynamicTestingModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: BrowserDynamicTestingModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
++BrowserDynamicTestingModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "16.1.2", ngImport: i0, type: BrowserDynamicTestingModule, exports: [BrowserTestingModule] });
++BrowserDynamicTestingModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: BrowserDynamicTestingModule, providers: [
++        { provide: TestComponentRenderer, useClass: DOMTestComponentRenderer },
++    ], imports: [BrowserTestingModule] });
+ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "16.1.2", ngImport: i0, type: BrowserDynamicTestingModule, decorators: [{
+             type: NgModule,
+             args: [{
+diff --git a/node_modules/@angular/platform-browser-dynamic/index.d.ts b/node_modules/@angular/platform-browser-dynamic/index.d.ts
+index 0913192..bab01c2 100755
+--- a/node_modules/@angular/platform-browser-dynamic/index.d.ts
++++ b/node_modules/@angular/platform-browser-dynamic/index.d.ts
+@@ -8,6 +8,7 @@
+ import { Compiler } from '@angular/core';
+ import { CompilerFactory } from '@angular/core';
+ import { CompilerOptions } from '@angular/core';
++import { Injector } from '@angular/core';
+ import { PlatformRef } from '@angular/core';
+ import { Provider } from '@angular/core';
+ import { StaticProvider } from '@angular/core';
+@@ -29,7 +30,7 @@ export declare class JitCompilerFactory implements CompilerFactory {
+ /**
+  * @publicApi
+  */
+-export declare const platformBrowserDynamic: (extraProviders?: StaticProvider[] | undefined) => PlatformRef;
++export declare const platformBrowserDynamic: (extraProviders?: StaticProvider[] | undefined, parentInjector?: Injector) => PlatformRef;
+ 
+ /**
+  * @publicApi
+diff --git a/node_modules/@angular/platform-browser-dynamic/testing/index.d.ts b/node_modules/@angular/platform-browser-dynamic/testing/index.d.ts
+index 3d46fe5..840bfcb 100755
+--- a/node_modules/@angular/platform-browser-dynamic/testing/index.d.ts
++++ b/node_modules/@angular/platform-browser-dynamic/testing/index.d.ts
+@@ -7,6 +7,7 @@
+ 
+ import * as i0 from '@angular/core';
+ import * as i1 from '@angular/platform-browser/testing';
++import { Injector } from '@angular/core';
+ import { PlatformRef } from '@angular/core';
+ import { StaticProvider } from '@angular/core';
+ import { TestComponentRenderer } from '@angular/core/testing';
+@@ -25,7 +26,7 @@ export declare class BrowserDynamicTestingModule {
+ /**
+  * @publicApi
+  */
+-export declare const platformBrowserDynamicTesting: (extraProviders?: StaticProvider[] | undefined) => PlatformRef;
++export declare const platformBrowserDynamicTesting: (extraProviders?: StaticProvider[] | undefined, parentInjector?: Injector) => PlatformRef;
+ 
+ /**
+  * A DOM based implementation of the TestComponentRenderer.

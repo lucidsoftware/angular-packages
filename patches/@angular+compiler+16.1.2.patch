@@ -1,0 +1,339 @@
+diff --git a/node_modules/@angular/compiler/fesm2022/compiler.mjs b/node_modules/@angular/compiler/fesm2022/compiler.js
+similarity index 99%
+rename from node_modules/@angular/compiler/fesm2022/compiler.mjs
+rename to node_modules/@angular/compiler/fesm2022/compiler.js
+index e4abfd2..aee126e 100755
+--- a/node_modules/@angular/compiler/fesm2022/compiler.mjs
++++ b/node_modules/@angular/compiler/fesm2022/compiler.js
+@@ -25828,5 +25828,205 @@ publishFacade(_global);
+ 
+ // This file is not used to build this module. It is only used during editing
+ 
+-export { AST, ASTWithName, ASTWithSource, AbsoluteSourceSpan, ArrayType, AstMemoryEfficientTransformer, AstTransformer, Attribute, Binary, BinaryOperator, BinaryOperatorExpr, BindingPipe, BoundElementProperty, BuiltinType, BuiltinTypeName, CUSTOM_ELEMENTS_SCHEMA, Call, Chain, ChangeDetectionStrategy, CommaExpr, Comment, CompilerConfig, Conditional, ConditionalExpr, ConstantPool, CssSelector, DEFAULT_INTERPOLATION_CONFIG, DYNAMIC_TYPE, DeclareFunctionStmt, DeclareVarStmt, DomElementSchemaRegistry, EOF, Element, ElementSchemaRegistry, EmitterVisitorContext, EmptyExpr, Expansion, ExpansionCase, Expression, ExpressionBinding, ExpressionStatement, ExpressionType, ExternalExpr, ExternalReference, FactoryTarget$1 as FactoryTarget, FunctionExpr, HtmlParser, HtmlTagDefinition, I18NHtmlParser, IfStmt, ImplicitReceiver, InstantiateExpr, Interpolation, InterpolationConfig, InvokeFunctionExpr, JSDocComment, JitEvaluator, KeyedRead, KeyedWrite, LeadingComment, Lexer, LiteralArray, LiteralArrayExpr, LiteralExpr, LiteralMap, LiteralMapExpr, LiteralPrimitive, LocalizedString, MapType, MessageBundle, NONE_TYPE, NO_ERRORS_SCHEMA, NodeWithI18n, NonNullAssert, NotExpr, ParseError, ParseErrorLevel, ParseLocation, ParseSourceFile, ParseSourceSpan, ParseSpan, ParseTreeResult, ParsedEvent, ParsedProperty, ParsedPropertyType, ParsedVariable, Parser$1 as Parser, ParserError, PrefixNot, PropertyRead, PropertyWrite, R3BoundTarget, Identifiers as R3Identifiers, R3SelectorScopeMode, R3TargetBinder, R3TemplateDependencyKind, ReadKeyExpr, ReadPropExpr, ReadVarExpr, RecursiveAstVisitor, RecursiveVisitor, ResourceLoader, ReturnStatement, STRING_TYPE, SafeCall, SafeKeyedRead, SafePropertyRead, SelectorContext, SelectorListContext, SelectorMatcher, Serializer, SplitInterpolation, Statement, StmtModifier, TagContentType, TaggedTemplateExpr, TemplateBindingParseResult, TemplateLiteral, TemplateLiteralElement, Text, ThisReceiver, BoundAttribute as TmplAstBoundAttribute, BoundEvent as TmplAstBoundEvent, BoundText as TmplAstBoundText, Content as TmplAstContent, Element$1 as TmplAstElement, Icu$1 as TmplAstIcu, RecursiveVisitor$1 as TmplAstRecursiveVisitor, Reference as TmplAstReference, Template as TmplAstTemplate, Text$3 as TmplAstText, TextAttribute as TmplAstTextAttribute, Variable as TmplAstVariable, Token, TokenType, TransplantedType, TreeError, Type, TypeModifier, TypeofExpr, Unary, UnaryOperator, UnaryOperatorExpr, VERSION, VariableBinding, Version, ViewEncapsulation, WrappedNodeExpr, WriteKeyExpr, WritePropExpr, WriteVarExpr, Xliff, Xliff2, Xmb, XmlParser, Xtb, _ParseAST, compileClassMetadata, compileComponentFromMetadata, compileDeclareClassMetadata, compileDeclareComponentFromMetadata, compileDeclareDirectiveFromMetadata, compileDeclareFactoryFunction, compileDeclareInjectableFromMetadata, compileDeclareInjectorFromMetadata, compileDeclareNgModuleFromMetadata, compileDeclarePipeFromMetadata, compileDirectiveFromMetadata, compileFactoryFunction, compileInjectable, compileInjector, compileNgModule, compilePipeFromMetadata, computeMsgId, core, createInjectableType, createMayBeForwardRefExpression, devOnlyGuardedExpression, emitDistinctChangesOnlyDefaultValue, getHtmlTagDefinition, getNsPrefix, getSafePropertyAccessString, identifierName, isIdentifier, isNgContainer, isNgContent, isNgTemplate, jsDocComment, leadingComment, literalMap, makeBindingParser, mergeNsAndName, output_ast as outputAst, parseHostBindings, parseTemplate, preserveWhitespacesDefault, publishFacade, r3JitTypeSourceSpan, sanitizeIdentifier, splitNsName, verifyHostBindings, visitAll };
+-//# sourceMappingURL=compiler.mjs.map
++exports.AST = AST;
++exports.ASTWithName = ASTWithName;
++exports.ASTWithSource = ASTWithSource;
++exports.AbsoluteSourceSpan = AbsoluteSourceSpan;
++exports.ArrayType = ArrayType;
++exports.AstMemoryEfficientTransformer = AstMemoryEfficientTransformer;
++exports.AstTransformer = AstTransformer;
++exports.Attribute = Attribute;
++exports.Binary = Binary;
++exports.BinaryOperator = BinaryOperator;
++exports.BinaryOperatorExpr = BinaryOperatorExpr;
++exports.BindingPipe = BindingPipe;
++exports.BoundElementProperty = BoundElementProperty;
++exports.BuiltinType = BuiltinType;
++exports.BuiltinTypeName = BuiltinTypeName;
++exports.CUSTOM_ELEMENTS_SCHEMA = CUSTOM_ELEMENTS_SCHEMA;
++exports.Call = Call;
++exports.Chain = Chain;
++exports.ChangeDetectionStrategy = ChangeDetectionStrategy;
++exports.CommaExpr = CommaExpr;
++exports.Comment = Comment;
++exports.CompilerConfig = CompilerConfig;
++exports.Conditional = Conditional;
++exports.ConditionalExpr = ConditionalExpr;
++exports.ConstantPool = ConstantPool;
++exports.CssSelector = CssSelector;
++exports.DEFAULT_INTERPOLATION_CONFIG = DEFAULT_INTERPOLATION_CONFIG;
++exports.DYNAMIC_TYPE = DYNAMIC_TYPE;
++exports.DeclareFunctionStmt = DeclareFunctionStmt;
++exports.DeclareVarStmt = DeclareVarStmt;
++exports.DomElementSchemaRegistry = DomElementSchemaRegistry;
++exports.EOF = EOF;
++exports.Element = Element;
++exports.ElementSchemaRegistry = ElementSchemaRegistry;
++exports.EmitterVisitorContext = EmitterVisitorContext;
++exports.EmptyExpr = EmptyExpr;
++exports.Expansion = Expansion;
++exports.ExpansionCase = ExpansionCase;
++exports.Expression = Expression;
++exports.ExpressionBinding = ExpressionBinding;
++exports.ExpressionStatement = ExpressionStatement;
++exports.ExpressionType = ExpressionType;
++exports.ExternalExpr = ExternalExpr;
++exports.ExternalReference = ExternalReference;
++exports.FactoryTarget = FactoryTarget$1;
++exports.FunctionExpr = FunctionExpr;
++exports.HtmlParser = HtmlParser;
++exports.HtmlTagDefinition = HtmlTagDefinition;
++exports.I18NHtmlParser = I18NHtmlParser;
++exports.IfStmt = IfStmt;
++exports.ImplicitReceiver = ImplicitReceiver;
++exports.InstantiateExpr = InstantiateExpr;
++exports.Interpolation = Interpolation;
++exports.InterpolationConfig = InterpolationConfig;
++exports.InvokeFunctionExpr = InvokeFunctionExpr;
++exports.JSDocComment = JSDocComment;
++exports.JitEvaluator = JitEvaluator;
++exports.KeyedRead = KeyedRead;
++exports.KeyedWrite = KeyedWrite;
++exports.LeadingComment = LeadingComment;
++exports.Lexer = Lexer;
++exports.LiteralArray = LiteralArray;
++exports.LiteralArrayExpr = LiteralArrayExpr;
++exports.LiteralExpr = LiteralExpr;
++exports.LiteralMap = LiteralMap;
++exports.LiteralMapExpr = LiteralMapExpr;
++exports.LiteralPrimitive = LiteralPrimitive;
++exports.LocalizedString = LocalizedString;
++exports.MapType = MapType;
++exports.MessageBundle = MessageBundle;
++exports.NONE_TYPE = NONE_TYPE;
++exports.NO_ERRORS_SCHEMA = NO_ERRORS_SCHEMA;
++exports.NodeWithI18n = NodeWithI18n;
++exports.NonNullAssert = NonNullAssert;
++exports.NotExpr = NotExpr;
++exports.ParseError = ParseError;
++exports.ParseErrorLevel = ParseErrorLevel;
++exports.ParseLocation = ParseLocation;
++exports.ParseSourceFile = ParseSourceFile;
++exports.ParseSourceSpan = ParseSourceSpan;
++exports.ParseSpan = ParseSpan;
++exports.ParseTreeResult = ParseTreeResult;
++exports.ParsedEvent = ParsedEvent;
++exports.ParsedProperty = ParsedProperty;
++exports.ParsedPropertyType = ParsedPropertyType;
++exports.ParsedVariable = ParsedVariable;
++exports.Parser = Parser$1;
++exports.ParserError = ParserError;
++exports.PrefixNot = PrefixNot;
++exports.PropertyRead = PropertyRead;
++exports.PropertyWrite = PropertyWrite;
++exports.R3BoundTarget = R3BoundTarget;
++exports.R3Identifiers = Identifiers;
++exports.R3SelectorScopeMode = R3SelectorScopeMode;
++exports.R3TargetBinder = R3TargetBinder;
++exports.R3TemplateDependencyKind = R3TemplateDependencyKind;
++exports.ReadKeyExpr = ReadKeyExpr;
++exports.ReadPropExpr = ReadPropExpr;
++exports.ReadVarExpr = ReadVarExpr;
++exports.RecursiveAstVisitor = RecursiveAstVisitor;
++exports.RecursiveVisitor = RecursiveVisitor;
++exports.ResourceLoader = ResourceLoader;
++exports.ReturnStatement = ReturnStatement;
++exports.STRING_TYPE = STRING_TYPE;
++exports.SafeCall = SafeCall;
++exports.SafeKeyedRead = SafeKeyedRead;
++exports.SafePropertyRead = SafePropertyRead;
++exports.SelectorContext = SelectorContext;
++exports.SelectorListContext = SelectorListContext;
++exports.SelectorMatcher = SelectorMatcher;
++exports.Serializer = Serializer;
++exports.SplitInterpolation = SplitInterpolation;
++exports.Statement = Statement;
++exports.StmtModifier = StmtModifier;
++exports.TagContentType = TagContentType;
++exports.TaggedTemplateExpr = TaggedTemplateExpr;
++exports.TemplateBindingParseResult = TemplateBindingParseResult;
++exports.TemplateLiteral = TemplateLiteral;
++exports.TemplateLiteralElement = TemplateLiteralElement;
++exports.Text = Text;
++exports.ThisReceiver = ThisReceiver;
++exports.TmplAstBoundAttribute = BoundAttribute;
++exports.TmplAstBoundEvent = BoundEvent;
++exports.TmplAstBoundText = BoundText;
++exports.TmplAstContent = Content;
++exports.TmplAstElement = Element$1;
++exports.TmplAstIcu = Icu$1;
++exports.TmplAstRecursiveVisitor = RecursiveVisitor$1;
++exports.TmplAstReference = Reference;
++exports.TmplAstTemplate = Template;
++exports.TmplAstText = Text$3
++exports.TmplAstTextAttribute = TextAttribute;
++exports.TmplAstVariable = Variable;
++exports.Token = Token;
++exports.TokenType = TokenType;
++exports.TransplantedType = TransplantedType;
++exports.TreeError = TreeError;
++exports.Type = Type;
++exports.TypeModifier = TypeModifier;
++exports.TypeofExpr = TypeofExpr;
++exports.Unary = Unary;
++exports.UnaryOperator = UnaryOperator;
++exports.UnaryOperatorExpr = UnaryOperatorExpr;
++exports.VERSION = VERSION;
++exports.VariableBinding = VariableBinding;
++exports.Version = Version;
++exports.ViewEncapsulation = ViewEncapsulation;
++exports.WrappedNodeExpr = WrappedNodeExpr;
++exports.WriteKeyExpr = WriteKeyExpr;
++exports.WritePropExpr = WritePropExpr;
++exports.WriteVarExpr = WriteVarExpr;
++exports.Xliff = Xliff;
++exports.Xliff2 = Xliff2;
++exports.Xmb = Xmb;
++exports.XmlParser = XmlParser;
++exports.Xtb = Xtb;
++exports._ParseAST = _ParseAST;
++exports.compileClassMetadata = compileClassMetadata;
++exports.compileComponentFromMetadata = compileComponentFromMetadata;
++exports.compileDeclareClassMetadata = compileDeclareClassMetadata;
++exports.compileDeclareComponentFromMetadata = compileDeclareComponentFromMetadata;
++exports.compileDeclareDirectiveFromMetadata = compileDeclareDirectiveFromMetadata;
++exports.compileDeclareFactoryFunction = compileDeclareFactoryFunction;
++exports.compileDeclareInjectableFromMetadata = compileDeclareInjectableFromMetadata;
++exports.compileDeclareInjectorFromMetadata = compileDeclareInjectorFromMetadata;
++exports.compileDeclareNgModuleFromMetadata = compileDeclareNgModuleFromMetadata;
++exports.compileDeclarePipeFromMetadata = compileDeclarePipeFromMetadata;
++exports.compileDirectiveFromMetadata = compileDirectiveFromMetadata;
++exports.compileFactoryFunction = compileFactoryFunction;
++exports.compileInjectable = compileInjectable;
++exports.compileInjector = compileInjector;
++exports.compileNgModule = compileNgModule;
++exports.compilePipeFromMetadata = compilePipeFromMetadata;
++exports.computeMsgId = computeMsgId;
++exports.core = core;
++exports.createInjectableType = createInjectableType;
++exports.createMayBeForwardRefExpression = createMayBeForwardRefExpression;
++exports.devOnlyGuardedExpression = devOnlyGuardedExpression;
++exports.emitDistinctChangesOnlyDefaultValue = emitDistinctChangesOnlyDefaultValue;
++exports.getHtmlTagDefinition = getHtmlTagDefinition;
++exports.getNsPrefix = getNsPrefix;
++exports.getSafePropertyAccessString = getSafePropertyAccessString;
++exports.identifierName = identifierName;
++exports.isIdentifier = isIdentifier;
++exports.isNgContainer = isNgContainer;
++exports.isNgContent = isNgContent;
++exports.isNgTemplate = isNgTemplate;
++exports.jsDocComment = jsDocComment;
++exports.leadingComment = leadingComment;
++exports.literalMap = literalMap;
++exports.makeBindingParser = makeBindingParser;
++exports.mergeNsAndName = mergeNsAndName;
++exports.outputAst = output_ast;
++exports.parseHostBindings = parseHostBindings;
++exports.parseTemplate = parseTemplate;
++exports.preserveWhitespacesDefault = preserveWhitespacesDefault;
++exports.publishFacade = publishFacade;
++exports.r3JitTypeSourceSpan = r3JitTypeSourceSpan;
++exports.sanitizeIdentifier = sanitizeIdentifier;
++exports.splitNsName = splitNsName;
++exports.verifyHostBindings = verifyHostBindings;
++exports.visitAll = visitAll;
+diff --git a/node_modules/@angular/compiler/fesm2022/compiler.mjs.map b/node_modules/@angular/compiler/fesm2022/compiler.mjs.map
+deleted file mode 100755
+index 33e9444..0000000
+--- a/node_modules/@angular/compiler/fesm2022/compiler.mjs.map
++++ /dev/null
+@@ -1 +0,0 @@
+-{"version":3,"file":"compiler.mjs","sources":["../../../../../../packages/compiler/src/selector.ts","../../../../../../packages/compiler/src/core.ts","../../../../../../packages/compiler/src/i18n/big_integer.ts","../../../../../../packages/compiler/src/i18n/digest.ts","../../../../../../packages/compiler/src/output/output_ast.ts","../../../../../../packages/compiler/src/constant_pool.ts","../../../../../../packages/compiler/src/render3/r3_identifiers.ts","../../../../../../packages/compiler/src/util.ts","../../../../../../packages/compiler/src/output/source_map.ts","../../../../../../packages/compiler/src/output/abstract_emitter.ts","../../../../../../packages/compiler/src/render3/util.ts","../../../../../../packages/compiler/src/render3/r3_factory.ts","../../../../../../packages/compiler/src/render3/r3_ast.ts","../../../../../../packages/compiler/src/i18n/i18n_ast.ts","../../../../../../packages/compiler/src/i18n/serializers/serializer.ts","../../../../../../packages/compiler/src/i18n/serializers/xml_helper.ts","../../../../../../packages/compiler/src/i18n/serializers/xmb.ts","../../../../../../packages/compiler/src/render3/view/i18n/util.ts","../../../../../../packages/compiler/src/render3/view/util.ts","../../../../../../packages/compiler/src/injectable_compiler_2.ts","../../../../../../packages/compiler/src/assertions.ts","../../../../../../packages/compiler/src/ml_parser/interpolation_config.ts","../../../../../../packages/compiler/src/chars.ts","../../../../../../packages/compiler/src/parse_util.ts","../../../../../../packages/compiler/src/output/abstract_js_emitter.ts","../../../../../../packages/compiler/src/output/output_jit_trusted_types.ts","../../../../../../packages/compiler/src/output/output_jit.ts","../../../../../../packages/compiler/src/render3/r3_injector_compiler.ts","../../../../../../packages/compiler/src/render3/r3_jit.ts","../../../../../../packages/compiler/src/render3/r3_module_compiler.ts","../../../../../../packages/compiler/src/render3/r3_pipe_compiler.ts","../../../../../../packages/compiler/src/render3/view/api.ts","../../../../../../packages/compiler/src/expression_parser/ast.ts","../../../../../../packages/compiler/src/compiler_util/expression_converter.ts","../../../../../../packages/compiler/src/schema/dom_security_schema.ts","../../../../../../packages/compiler/src/shadow_css.ts","../../../../../../packages/compiler/src/ml_parser/tags.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/element.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/enums.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/traits.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/expression.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/operations.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/ops/shared.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/ops/create.ts","../../../../../../packages/compiler/src/template/pipeline/ir/src/ops/update.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/const_collection.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/empty_elements.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/generate_advance.ts","../../../../../../packages/compiler/src/template/pipeline/src/instruction.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/reify.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/slot_allocation.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/var_counting.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/naming.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/local_refs.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/generate_variables.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/resolve_names.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/resolve_contexts.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/variable_optimization.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/chaining.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/next_context_merging.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/ng_container.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/save_restore_view.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/pure_function_extraction.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/pipe_creation.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/pipe_variadic.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/pure_literal_structures.ts","../../../../../../packages/compiler/src/template/pipeline/src/phases/align_
+\ No newline at end of file
+diff --git a/node_modules/@angular/compiler/fesm2022/testing.mjs b/node_modules/@angular/compiler/fesm2022/testing.mjs
+deleted file mode 100755
+index 2995cd5..0000000
+--- a/node_modules/@angular/compiler/fesm2022/testing.mjs
++++ /dev/null
+@@ -1,39 +0,0 @@
+-/**
+- * @license Angular v16.1.2
+- * (c) 2010-2022 Google LLC. https://angular.io/
+- * License: MIT
+- */
+-
+-/**
+- * @module
+- * @description
+- * Entry point for all APIs of the compiler package.
+- *
+- * <div class="callout is-critical">
+- *   <header>Unstable APIs</header>
+- *   <p>
+- *     All compiler apis are currently considered experimental and private!
+- *   </p>
+- *   <p>
+- *     We expect the APIs in this package to keep on changing. Do not rely on them.
+- *   </p>
+- * </div>
+- */
+-// TODO(alxhub): @angular/compiler/testing is unused in Ivy. A placeholder
+-// is left here because the components repo still depends on this package
+-// directly. It will be cleaned up at a later date.
+-//
+-// This export ensures this package is not empty.
+-const unusedExport = true;
+-
+-/// <reference types="node" />
+-// This file only reexports content of the `src` folder. Keep it that way.
+-
+-// This file is not used to build this module. It is only used during editing
+-
+-/**
+- * Generated bundle index. Do not edit.
+- */
+-
+-export { unusedExport };
+-//# sourceMappingURL=testing.mjs.map
+diff --git a/node_modules/@angular/compiler/fesm2022/testing.mjs.map b/node_modules/@angular/compiler/fesm2022/testing.mjs.map
+deleted file mode 100755
+index 72ad659..0000000
+--- a/node_modules/@angular/compiler/fesm2022/testing.mjs.map
++++ /dev/null
+@@ -1 +0,0 @@
+-{"version":3,"file":"testing.mjs","sources":["../../../../../../packages/compiler/testing/src/testing.ts","../../../../../../packages/compiler/testing/public_api.ts","../../../../../../packages/compiler/testing/index.ts","../../../../../../packages/compiler/testing/testing.ts"],"sourcesContent":["/**\n * @license\n * Copyright Google LLC All Rights Reserved.\n *\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://angular.io/license\n */\n\n/**\n * @module\n * @description\n * Entry point for all APIs of the compiler package.\n *\n * <div class=\"callout is-critical\">\n *   <header>Unstable APIs</header>\n *   <p>\n *     All compiler apis are currently considered experimental and private!\n *   </p>\n *   <p>\n *     We expect the APIs in this package to keep on changing. Do not rely on them.\n *   </p>\n * </div>\n */\n\n// TODO(alxhub): @angular/compiler/testing is unused in Ivy. A placeholder\n// is left here because the components repo still depends on this package\n// directly. It will be cleaned up at a later date.\n//\n// This export ensures this package is not empty.\nexport const unusedExport = true;\n","/**\n * @license\n * Copyright Google LLC All Rights Reserved.\n *\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://angular.io/license\n */\n\n/// <reference types=\"node\" />\n\n/**\n * @module\n * @description\n * Entry point for all public APIs of this package.\n */\nexport * from './src/testing';\n\n// This file only reexports content of the `src` folder. Keep it that way.\n","/**\n * @license\n * Copyright Google LLC All Rights Reserved.\n *\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://angular.io/license\n */\n\n// This file is not used to build this module. It is only used during editing\n// by the TypeScript language service and during build for verification. `ngc`\n// replaces this file with production index.ts when it rewrites private symbol\n// names.\n\nexport * from './public_api';\n","/**\n * Generated bundle index. Do not edit.\n */\n\nexport * from './index';\n"],"names":[],"mappings":";;;;;;AAQA;;;;;;;;;;;;;;AAcG;AAEH;AACA;AACA;AACA;AACA;AACO,MAAM,YAAY,GAAG;;ACrB5B;AASA;;ACTA;;ACRA;;AAEG;;;;"}
+\ No newline at end of file
+diff --git a/node_modules/@angular/compiler/package.json b/node_modules/@angular/compiler/package.json
+index 4ed9ce1..8aeb0f8 100755
+--- a/node_modules/@angular/compiler/package.json
++++ b/node_modules/@angular/compiler/package.json
+@@ -44,24 +44,16 @@
+     ]
+   },
+   "sideEffects": true,
+-  "module": "./fesm2022/compiler.mjs",
++  "module": "./fesm2022/compiler.js",
++  "main": "./fesm2022/compiler.js",
+   "typings": "./index.d.ts",
+-  "type": "module",
+   "exports": {
+     "./package.json": {
+       "default": "./package.json"
+     },
+     ".": {
+       "types": "./index.d.ts",
+-      "esm2022": "./esm2022/index.mjs",
+-      "esm": "./esm2022/index.mjs",
+-      "default": "./fesm2022/compiler.mjs"
+-    },
+-    "./testing": {
+-      "types": "./testing/index.d.ts",
+-      "esm2022": "./esm2022/testing/testing.mjs",
+-      "esm": "./esm2022/testing/testing.mjs",
+-      "default": "./fesm2022/testing.mjs"
++      "default": "./fesm2022/compiler.js"
+     }
+   }
+ }
+diff --git a/node_modules/@angular/compiler/testing/index.d.ts b/node_modules/@angular/compiler/testing/index.d.ts
+deleted file mode 100755
+index f2ebfd3..0000000
+--- a/node_modules/@angular/compiler/testing/index.d.ts
++++ /dev/null
+@@ -1,25 +0,0 @@
+-/**
+- * @license Angular v16.1.2
+- * (c) 2010-2022 Google LLC. https://angular.io/
+- * License: MIT
+- */
+-
+-
+-/**
+- * @module
+- * @description
+- * Entry point for all APIs of the compiler package.
+- *
+- * <div class="callout is-critical">
+- *   <header>Unstable APIs</header>
+- *   <p>
+- *     All compiler apis are currently considered experimental and private!
+- *   </p>
+- *   <p>
+- *     We expect the APIs in this package to keep on changing. Do not rely on them.
+- *   </p>
+- * </div>
+- */
+-export declare const unusedExport = true;
+-
+-export { }
