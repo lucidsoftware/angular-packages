@@ -1,0 +1,1263 @@
+diff --git a/node_modules/@angular/core/fesm2022/core.mjs b/node_modules/@angular/core/fesm2022/core.mjs
+index a8d0470..7f68b13 100755
+--- a/node_modules/@angular/core/fesm2022/core.mjs
++++ b/node_modules/@angular/core/fesm2022/core.mjs
+@@ -458,24 +458,28 @@ const NG_INJECTOR_DEF = getClosureSafeProperty({ ngInjectorDef: getClosureSafePr
+  * @publicApi
+  * @deprecated use an options object for `inject` instead.
+  */
+-var InjectFlags;
+-(function (InjectFlags) {
++const InjectFlags = {
+     // TODO(alxhub): make this 'const' (and remove `InternalInjectFlags` enum) when ngc no longer
+     // writes exports of it into ngfactory files.
+     /** Check self and check parent injector if needed */
+-    InjectFlags[InjectFlags["Default"] = 0] = "Default";
++    Default: 0,
+     /**
+      * Specifies that an injector should retrieve a dependency from any injector until reaching the
+      * host element of the current component. (Only used with Element Injector)
+      */
+-    InjectFlags[InjectFlags["Host"] = 1] = "Host";
++    Host: 1,
+     /** Don't ascend to ancestors of the node requesting injection. */
+-    InjectFlags[InjectFlags["Self"] = 2] = "Self";
++    Self: 2,
+     /** Skip the node that is requesting injection. */
+-    InjectFlags[InjectFlags["SkipSelf"] = 4] = "SkipSelf";
++    SkipSelf: 4,
+     /** Inject `defaultValue` instead if token not found. */
+-    InjectFlags[InjectFlags["Optional"] = 8] = "Optional";
+-})(InjectFlags || (InjectFlags = {}));
++    Optional: 8,
++}
++InjectFlags[InjectFlags.Default] = 'Default';
++InjectFlags[InjectFlags.Host] = 'Host';
++InjectFlags[InjectFlags.Self] = 'Self';
++InjectFlags[InjectFlags.SkipSelf] = 'SkipSelf';
++InjectFlags[InjectFlags.Optional] = 'Optional';
+
+ /**
+  * Current implementation of inject.
+@@ -858,21 +862,22 @@ function noSideEffects(fn) {
+  *
+  * @publicApi
+  */
+-var ChangeDetectionStrategy;
+-(function (ChangeDetectionStrategy) {
++const ChangeDetectionStrategy = {
+     /**
+      * Use the `CheckOnce` strategy, meaning that automatic change detection is deactivated
+      * until reactivated by setting the strategy to `Default` (`CheckAlways`).
+      * Change detection can still be explicitly invoked.
+      * This strategy applies to all child directives and cannot be overridden.
+      */
+-    ChangeDetectionStrategy[ChangeDetectionStrategy["OnPush"] = 0] = "OnPush";
++    OnPush: 0,
+     /**
+      * Use the default `CheckAlways` strategy, in which change detection is automatic until
+      * explicitly deactivated.
+      */
+-    ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 1] = "Default";
+-})(ChangeDetectionStrategy || (ChangeDetectionStrategy = {}));
++    Default: 1,
++};
++ChangeDetectionStrategy[ChangeDetectionStrategy.OnPush] = 'OnPush';
++ChangeDetectionStrategy[ChangeDetectionStrategy.Default] = 'Default';
+
+ /**
+  * Defines the CSS styles encapsulation policies for the {@link Component} decorator's
+@@ -887,8 +892,7 @@ var ChangeDetectionStrategy;
+  *
+  * @publicApi
+  */
+-var ViewEncapsulation$1;
+-(function (ViewEncapsulation) {
++const ViewEncapsulation$1 = {
+     // TODO: consider making `ViewEncapsulation` a `const enum` instead. See
+     // https://github.com/angular/angular/issues/44119 for additional information.
+     /**
+@@ -898,21 +902,24 @@ var ViewEncapsulation$1;
+      *
+      * This is the default option.
+      */
+-    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
++    Emulated: 0,
+     // Historically the 1 value was for `Native` encapsulation which has been removed as of v11.
+     /**
+      * Doesn't provide any sort of CSS style encapsulation, meaning that all the styles provided
+      * via {@link Component#styles styles} or {@link Component#styleUrls styleUrls} are applicable
+      * to any HTML element of the application regardless of their host Component.
+      */
+-    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
++    None: 2,
+     /**
+      * Uses the browser's native Shadow DOM API to encapsulate CSS styles, meaning that it creates
+      * a ShadowRoot for the component's host element which is then used to encapsulate
+      * all the Component's styling.
+      */
+-    ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
+-})(ViewEncapsulation$1 || (ViewEncapsulation$1 = {}));
++    ShadowDom: 3,
++};
++ViewEncapsulation$1[ViewEncapsulation$1.Emulated] = 'Emulated';
++ViewEncapsulation$1[ViewEncapsulation$1.None] = 'None';
++ViewEncapsulation$1[ViewEncapsulation$1.ShadowDom] = 'ShadowDom';
+
+ /**
+  * This file contains reuseable "empty" symbols that can be used as default return values
+@@ -5044,27 +5051,37 @@ const ViewChildren = makePropDecorator('ViewChildren', (selector, data = {}) =>
+  */
+ const ViewChild = makePropDecorator('ViewChild', (selector, data) => ({ selector, first: true, isViewQuery: true, descendants: true, ...data }), Query);
+
+-var FactoryTarget;
+-(function (FactoryTarget) {
+-    FactoryTarget[FactoryTarget["Directive"] = 0] = "Directive";
+-    FactoryTarget[FactoryTarget["Component"] = 1] = "Component";
+-    FactoryTarget[FactoryTarget["Injectable"] = 2] = "Injectable";
+-    FactoryTarget[FactoryTarget["Pipe"] = 3] = "Pipe";
+-    FactoryTarget[FactoryTarget["NgModule"] = 4] = "NgModule";
+-})(FactoryTarget || (FactoryTarget = {}));
+-var R3TemplateDependencyKind;
+-(function (R3TemplateDependencyKind) {
+-    R3TemplateDependencyKind[R3TemplateDependencyKind["Directive"] = 0] = "Directive";
+-    R3TemplateDependencyKind[R3TemplateDependencyKind["Pipe"] = 1] = "Pipe";
+-    R3TemplateDependencyKind[R3TemplateDependencyKind["NgModule"] = 2] = "NgModule";
+-})(R3TemplateDependencyKind || (R3TemplateDependencyKind = {}));
+-var ViewEncapsulation;
+-(function (ViewEncapsulation) {
+-    ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
++const FactoryTarget = {
++    Directive: 0,
++    Component: 1,
++    Injectable: 2,
++    Pipe: 3,
++    NgModule: 4,
++};
++FactoryTarget[FactoryTarget.Directive] = 'Directive';
++FactoryTarget[FactoryTarget.Component] = 'Component';
++FactoryTarget[FactoryTarget.Injectable] = 'Injectable';
++FactoryTarget[FactoryTarget.Pipe] = 'Pipe';
++FactoryTarget[FactoryTarget.NgModule] = 'NgModule';
++
++const R3TemplateDependencyKind = {
++    Directive: 0,
++    Pipe: 1,
++    NgModule: 2,
++};
++R3TemplateDependencyKind[R3TemplateDependencyKind.Directive] = 'Directive';
++R3TemplateDependencyKind[R3TemplateDependencyKind.Pipe] = 'Pipe';
++R3TemplateDependencyKind[R3TemplateDependencyKind.NgModule] = 'NgModule';
++
++const ViewEncapsulation = {
++    Emulated: 0,
+     // Historically the 1 value was for `Native` encapsulation which has been removed as of v11.
+-    ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
+-    ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
+-})(ViewEncapsulation || (ViewEncapsulation = {}));
++    None: 2,
++    ShadowDom: 3,
++};
++ViewEncapsulation[ViewEncapsulation.Emulated] = 'Emulated';
++ViewEncapsulation[ViewEncapsulation.None] = 'None';
++ViewEncapsulation[ViewEncapsulation.ShadowDom] = 'ShadowDom';
+
+ function getCompilerFacade(request) {
+     const globalNg = _global['ng'];
+@@ -6234,20 +6251,21 @@ function isInSkipHydrationBlock(tNode) {
+  * Flags for renderer-specific style modifiers.
+  * @publicApi
+  */
+-var RendererStyleFlags2;
+-(function (RendererStyleFlags2) {
++const RendererStyleFlags2 = {
+     // TODO(misko): This needs to be refactored into a separate file so that it can be imported from
+     // `node_manipulation.ts` Currently doing the import cause resolution order to change and fails
+     // the tests. The work around is to have hard coded value in `node_manipulation.ts` for now.
+     /**
+      * Marks a style as important.
+      */
+-    RendererStyleFlags2[RendererStyleFlags2["Important"] = 1] = "Important";
++    Important: 1,
+     /**
+      * Marks a style as using dash case naming (this-is-dash-case).
+      */
+-    RendererStyleFlags2[RendererStyleFlags2["DashCase"] = 2] = "DashCase";
+-})(RendererStyleFlags2 || (RendererStyleFlags2 = {}));
++    DashCase: 2,
++};
++RendererStyleFlags2[RendererStyleFlags2.Important] = "Important";
++RendererStyleFlags2[RendererStyleFlags2.DashCase] = "DashCase";
+
+ /**
+  * Disallowed strings in the comment.
+@@ -8419,15 +8437,20 @@ function isTemplateElement(el) {
+  *
+  * @publicApi
+  */
+-var SecurityContext;
+-(function (SecurityContext) {
+-    SecurityContext[SecurityContext["NONE"] = 0] = "NONE";
+-    SecurityContext[SecurityContext["HTML"] = 1] = "HTML";
+-    SecurityContext[SecurityContext["STYLE"] = 2] = "STYLE";
+-    SecurityContext[SecurityContext["SCRIPT"] = 3] = "SCRIPT";
+-    SecurityContext[SecurityContext["URL"] = 4] = "URL";
+-    SecurityContext[SecurityContext["RESOURCE_URL"] = 5] = "RESOURCE_URL";
+-})(SecurityContext || (SecurityContext = {}));
++const SecurityContext = {
++    NONE: 0,
++    HTML: 1,
++    STYLE: 2,
++    SCRIPT: 3,
++    URL: 4,
++    RESOURCE_URL: 5,
++};
++SecurityContext[SecurityContext.NONE] = 'NONE';
++SecurityContext[SecurityContext.HTML] = 'HTML';
++SecurityContext[SecurityContext.STYLE] = 'STYLE';
++SecurityContext[SecurityContext.SCRIPT] = 'SCRIPT';
++SecurityContext[SecurityContext.URL] = 'URL';
++SecurityContext[SecurityContext.RESOURCE_URL] = 'RESOURCE_URL';
+
+ /**
+  * An `html` sanitizer which converts untrusted `html` **string** into trusted string by removing
+@@ -9584,13 +9607,6 @@ class TransferState {
+         this.store = {};
+         this.onSerializeCallbacks = {};
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov =
+-    /** @pureOrBreakMyCode */ ɵɵdefineInjectable({
+-        token: TransferState,
+-        providedIn: 'root',
+-        factory: initTransferState,
+-    }); }
+     /**
+      * Get the value corresponding to a key. Return `defaultValue` if key is not found.
+      */
+@@ -9647,6 +9663,12 @@ class TransferState {
+         return JSON.stringify(this.store).replace(/</g, '\\u003C');
+     }
+ }
++/** @nocollapse */
++TransferState.ɵprov = /** @pureOrBreakMyCode */ɵɵdefineInjectable({
++    token: TransferState,
++    providedIn: 'root',
++    factory: initTransferState
++});
+ function retrieveTransferredState(doc, appId) {
+     // Locate the script tag with the JSON data transferred from the server.
+     // The id of the script tag is set to the Angular appId + 'state'.
+@@ -9956,9 +9978,8 @@ class _NullComponentFactoryResolver {
+  * @deprecated Angular no longer requires Component factories. Please use other APIs where
+  *     Component class can be used directly.
+  */
+-class ComponentFactoryResolver$1 {
+-    static { this.NULL = ( /* @__PURE__ */new _NullComponentFactoryResolver()); }
+-}
++class ComponentFactoryResolver$1 {}
++ComponentFactoryResolver$1.NULL = /* @__PURE__ */new _NullComponentFactoryResolver();
+
+ /**
+  * Creates an ElementRef from the most recent node.
+@@ -9997,12 +10018,12 @@ class ElementRef {
+     constructor(nativeElement) {
+         this.nativeElement = nativeElement;
+     }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectElementRef; }
+ }
++/**
++ * @internal
++ * @nocollapse
++ */
++ElementRef.__NG_ELEMENT_ID__ = injectElementRef;
+ /**
+  * Unwraps `ElementRef` and return the `nativeElement`.
+  *
+@@ -10043,12 +10064,12 @@ class Renderer2 {
+          */
+         this.destroyNode = null;
+     }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = () => injectRenderer2(); }
+ }
++/**
++ * @internal
++ * @nocollapse
++ */
++Renderer2.__NG_ELEMENT_ID__ = () => injectRenderer2();
+ /** Injects a Renderer2 for the current component. */
+ function injectRenderer2() {
+     // We need the Renderer to be based on the component that it's being injected into, however since
+@@ -10064,15 +10085,13 @@ function injectRenderer2() {
+  *
+  * @publicApi
+  */
+-class Sanitizer {
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: Sanitizer,
+-        providedIn: 'root',
+-        factory: () => null,
+-    }); }
+-}
+-
++class Sanitizer {}
++/** @nocollapse */
++Sanitizer.ɵprov = ɵɵdefineInjectable({
++    token: Sanitizer,
++    providedIn: 'root',
++    factory: () => null,
++});
+ /**
+  * @description Represents the version of Angular
+  *
+@@ -10706,8 +10725,6 @@ function createInjectorWithoutInjectorInstances(defType, parent = null, addition
+  * @publicApi
+  */
+ class Injector {
+-    static { this.THROW_IF_NOT_FOUND = THROW_IF_NOT_FOUND; }
+-    static { this.NULL = ( /* @__PURE__ */new NullInjector()); }
+     static create(options, parent) {
+         if (Array.isArray(options)) {
+             return createInjector({ name: '' }, parent, options, '');
+@@ -10717,19 +10734,20 @@ class Injector {
+             return createInjector({ name }, options.parent, options.providers, name);
+         }
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: Injector,
+-        providedIn: 'any',
+-        factory: () => ɵɵinject(INJECTOR),
+-    }); }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = -1 /* InjectorMarkers.Injector */; }
+ }
+-
++Injector.THROW_IF_NOT_FOUND = THROW_IF_NOT_FOUND;
++Injector.NULL = /* @__PURE__ */new NullInjector();
++/** @nocollapse */
++Injector.ɵprov = ɵɵdefineInjectable({
++    token: Injector,
++    providedIn: 'any',
++    factory: () => ɵɵinject(INJECTOR),
++});
++/**
++ * @internal
++ * @nocollapse
++ */
++Injector.__NG_ELEMENT_ID__ = -1 /* InjectorMarkers.Injector */;
+ /**
+  * @module
+  * @description
+@@ -12212,18 +12230,17 @@ function renderChildComponents(hostLView, components) {
+  *
+  * @publicApi
+  */
+-class DestroyRef {
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectDestroyRef; }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ENV_ID__ = (injector) => injector; }
+-}
++class DestroyRef {}
++/**
++ * @internal
++ * @nocollapse
++ */
++DestroyRef.__NG_ELEMENT_ID__ = injectDestroyRef;
++/**
++ * @internal
++ * @nocollapse
++ */
++DestroyRef.__NG_ENV_ID__ = (injector) => injector;
+ class NodeInjectorDestroyRef extends DestroyRef {
+     constructor(_lView) {
+         super();
+@@ -12286,13 +12303,13 @@ class EffectManager {
+     get isQueueEmpty() {
+         return this.queue.size === 0;
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: EffectManager,
+-        providedIn: 'root',
+-        factory: () => new EffectManager(),
+-    }); }
+ }
++/** @nocollapse */
++EffectManager.ɵprov = ɵɵdefineInjectable({
++    token: EffectManager,
++    providedIn: 'root',
++    factory: () => new EffectManager(),
++});
+ /**
+  * Create a global `Effect` for the given reactive function.
+  *
+@@ -19361,31 +19378,52 @@ function unregisterAllLocaleData() {
+ /**
+  * Index of each type of locale data from the locale data array
+  */
+-var LocaleDataIndex;
+-(function (LocaleDataIndex) {
+-    LocaleDataIndex[LocaleDataIndex["LocaleId"] = 0] = "LocaleId";
+-    LocaleDataIndex[LocaleDataIndex["DayPeriodsFormat"] = 1] = "DayPeriodsFormat";
+-    LocaleDataIndex[LocaleDataIndex["DayPeriodsStandalone"] = 2] = "DayPeriodsStandalone";
+-    LocaleDataIndex[LocaleDataIndex["DaysFormat"] = 3] = "DaysFormat";
+-    LocaleDataIndex[LocaleDataIndex["DaysStandalone"] = 4] = "DaysStandalone";
+-    LocaleDataIndex[LocaleDataIndex["MonthsFormat"] = 5] = "MonthsFormat";
+-    LocaleDataIndex[LocaleDataIndex["MonthsStandalone"] = 6] = "MonthsStandalone";
+-    LocaleDataIndex[LocaleDataIndex["Eras"] = 7] = "Eras";
+-    LocaleDataIndex[LocaleDataIndex["FirstDayOfWeek"] = 8] = "FirstDayOfWeek";
+-    LocaleDataIndex[LocaleDataIndex["WeekendRange"] = 9] = "WeekendRange";
+-    LocaleDataIndex[LocaleDataIndex["DateFormat"] = 10] = "DateFormat";
+-    LocaleDataIndex[LocaleDataIndex["TimeFormat"] = 11] = "TimeFormat";
+-    LocaleDataIndex[LocaleDataIndex["DateTimeFormat"] = 12] = "DateTimeFormat";
+-    LocaleDataIndex[LocaleDataIndex["NumberSymbols"] = 13] = "NumberSymbols";
+-    LocaleDataIndex[LocaleDataIndex["NumberFormats"] = 14] = "NumberFormats";
+-    LocaleDataIndex[LocaleDataIndex["CurrencyCode"] = 15] = "CurrencyCode";
+-    LocaleDataIndex[LocaleDataIndex["CurrencySymbol"] = 16] = "CurrencySymbol";
+-    LocaleDataIndex[LocaleDataIndex["CurrencyName"] = 17] = "CurrencyName";
+-    LocaleDataIndex[LocaleDataIndex["Currencies"] = 18] = "Currencies";
+-    LocaleDataIndex[LocaleDataIndex["Directionality"] = 19] = "Directionality";
+-    LocaleDataIndex[LocaleDataIndex["PluralCase"] = 20] = "PluralCase";
+-    LocaleDataIndex[LocaleDataIndex["ExtraData"] = 21] = "ExtraData";
+-})(LocaleDataIndex || (LocaleDataIndex = {}));
++const LocaleDataIndex = {
++    LocaleId: 0,
++    DayPeriodsFormat: 1,
++    DayPeriodsStandalone: 2,
++    DaysFormat: 3,
++    DaysStandalone: 4,
++    MonthsFormat: 5,
++    MonthsStandalone: 6,
++    Eras: 7,
++    FirstDayOfWeek: 8,
++    WeekendRange: 9,
++    DateFormat: 10,
++    TimeFormat: 11,
++    DateTimeFormat: 12,
++    NumberSymbols: 13,
++    NumberFormats: 14,
++    CurrencyCode: 15,
++    CurrencySymbol: 16,
++    CurrencyName: 17,
++    Currencies: 18,
++    Directionality: 19,
++    PluralCase: 20,
++    ExtraData: 21,
++};
++LocaleDataIndex[LocaleDataIndex.LocaleId] = 'LocaleId';
++LocaleDataIndex[LocaleDataIndex.DayPeriodsFormat] = 'DayPeriodsFormat';
++LocaleDataIndex[LocaleDataIndex.DayPeriodsStandalone] = 'DayPeriodsStandalone';
++LocaleDataIndex[LocaleDataIndex.DaysFormat] = 'DaysFormat';
++LocaleDataIndex[LocaleDataIndex.DaysStandalone] = 'DaysStandalone';
++LocaleDataIndex[LocaleDataIndex.MonthsFormat] = 'MonthsFormat';
++LocaleDataIndex[LocaleDataIndex.MonthsStandalone] = 'MonthsStandalone';
++LocaleDataIndex[LocaleDataIndex.Eras] = 'Eras';
++LocaleDataIndex[LocaleDataIndex.FirstDayOfWeek] = 'FirstDayOfWeek';
++LocaleDataIndex[LocaleDataIndex.WeekendRange] = 'WeekendRange';
++LocaleDataIndex[LocaleDataIndex.DateFormat] = 'DateFormat';
++LocaleDataIndex[LocaleDataIndex.TimeFormat] = 'TimeFormat';
++LocaleDataIndex[LocaleDataIndex.DateTimeFormat] = 'DateTimeFormat';
++LocaleDataIndex[LocaleDataIndex.NumberSymbols] = 'NumberSymbols';
++LocaleDataIndex[LocaleDataIndex.NumberFormats] = 'NumberFormats';
++LocaleDataIndex[LocaleDataIndex.CurrencyCode] = 'CurrencyCode';
++LocaleDataIndex[LocaleDataIndex.CurrencySymbol] = 'CurrencySymbol';
++LocaleDataIndex[LocaleDataIndex.CurrencyName] = 'CurrencyName';
++LocaleDataIndex[LocaleDataIndex.Currencies] = 'Currencies';
++LocaleDataIndex[LocaleDataIndex.Directionality] = 'Directionality';
++LocaleDataIndex[LocaleDataIndex.PluralCase] = 'PluralCase';
++LocaleDataIndex[LocaleDataIndex.ExtraData] = 'ExtraData';
+ /**
+  * Returns the canonical form of a locale name - lowercase with `_` replaced with `-`.
+  */
+@@ -19431,22 +19469,24 @@ const ICU_MARKER = {
+ /**
+  * See `I18nCreateOpCodes`
+  */
+-var I18nCreateOpCode;
+-(function (I18nCreateOpCode) {
++const I18nCreateOpCode = {
+     /**
+      * Number of bits to shift index so that it can be combined with the `APPEND_EAGERLY` and
+      * `COMMENT`.
+      */
+-    I18nCreateOpCode[I18nCreateOpCode["SHIFT"] = 2] = "SHIFT";
++    SHIFT: 2,
+     /**
+      * Should the node be appended to parent immediately after creation.
+      */
+-    I18nCreateOpCode[I18nCreateOpCode["APPEND_EAGERLY"] = 1] = "APPEND_EAGERLY";
++    APPEND_EAGERLY: 1,
+     /**
+      * If set the node should be comment (rather than a text) node.
+      */
+-    I18nCreateOpCode[I18nCreateOpCode["COMMENT"] = 2] = "COMMENT";
+-})(I18nCreateOpCode || (I18nCreateOpCode = {}));
++    COMMENT: 2,
++};
++I18nCreateOpCode[I18nCreateOpCode.SHIFT] = 'SHIFT';
++I18nCreateOpCode[I18nCreateOpCode.APPEND_EAGERLY] = 'APPEND_EAGERLY';
++I18nCreateOpCode[I18nCreateOpCode.COMMENT] = 'COMMENT';
+ // Note: This hack is necessary so we don't erroneously get a circular dependency
+ // failure based on types.
+ const unusedValueExportToPlacateAjd = 1;
+@@ -21751,13 +21791,13 @@ class StandaloneService {
+             this.cachedInjectors.clear();
+         }
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: StandaloneService,
+-        providedIn: 'environment',
+-        factory: () => new StandaloneService(ɵɵinject(EnvironmentInjector)),
+-    }); }
+ }
++/** @nocollapse */
++StandaloneService.ɵprov = ɵɵdefineInjectable({
++    token: StandaloneService,
++    providedIn: 'environment',
++    factory: () => new StandaloneService(ɵɵinject(EnvironmentInjector)),
++});
+ /**
+  * A feature that acts as a setup code for the {@link StandaloneService}.
+  *
+@@ -22799,7 +22839,6 @@ function symbolIterator() {
+  * @publicApi
+  */
+ class QueryList {
+-    static { Symbol.iterator; }
+     /**
+      * Returns `Observable` of `QueryList` notifying the subscriber of changes.
+      */
+@@ -22923,6 +22962,7 @@ class QueryList {
+         this.changes.unsubscribe();
+     }
+ }
++Symbol.iterator;
+
+ /**
+  * Represents an embedded template that can be used to instantiate embedded views.
+@@ -22942,13 +22982,12 @@ class QueryList {
+  *
+  * @publicApi
+  */
+-class TemplateRef {
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectTemplateRef; }
+-}
++class TemplateRef {}
++/**
++ * @internal
++ * @nocollapse
++ */
++TemplateRef.__NG_ELEMENT_ID__ = injectTemplateRef;
+ const ViewEngineTemplateRef = TemplateRef;
+ // TODO(alxhub): combine interface and implementation. Currently this is challenging since something
+ // in g3 depends on them being separate.
+@@ -23182,13 +23221,12 @@ function findMatchingDehydratedView(lContainer, template) {
+  *
+  * @publicApi
+  */
+-class ViewContainerRef {
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectViewContainerRef; }
+-}
++class ViewContainerRef {}
++/**
++ * @internal
++ * @nocollapse
++ */
++ViewContainerRef.__NG_ELEMENT_ID__ = injectViewContainerRef;
+ /**
+  * Creates a ViewContainerRef and stores it on the injector. Or, if the ViewContainerRef
+  * already exists, retrieves the existing ViewContainerRef.
+@@ -25475,9 +25513,15 @@ class ApplicationInitStatus {
+         }
+         this.initialized = true;
+     }
+-    static { this.ɵfac = function ApplicationInitStatus_Factory(t) { return new (t || ApplicationInitStatus)(); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: ApplicationInitStatus, factory: ApplicationInitStatus.ɵfac, providedIn: 'root' }); }
+ }
++ApplicationInitStatus.ɵfac = function ApplicationInitStatus_Factory(t) {
++    return new (t || ApplicationInitStatus)();
++};
++ApplicationInitStatus.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: ApplicationInitStatus,
++    factory: ApplicationInitStatus.ɵfac,
++    providedIn: 'root'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationInitStatus, [{
+         type: Injectable,
+         args: [{ providedIn: 'root' }]
+@@ -25493,9 +25537,15 @@ class Console {
+         // tslint:disable-next-line:no-console
+         console.warn(message);
+     }
+-    static { this.ɵfac = function Console_Factory(t) { return new (t || Console)(); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: Console, factory: Console.ɵfac, providedIn: 'platform' }); }
+ }
++Console.ɵfac = function Console_Factory(t) {
++    return new (t || Console)();
++};
++Console.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: Console,
++    factory: Console.ɵfac,
++    providedIn: 'platform'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Console, [{
+         type: Injectable,
+         args: [{ providedIn: 'platform' }]
+@@ -25666,12 +25716,14 @@ const TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
+  *
+  * @publicApi
+  */
+-var MissingTranslationStrategy;
+-(function (MissingTranslationStrategy) {
+-    MissingTranslationStrategy[MissingTranslationStrategy["Error"] = 0] = "Error";
+-    MissingTranslationStrategy[MissingTranslationStrategy["Warning"] = 1] = "Warning";
+-    MissingTranslationStrategy[MissingTranslationStrategy["Ignore"] = 2] = "Ignore";
+-})(MissingTranslationStrategy || (MissingTranslationStrategy = {}));
++const MissingTranslationStrategy = {
++    Error: 0,
++    Warning: 1,
++    Ignore: 2,
++};
++MissingTranslationStrategy[MissingTranslationStrategy.Error] = 'Error';
++MissingTranslationStrategy[MissingTranslationStrategy.Warning] = 'Warning';
++MissingTranslationStrategy[MissingTranslationStrategy.Ignore] = 'Ignore';
+
+ /**
+  * *Internal* service that keeps track of pending tasks happening in the system
+@@ -25704,9 +25756,15 @@ class InitialRenderPendingTasks {
+         this.pendingTasks.clear();
+         this.hasPendingTasks.next(false);
+     }
+-    static { this.ɵfac = function InitialRenderPendingTasks_Factory(t) { return new (t || InitialRenderPendingTasks)(); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: InitialRenderPendingTasks, factory: InitialRenderPendingTasks.ɵfac, providedIn: 'root' }); }
+ }
++InitialRenderPendingTasks.ɵfac = function InitialRenderPendingTasks_Factory(t) {
++    return new (t || InitialRenderPendingTasks)();
++};
++InitialRenderPendingTasks.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: InitialRenderPendingTasks,
++    factory: InitialRenderPendingTasks.ɵfac,
++    providedIn: 'root'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(InitialRenderPendingTasks, [{
+         type: Injectable,
+         args: [{ providedIn: 'root' }]
+@@ -25792,9 +25850,15 @@ class Compiler {
+     getModuleId(moduleType) {
+         return undefined;
+     }
+-    static { this.ɵfac = function Compiler_Factory(t) { return new (t || Compiler)(); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: Compiler, factory: Compiler.ɵfac, providedIn: 'root' }); }
+ }
++Compiler.ɵfac = function Compiler_Factory(t) {
++    return new (t || Compiler)();
++};
++Compiler.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: Compiler,
++    factory: Compiler.ɵfac,
++    providedIn: 'root'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Compiler, [{
+         type: Injectable,
+         args: [{ providedIn: 'root' }]
+@@ -26596,9 +26660,14 @@ class Testability {
+         // TODO(juliemr): implement.
+         return [];
+     }
+-    static { this.ɵfac = function Testability_Factory(t) { return new (t || Testability)(ɵɵinject(NgZone), ɵɵinject(TestabilityRegistry), ɵɵinject(TESTABILITY_GETTER)); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: Testability, factory: Testability.ɵfac }); }
+ }
++Testability.ɵfac = function Testability_Factory(t) {
++    return new (t || Testability)(ɵɵinject(NgZone), ɵɵinject(TestabilityRegistry), ɵɵinject(TESTABILITY_GETTER));
++};
++Testability.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: Testability,
++    factory: Testability.ɵfac
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(Testability, [{
+         type: Injectable
+     }], function () { return [{ type: NgZone }, { type: TestabilityRegistry }, { type: undefined, decorators: [{
+@@ -26663,9 +26732,15 @@ class TestabilityRegistry {
+     findTestabilityInTree(elem, findInAncestors = true) {
+         return _testabilityGetter?.findTestabilityInTree(this, elem, findInAncestors) ?? null;
+     }
+-    static { this.ɵfac = function TestabilityRegistry_Factory(t) { return new (t || TestabilityRegistry)(); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: TestabilityRegistry, factory: TestabilityRegistry.ɵfac, providedIn: 'platform' }); }
+ }
++TestabilityRegistry.ɵfac = function TestabilityRegistry_Factory(t) {
++    return new (t || TestabilityRegistry)();
++};
++TestabilityRegistry.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: TestabilityRegistry,
++    factory: TestabilityRegistry.ɵfac,
++    providedIn: 'platform'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(TestabilityRegistry, [{
+         type: Injectable,
+         args: [{ providedIn: 'platform' }]
+@@ -26898,7 +26973,7 @@ function internalCreateApplication(config) {
+ function createPlatformFactory(parentPlatformFactory, name, providers = []) {
+     const desc = `Platform: ${name}`;
+     const marker = new InjectionToken(desc);
+-    return (extraProviders = []) => {
++    return (extraProviders = [], parentInjector) => {
+         let platform = getPlatform();
+         if (!platform || platform.injector.get(ALLOW_MULTIPLE_PLATFORMS, false)) {
+             const platformProviders = [
+@@ -26907,10 +26982,10 @@ function createPlatformFactory(parentPlatformFactory, name, providers = []) {
+                 { provide: marker, useValue: true }
+             ];
+             if (parentPlatformFactory) {
+-                parentPlatformFactory(platformProviders);
++                parentPlatformFactory(platformProviders, parentInjector);
+             }
+             else {
+-                createPlatform(createPlatformInjector(platformProviders, desc));
++                createPlatform(createPlatformInjector(platformProviders, desc, parentInjector));
+             }
+         }
+         return assertPlatform(marker);
+@@ -26936,7 +27011,7 @@ function assertPlatform(requiredToken) {
+  * Helper function to create an instance of a platform injector (that maintains the 'platform'
+  * scope).
+  */
+-function createPlatformInjector(providers = [], name) {
++function createPlatformInjector(providers = [], name, parentInjector) {
+     return Injector.create({
+         name,
+         providers: [
+@@ -26944,6 +27019,7 @@ function createPlatformInjector(providers = [], name) {
+             { provide: PLATFORM_DESTROY_LISTENERS, useValue: new Set([() => _platformInjector = null]) },
+             ...providers
+         ],
++        parent: parentInjector,
+     });
+ }
+ /**
+@@ -27106,9 +27182,15 @@ class PlatformRef {
+     get destroyed() {
+         return this._destroyed;
+     }
+-    static { this.ɵfac = function PlatformRef_Factory(t) { return new (t || PlatformRef)(ɵɵinject(Injector)); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: PlatformRef, factory: PlatformRef.ɵfac, providedIn: 'platform' }); }
+ }
++PlatformRef.ɵfac = function PlatformRef_Factory(t) {
++    return new (t || PlatformRef)(ɵɵinject(Injector));
++};
++PlatformRef.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: PlatformRef,
++    factory: PlatformRef.ɵfac,
++    providedIn: 'platform'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(PlatformRef, [{
+         type: Injectable,
+         args: [{ providedIn: 'platform' }]
+@@ -27490,9 +27572,15 @@ class ApplicationRef {
+             console.warn(formatRuntimeError(406 /* RuntimeErrorCode.APPLICATION_REF_ALREADY_DESTROYED */, 'This instance of the `ApplicationRef` has already been destroyed.'));
+         }
+     }
+-    static { this.ɵfac = function ApplicationRef_Factory(t) { return new (t || ApplicationRef)(); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: ApplicationRef, factory: ApplicationRef.ɵfac, providedIn: 'root' }); }
+ }
++ApplicationRef.ɵfac = function ApplicationRef_Factory(t) {
++    return new (t || ApplicationRef)();
++};
++ApplicationRef.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: ApplicationRef,
++    factory: ApplicationRef.ɵfac,
++    providedIn: 'root'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationRef, [{
+         type: Injectable,
+         args: [{ providedIn: 'root' }]
+@@ -27549,9 +27637,15 @@ class NgZoneChangeDetectionScheduler {
+     ngOnDestroy() {
+         this._onMicrotaskEmptySubscription?.unsubscribe();
+     }
+-    static { this.ɵfac = function NgZoneChangeDetectionScheduler_Factory(t) { return new (t || NgZoneChangeDetectionScheduler)(); }; }
+-    static { this.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({ token: NgZoneChangeDetectionScheduler, factory: NgZoneChangeDetectionScheduler.ɵfac, providedIn: 'root' }); }
+ }
++NgZoneChangeDetectionScheduler.ɵfac = function NgZoneChangeDetectionScheduler_Factory(t) {
++    return new (t || NgZoneChangeDetectionScheduler)();
++};
++NgZoneChangeDetectionScheduler.ɵprov = /*@__PURE__*/ ɵɵdefineInjectable({
++    token: NgZoneChangeDetectionScheduler,
++    factory: NgZoneChangeDetectionScheduler.ɵfac,
++    providedIn: 'root'
++});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(NgZoneChangeDetectionScheduler, [{
+         type: Injectable,
+         args: [{ providedIn: 'root' }]
+@@ -27722,13 +27816,12 @@ function noModuleError(id) {
+  *
+  * @publicApi
+  */
+-class ChangeDetectorRef {
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectChangeDetectorRef; }
+-}
++class ChangeDetectorRef {}
++/**
++ * @internal
++ * @nocollapse
++ */
++ChangeDetectorRef.__NG_ELEMENT_ID__ = injectChangeDetectorRef;
+ /** Returns a ChangeDetectorRef (a.k.a. a ViewRef) */
+ function injectChangeDetectorRef(flags) {
+     return createViewRef(getCurrentTNode(), getLView(), (flags & 16 /* InternalInjectFlags.ForPipe */) === 16 /* InternalInjectFlags.ForPipe */);
+@@ -29302,8 +29395,6 @@ function defaultIterableDiffersFactory() {
+  * @publicApi
+  */
+ class IterableDiffers {
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({ token: IterableDiffers, providedIn: 'root', factory: defaultIterableDiffersFactory }); }
+     constructor(factories) {
+         this.factories = factories;
+     }
+@@ -29358,6 +29449,12 @@ class IterableDiffers {
+         }
+     }
+ }
++/** @nocollapse */
++IterableDiffers.ɵprov = ɵɵdefineInjectable({
++    token: IterableDiffers,
++    providedIn: 'root',
++    factory: defaultIterableDiffersFactory
++});
+ function getTypeNameForDebugging(type) {
+     return type['name'] || typeof type;
+ }
+@@ -29371,8 +29468,6 @@ function defaultKeyValueDiffersFactory() {
+  * @publicApi
+  */
+ class KeyValueDiffers {
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({ token: KeyValueDiffers, providedIn: 'root', factory: defaultKeyValueDiffersFactory }); }
+     constructor(factories) {
+         this.factories = factories;
+     }
+@@ -29424,6 +29519,12 @@ class KeyValueDiffers {
+         throw new RuntimeError(901 /* RuntimeErrorCode.NO_SUPPORTING_DIFFER_FACTORY */, ngDevMode && `Cannot find a differ supporting object '${kv}'`);
+     }
+ }
++/** @nocollapse */
++KeyValueDiffers.ɵprov = ɵɵdefineInjectable({
++    token: KeyValueDiffers,
++    providedIn: 'root',
++    factory: defaultKeyValueDiffersFactory
++});
+
+ /**
+  * Structural diffing for `Object`s and `Map`s.
+@@ -29459,10 +29560,14 @@ const platformCore = createPlatformFactory(null, 'core', []);
+ class ApplicationModule {
+     // Inject ApplicationRef to make it eager...
+     constructor(appRef) { }
+-    static { this.ɵfac = function ApplicationModule_Factory(t) { return new (t || ApplicationModule)(ɵɵinject(ApplicationRef)); }; }
+-    static { this.ɵmod = /*@__PURE__*/ ɵɵdefineNgModule({ type: ApplicationModule }); }
+-    static { this.ɵinj = /*@__PURE__*/ ɵɵdefineInjector({}); }
+ }
++ApplicationModule.ɵfac = function ApplicationModule_Factory(t) {
++    return new (t || ApplicationModule)(ɵɵinject(ApplicationRef));
++};
++ApplicationModule.ɵmod = /*@__PURE__*/ ɵɵdefineNgModule({
++    type: ApplicationModule
++});
++ApplicationModule.ɵinj = /*@__PURE__*/ ɵɵdefineInjector({});
+ (function () { (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(ApplicationModule, [{
+         type: NgModule
+     }], function () { return [{ type: ApplicationRef }]; }, null); })();
+diff --git a/node_modules/@angular/core/fesm2022/testing.mjs b/node_modules/@angular/core/fesm2022/testing.mjs
+index 98a7aac..7e91dde 100755
+--- a/node_modules/@angular/core/fesm2022/testing.mjs
++++ b/node_modules/@angular/core/fesm2022/testing.mjs
+@@ -9977,13 +9977,6 @@ class TransferState {
+         this.store = {};
+         this.onSerializeCallbacks = {};
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov =
+-    /** @pureOrBreakMyCode */ ɵɵdefineInjectable({
+-        token: TransferState,
+-        providedIn: 'root',
+-        factory: initTransferState,
+-    }); }
+     /**
+      * Get the value corresponding to a key. Return `defaultValue` if key is not found.
+      */
+@@ -10040,6 +10033,13 @@ class TransferState {
+         return JSON.stringify(this.store).replace(/</g, '\\u003C');
+     }
+ }
++/** @nocollapse */
++TransferState.ɵprov =
++/** @pureOrBreakMyCode */ ɵɵdefineInjectable({
++    token: TransferState,
++    providedIn: 'root',
++    factory: initTransferState,
++});
+ function retrieveTransferredState(doc, appId) {
+     // Locate the script tag with the JSON data transferred from the server.
+     // The id of the script tag is set to the Angular appId + 'state'.
+@@ -10349,9 +10349,8 @@ class _NullComponentFactoryResolver {
+  * @deprecated Angular no longer requires Component factories. Please use other APIs where
+  *     Component class can be used directly.
+  */
+-class ComponentFactoryResolver$1 {
+-    static { this.NULL = ( /* @__PURE__ */new _NullComponentFactoryResolver()); }
+-}
++class ComponentFactoryResolver$1 {}
++ComponentFactoryResolver$1.NULL = ( /* @__PURE__ */new _NullComponentFactoryResolver());
+
+ /**
+  * Creates an ElementRef from the most recent node.
+@@ -10390,12 +10389,12 @@ class ElementRef {
+     constructor(nativeElement) {
+         this.nativeElement = nativeElement;
+     }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectElementRef; }
+ }
++/**
++ * @internal
++ * @nocollapse
++ */
++ElementRef.__NG_ELEMENT_ID__ = injectElementRef;
+ /**
+  * Unwraps `ElementRef` and return the `nativeElement`.
+  *
+@@ -10436,12 +10435,12 @@ class Renderer2 {
+          */
+         this.destroyNode = null;
+     }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = () => injectRenderer2(); }
+ }
++/**
++ * @internal
++ * @nocollapse
++ */
++Renderer2.__NG_ELEMENT_ID__ = () => injectRenderer2();
+ /** Injects a Renderer2 for the current component. */
+ function injectRenderer2() {
+     // We need the Renderer to be based on the component that it's being injected into, however since
+@@ -10457,14 +10456,13 @@ function injectRenderer2() {
+  *
+  * @publicApi
+  */
+-class Sanitizer {
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: Sanitizer,
+-        providedIn: 'root',
+-        factory: () => null,
+-    }); }
+-}
++class Sanitizer {}
++/** @nocollapse */
++Sanitizer.ɵprov = ɵɵdefineInjectable({
++    token: Sanitizer,
++    providedIn: 'root',
++    factory: () => null,
++});
+
+ /**
+  * @description Represents the version of Angular
+@@ -11051,8 +11049,6 @@ function createInjectorWithoutInjectorInstances(defType, parent = null, addition
+  * @publicApi
+  */
+ class Injector {
+-    static { this.THROW_IF_NOT_FOUND = THROW_IF_NOT_FOUND; }
+-    static { this.NULL = ( /* @__PURE__ */new NullInjector()); }
+     static create(options, parent) {
+         if (Array.isArray(options)) {
+             return createInjector({ name: '' }, parent, options, '');
+@@ -11062,18 +11058,20 @@ class Injector {
+             return createInjector({ name }, options.parent, options.providers, name);
+         }
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: Injector,
+-        providedIn: 'any',
+-        factory: () => ɵɵinject(INJECTOR),
+-    }); }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = -1 /* InjectorMarkers.Injector */; }
+ }
++Injector.THROW_IF_NOT_FOUND = THROW_IF_NOT_FOUND;
++Injector.NULL = ( /* @__PURE__ */new NullInjector());
++/** @nocollapse */
++Injector.ɵprov = ɵɵdefineInjectable({
++    token: Injector,
++    providedIn: 'any',
++    factory: () => ɵɵinject(INJECTOR),
++});
++/**
++ * @internal
++ * @nocollapse
++ */
++Injector.__NG_ELEMENT_ID__ = -1 /* InjectorMarkers.Injector */;
+
+ /**
+  * @module
+@@ -12557,18 +12555,17 @@ function renderChildComponents(hostLView, components) {
+  *
+  * @publicApi
+  */
+-class DestroyRef {
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectDestroyRef; }
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ENV_ID__ = (injector) => injector; }
+-}
++class DestroyRef {}
++/**
++ * @internal
++ * @nocollapse
++ */
++DestroyRef.__NG_ELEMENT_ID__ = injectDestroyRef;
++/**
++ * @internal
++ * @nocollapse
++ */
++DestroyRef.__NG_ENV_ID__ = (injector) => injector;
+ class NodeInjectorDestroyRef extends DestroyRef {
+     constructor(_lView) {
+         super();
+@@ -12631,13 +12628,13 @@ class EffectManager {
+     get isQueueEmpty() {
+         return this.queue.size === 0;
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: EffectManager,
+-        providedIn: 'root',
+-        factory: () => new EffectManager(),
+-    }); }
+ }
++/** @nocollapse */
++EffectManager.ɵprov = ɵɵdefineInjectable({
++    token: EffectManager,
++    providedIn: 'root',
++    factory: () => new EffectManager(),
++});
+ /**
+  * Create a global `Effect` for the given reactive function.
+  *
+@@ -22096,13 +22093,13 @@ class StandaloneService {
+             this.cachedInjectors.clear();
+         }
+     }
+-    /** @nocollapse */
+-    static { this.ɵprov = ɵɵdefineInjectable({
+-        token: StandaloneService,
+-        providedIn: 'environment',
+-        factory: () => new StandaloneService(ɵɵinject(EnvironmentInjector)),
+-    }); }
+ }
++/** @nocollapse */
++StandaloneService.ɵprov = ɵɵdefineInjectable({
++    token: StandaloneService,
++    providedIn: 'environment',
++    factory: () => new StandaloneService(ɵɵinject(EnvironmentInjector)),
++});
+ /**
+  * A feature that acts as a setup code for the {@link StandaloneService}.
+  *
+@@ -23144,7 +23141,6 @@ function symbolIterator() {
+  * @publicApi
+  */
+ class QueryList {
+-    static { Symbol.iterator; }
+     /**
+      * Returns `Observable` of `QueryList` notifying the subscriber of changes.
+      */
+@@ -23268,6 +23264,7 @@ class QueryList {
+         this.changes.unsubscribe();
+     }
+ }
++Symbol.iterator;
+
+ /**
+  * Represents an embedded template that can be used to instantiate embedded views.
+@@ -23287,13 +23284,12 @@ class QueryList {
+  *
+  * @publicApi
+  */
+-class TemplateRef {
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectTemplateRef; }
+-}
++class TemplateRef {}
++/**
++ * @internal
++ * @nocollapse
++ */
++TemplateRef.__NG_ELEMENT_ID__ = injectTemplateRef;
+ const ViewEngineTemplateRef = TemplateRef;
+ // TODO(alxhub): combine interface and implementation. Currently this is challenging since something
+ // in g3 depends on them being separate.
+@@ -23527,13 +23523,12 @@ function findMatchingDehydratedView(lContainer, template) {
+  *
+  * @publicApi
+  */
+-class ViewContainerRef {
+-    /**
+-     * @internal
+-     * @nocollapse
+-     */
+-    static { this.__NG_ELEMENT_ID__ = injectViewContainerRef; }
+-}
++class ViewContainerRef {}
++/**
++ * @internal
++ * @nocollapse
++ */
++ViewContainerRef.__NG_ELEMENT_ID__ = injectViewContainerRef;
+ /**
+  * Creates a ViewContainerRef and stores it on the injector. Or, if the ViewContainerRef
+  * already exists, retrieves the existing ViewContainerRef.
+@@ -26089,7 +26084,6 @@ class TestBedImpl {
+          */
+         this.globalCompilationChecked = false;
+     }
+-    static { this._INSTANCE = null; }
+     static get INSTANCE() {
+         return TestBedImpl._INSTANCE = TestBedImpl._INSTANCE || new TestBedImpl();
+     }
+@@ -26497,6 +26491,7 @@ class TestBedImpl {
+         }
+     }
+ }
++TestBedImpl._INSTANCE = null;
+ /**
+  * @description
+  * Configures and initializes environment for unit testing and provides methods for
+@@ -26579,24 +26574,7 @@ function withModule(moduleDef, fn) {
+  */
+ const _global = (typeof window === 'undefined' ? global : window);
+ // Reset the test providers and the fake async zone before each test.
+-if (_global.beforeEach) {
+-    _global.beforeEach(getCleanupHook(false));
+-}
+-// We provide both a `beforeEach` and `afterEach`, because the updated behavior for
+-// tearing down the module is supposed to run after the test so that we can associate
+-// teardown errors with the correct test.
+-if (_global.afterEach) {
+-    _global.afterEach(getCleanupHook(true));
+-}
+-function getCleanupHook(expectedTeardownValue) {
+-    return () => {
+-        const testBed = TestBedImpl.INSTANCE;
+-        if (testBed.shouldTearDownTestingModule() === expectedTeardownValue) {
+-            testBed.resetTestingModule();
+-            resetFakeAsyncZone();
+-        }
+-    };
+-}
++
+ /**
+  * This API should be removed. But doing so seems to break `google3` and so it requires a bit of
+  * investigation.
+diff --git a/node_modules/@angular/core/index.d.ts b/node_modules/@angular/core/index.d.ts
+index a1a0962..07c4803 100755
+--- a/node_modules/@angular/core/index.d.ts
++++ b/node_modules/@angular/core/index.d.ts
+@@ -1926,7 +1926,7 @@ export declare function createPlatform(injector: Injector): PlatformRef;
+  *
+  * @publicApi
+  */
+-export declare function createPlatformFactory(parentPlatformFactory: ((extraProviders?: StaticProvider[]) => PlatformRef) | null, name: string, providers?: StaticProvider[]): (extraProviders?: StaticProvider[]) => PlatformRef;
++export declare function createPlatformFactory(parentPlatformFactory: ((extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef) | null, name: string, providers?: StaticProvider[]): (extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef;
+
+ /**
+  * Options passed to the `signal` creation function.
+@@ -3295,7 +3295,7 @@ export declare class ErrorHandler {
+  * @see [Observables in Angular](guide/observables-in-angular)
+  * @publicApi
+  */
+-export declare interface EventEmitter<T> extends Subject<T> {
++export declare interface EventEmitter<T = void> extends Subject<T> {
+     /**
+      * Creates an instance of this class that can
+      * deliver events synchronously or asynchronously.
+@@ -3308,9 +3308,10 @@ export declare interface EventEmitter<T> extends Subject<T> {
+      * Emits an event containing a given value.
+      * @param value The value to emit.
+      */
+-    emit(value?: T): void;
++    emit(value: T): void;
+     /**
+      * Registers handlers for events emitted by this instance.
++     * @checkReturnValue The returned Subscription object should be stored and later unsubscribed to prevent memory leaks.
+      * @param next When supplied, a custom handler for emitted events.
+      * @param error When supplied, a custom handler for an error notification from this emitter.
+      * @param complete When supplied, a custom handler for a completion notification from this
+@@ -3319,6 +3320,7 @@ export declare interface EventEmitter<T> extends Subject<T> {
+     subscribe(next?: (value: T) => void, error?: (error: any) => void, complete?: () => void): Subscription;
+     /**
+      * Registers handlers for events emitted by this instance.
++     * @checkReturnValue The returned Subscription object should be stored and later unsubscribed to prevent memory leaks.
+      * @param observerOrNext When supplied, a custom handler for emitted events, or an observer
+      *     object.
+      * @param error When supplied, a custom handler for an error notification from this emitter.
+@@ -3332,7 +3334,7 @@ export declare interface EventEmitter<T> extends Subject<T> {
+  * @publicApi
+  */
+ export declare const EventEmitter: {
+-    new (isAsync?: boolean): EventEmitter<any>;
++    new (isAsync?: boolean): EventEmitter<void>;
+     new <T>(isAsync?: boolean): EventEmitter<T>;
+     readonly prototype: EventEmitter<any>;
+ };
