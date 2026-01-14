@@ -1,0 +1,405 @@
+diff --git a/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs b/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
+index db1d87d..909d1c2 100755
+--- a/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
++++ b/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
+@@ -245,41 +245,56 @@ const CURRENCIES_EN = {
+   "ZWD": [undefined, undefined, 0]
+ };
+ 
+-var NumberFormatStyle;
+-(function (NumberFormatStyle) {
+-  NumberFormatStyle[NumberFormatStyle["Decimal"] = 0] = "Decimal";
+-  NumberFormatStyle[NumberFormatStyle["Percent"] = 1] = "Percent";
+-  NumberFormatStyle[NumberFormatStyle["Currency"] = 2] = "Currency";
+-  NumberFormatStyle[NumberFormatStyle["Scientific"] = 3] = "Scientific";
+-})(NumberFormatStyle || (NumberFormatStyle = {}));
+-var Plural;
+-(function (Plural) {
+-  Plural[Plural["Zero"] = 0] = "Zero";
+-  Plural[Plural["One"] = 1] = "One";
+-  Plural[Plural["Two"] = 2] = "Two";
+-  Plural[Plural["Few"] = 3] = "Few";
+-  Plural[Plural["Many"] = 4] = "Many";
+-  Plural[Plural["Other"] = 5] = "Other";
+-})(Plural || (Plural = {}));
+-var FormStyle;
+-(function (FormStyle) {
+-  FormStyle[FormStyle["Format"] = 0] = "Format";
+-  FormStyle[FormStyle["Standalone"] = 1] = "Standalone";
+-})(FormStyle || (FormStyle = {}));
+-var TranslationWidth;
+-(function (TranslationWidth) {
+-  TranslationWidth[TranslationWidth["Narrow"] = 0] = "Narrow";
+-  TranslationWidth[TranslationWidth["Abbreviated"] = 1] = "Abbreviated";
+-  TranslationWidth[TranslationWidth["Wide"] = 2] = "Wide";
+-  TranslationWidth[TranslationWidth["Short"] = 3] = "Short";
+-})(TranslationWidth || (TranslationWidth = {}));
+-var FormatWidth;
+-(function (FormatWidth) {
+-  FormatWidth[FormatWidth["Short"] = 0] = "Short";
+-  FormatWidth[FormatWidth["Medium"] = 1] = "Medium";
+-  FormatWidth[FormatWidth["Long"] = 2] = "Long";
+-  FormatWidth[FormatWidth["Full"] = 3] = "Full";
+-})(FormatWidth || (FormatWidth = {}));
++const NumberFormatStyle = {
++  Decimal: 0,
++  Percent: 1,
++  Currency: 2,
++  Scientific: 3
++};
++NumberFormatStyle[NumberFormatStyle.Decimal] = 'Decimal';
++NumberFormatStyle[NumberFormatStyle.Percent] = 'Percent';
++NumberFormatStyle[NumberFormatStyle.Currency] = 'Currency';
++NumberFormatStyle[NumberFormatStyle.Scientific] = 'Scientific';
++const Plural = {
++  Zero: 0,
++  One: 1,
++  Two: 2,
++  Few: 3,
++  Many: 4,
++  Other: 5
++};
++Plural[Plural.Zero] = 'Zero';
++Plural[Plural.One] = 'One';
++Plural[Plural.Two] = 'Two';
++Plural[Plural.Few] = 'Few';
++Plural[Plural.Many] = 'Many';
++Plural[Plural.Other] = 'Other';
++const FormStyle = {
++  Format: 0,
++  Standalone: 1
++};
++FormStyle[FormStyle.Format] = 'Format';
++FormStyle[FormStyle.Standalone] = 'Standalone';
++const TranslationWidth = {
++  Narrow: 0,
++  Abbreviated: 1,
++  Wide: 2,
++  Short: 3
++};
++TranslationWidth[TranslationWidth.Narrow] = 'Narrow';
++TranslationWidth[TranslationWidth.Abbreviated] = 'Abbreviated';
++TranslationWidth[TranslationWidth.Wide] = 'Wide';
++TranslationWidth[TranslationWidth.Short] = 'Short';
++const FormatWidth = {
++  Short: 0,
++  Medium: 1,
++  Long: 2,
++  Full: 3
++};
++FormatWidth[FormatWidth.Short] = 'Short';
++FormatWidth[FormatWidth.Medium] = 'Medium';
++FormatWidth[FormatWidth.Long] = 'Long';
++FormatWidth[FormatWidth.Full] = 'Full';
+ const NumberSymbol = {
+   Decimal: 0,
+   Group: 1,
+@@ -296,16 +311,22 @@ const NumberSymbol = {
+   CurrencyDecimal: 12,
+   CurrencyGroup: 13
+ };
+-var WeekDay;
+-(function (WeekDay) {
+-  WeekDay[WeekDay["Sunday"] = 0] = "Sunday";
+-  WeekDay[WeekDay["Monday"] = 1] = "Monday";
+-  WeekDay[WeekDay["Tuesday"] = 2] = "Tuesday";
+-  WeekDay[WeekDay["Wednesday"] = 3] = "Wednesday";
+-  WeekDay[WeekDay["Thursday"] = 4] = "Thursday";
+-  WeekDay[WeekDay["Friday"] = 5] = "Friday";
+-  WeekDay[WeekDay["Saturday"] = 6] = "Saturday";
+-})(WeekDay || (WeekDay = {}));
++const WeekDay = {
++  Sunday: 0,
++  Monday: 1,
++  Tuesday: 2,
++  Wednesday: 3,
++  Thursday: 4,
++  Friday: 5,
++  Saturday: 6
++};
++WeekDay[WeekDay.Sunday] = 'Sunday';
++WeekDay[WeekDay.Monday] = 'Monday';
++WeekDay[WeekDay.Tuesday] = 'Tuesday';
++WeekDay[WeekDay.Wednesday] = 'Wednesday';
++WeekDay[WeekDay.Thursday] = 'Thursday';
++WeekDay[WeekDay.Friday] = 'Friday';
++WeekDay[WeekDay.Saturday] = 'Saturday';
+ function getLocaleId(locale) {
+   return _findLocaleData(locale)[_LocaleDataIndex.LocaleId];
+ }
+diff --git a/node_modules/@angular/common/fesm2022/_module-chunk.mjs b/node_modules/@angular/common/fesm2022/_module-chunk.mjs
+index 126add8..4e1f05a 100755
+--- a/node_modules/@angular/common/fesm2022/_module-chunk.mjs
++++ b/node_modules/@angular/common/fesm2022/_module-chunk.mjs
+@@ -608,15 +608,20 @@ class HttpRequest {
+   }
+ }
+ 
+-var HttpEventType;
+-(function (HttpEventType) {
+-  HttpEventType[HttpEventType["Sent"] = 0] = "Sent";
+-  HttpEventType[HttpEventType["UploadProgress"] = 1] = "UploadProgress";
+-  HttpEventType[HttpEventType["ResponseHeader"] = 2] = "ResponseHeader";
+-  HttpEventType[HttpEventType["DownloadProgress"] = 3] = "DownloadProgress";
+-  HttpEventType[HttpEventType["Response"] = 4] = "Response";
+-  HttpEventType[HttpEventType["User"] = 5] = "User";
+-})(HttpEventType || (HttpEventType = {}));
++const HttpEventType = {
++  Sent: 0,
++  UploadProgress: 1,
++  ResponseHeader: 2,
++  DownloadProgress: 3,
++  Response: 4,
++  User: 5
++};
++HttpEventType[HttpEventType.Sent] = 'Sent';
++HttpEventType[HttpEventType.UploadProgress] = 'UploadProgress';
++HttpEventType[HttpEventType.ResponseHeader] = 'ResponseHeader';
++HttpEventType[HttpEventType.DownloadProgress] = 'DownloadProgress';
++HttpEventType[HttpEventType.Response] = 'Response';
++HttpEventType[HttpEventType.User] = 'User';
+ class HttpResponseBase {
+   headers;
+   status;
+@@ -686,72 +691,134 @@ class HttpErrorResponse extends HttpResponseBase {
+ }
+ const HTTP_STATUS_CODE_OK = 200;
+ const HTTP_STATUS_CODE_NO_CONTENT = 204;
+-var HttpStatusCode;
+-(function (HttpStatusCode) {
+-  HttpStatusCode[HttpStatusCode["Continue"] = 100] = "Continue";
+-  HttpStatusCode[HttpStatusCode["SwitchingProtocols"] = 101] = "SwitchingProtocols";
+-  HttpStatusCode[HttpStatusCode["Processing"] = 102] = "Processing";
+-  HttpStatusCode[HttpStatusCode["EarlyHints"] = 103] = "EarlyHints";
+-  HttpStatusCode[HttpStatusCode["Ok"] = 200] = "Ok";
+-  HttpStatusCode[HttpStatusCode["Created"] = 201] = "Created";
+-  HttpStatusCode[HttpStatusCode["Accepted"] = 202] = "Accepted";
+-  HttpStatusCode[HttpStatusCode["NonAuthoritativeInformation"] = 203] = "NonAuthoritativeInformation";
+-  HttpStatusCode[HttpStatusCode["NoContent"] = 204] = "NoContent";
+-  HttpStatusCode[HttpStatusCode["ResetContent"] = 205] = "ResetContent";
+-  HttpStatusCode[HttpStatusCode["PartialContent"] = 206] = "PartialContent";
+-  HttpStatusCode[HttpStatusCode["MultiStatus"] = 207] = "MultiStatus";
+-  HttpStatusCode[HttpStatusCode["AlreadyReported"] = 208] = "AlreadyReported";
+-  HttpStatusCode[HttpStatusCode["ImUsed"] = 226] = "ImUsed";
+-  HttpStatusCode[HttpStatusCode["MultipleChoices"] = 300] = "MultipleChoices";
+-  HttpStatusCode[HttpStatusCode["MovedPermanently"] = 301] = "MovedPermanently";
+-  HttpStatusCode[HttpStatusCode["Found"] = 302] = "Found";
+-  HttpStatusCode[HttpStatusCode["SeeOther"] = 303] = "SeeOther";
+-  HttpStatusCode[HttpStatusCode["NotModified"] = 304] = "NotModified";
+-  HttpStatusCode[HttpStatusCode["UseProxy"] = 305] = "UseProxy";
+-  HttpStatusCode[HttpStatusCode["Unused"] = 306] = "Unused";
+-  HttpStatusCode[HttpStatusCode["TemporaryRedirect"] = 307] = "TemporaryRedirect";
+-  HttpStatusCode[HttpStatusCode["PermanentRedirect"] = 308] = "PermanentRedirect";
+-  HttpStatusCode[HttpStatusCode["BadRequest"] = 400] = "BadRequest";
+-  HttpStatusCode[HttpStatusCode["Unauthorized"] = 401] = "Unauthorized";
+-  HttpStatusCode[HttpStatusCode["PaymentRequired"] = 402] = "PaymentRequired";
+-  HttpStatusCode[HttpStatusCode["Forbidden"] = 403] = "Forbidden";
+-  HttpStatusCode[HttpStatusCode["NotFound"] = 404] = "NotFound";
+-  HttpStatusCode[HttpStatusCode["MethodNotAllowed"] = 405] = "MethodNotAllowed";
+-  HttpStatusCode[HttpStatusCode["NotAcceptable"] = 406] = "NotAcceptable";
+-  HttpStatusCode[HttpStatusCode["ProxyAuthenticationRequired"] = 407] = "ProxyAuthenticationRequired";
+-  HttpStatusCode[HttpStatusCode["RequestTimeout"] = 408] = "RequestTimeout";
+-  HttpStatusCode[HttpStatusCode["Conflict"] = 409] = "Conflict";
+-  HttpStatusCode[HttpStatusCode["Gone"] = 410] = "Gone";
+-  HttpStatusCode[HttpStatusCode["LengthRequired"] = 411] = "LengthRequired";
+-  HttpStatusCode[HttpStatusCode["PreconditionFailed"] = 412] = "PreconditionFailed";
+-  HttpStatusCode[HttpStatusCode["PayloadTooLarge"] = 413] = "PayloadTooLarge";
+-  HttpStatusCode[HttpStatusCode["UriTooLong"] = 414] = "UriTooLong";
+-  HttpStatusCode[HttpStatusCode["UnsupportedMediaType"] = 415] = "UnsupportedMediaType";
+-  HttpStatusCode[HttpStatusCode["RangeNotSatisfiable"] = 416] = "RangeNotSatisfiable";
+-  HttpStatusCode[HttpStatusCode["ExpectationFailed"] = 417] = "ExpectationFailed";
+-  HttpStatusCode[HttpStatusCode["ImATeapot"] = 418] = "ImATeapot";
+-  HttpStatusCode[HttpStatusCode["MisdirectedRequest"] = 421] = "MisdirectedRequest";
+-  HttpStatusCode[HttpStatusCode["UnprocessableEntity"] = 422] = "UnprocessableEntity";
+-  HttpStatusCode[HttpStatusCode["Locked"] = 423] = "Locked";
+-  HttpStatusCode[HttpStatusCode["FailedDependency"] = 424] = "FailedDependency";
+-  HttpStatusCode[HttpStatusCode["TooEarly"] = 425] = "TooEarly";
+-  HttpStatusCode[HttpStatusCode["UpgradeRequired"] = 426] = "UpgradeRequired";
+-  HttpStatusCode[HttpStatusCode["PreconditionRequired"] = 428] = "PreconditionRequired";
+-  HttpStatusCode[HttpStatusCode["TooManyRequests"] = 429] = "TooManyRequests";
+-  HttpStatusCode[HttpStatusCode["RequestHeaderFieldsTooLarge"] = 431] = "RequestHeaderFieldsTooLarge";
+-  HttpStatusCode[HttpStatusCode["UnavailableForLegalReasons"] = 451] = "UnavailableForLegalReasons";
+-  HttpStatusCode[HttpStatusCode["InternalServerError"] = 500] = "InternalServerError";
+-  HttpStatusCode[HttpStatusCode["NotImplemented"] = 501] = "NotImplemented";
+-  HttpStatusCode[HttpStatusCode["BadGateway"] = 502] = "BadGateway";
+-  HttpStatusCode[HttpStatusCode["ServiceUnavailable"] = 503] = "ServiceUnavailable";
+-  HttpStatusCode[HttpStatusCode["GatewayTimeout"] = 504] = "GatewayTimeout";
+-  HttpStatusCode[HttpStatusCode["HttpVersionNotSupported"] = 505] = "HttpVersionNotSupported";
+-  HttpStatusCode[HttpStatusCode["VariantAlsoNegotiates"] = 506] = "VariantAlsoNegotiates";
+-  HttpStatusCode[HttpStatusCode["InsufficientStorage"] = 507] = "InsufficientStorage";
+-  HttpStatusCode[HttpStatusCode["LoopDetected"] = 508] = "LoopDetected";
+-  HttpStatusCode[HttpStatusCode["NotExtended"] = 510] = "NotExtended";
+-  HttpStatusCode[HttpStatusCode["NetworkAuthenticationRequired"] = 511] = "NetworkAuthenticationRequired";
+-})(HttpStatusCode || (HttpStatusCode = {}));
++const HttpStatusCode = {
++  Continue: 100,
++  SwitchingProtocols: 101,
++  Processing: 102,
++  EarlyHints: 103,
++  Ok: 200,
++  Created: 201,
++  Accepted: 202,
++  NonAuthoritativeInformation: 203,
++  NoContent: 204,
++  ResetContent: 205,
++  PartialContent: 206,
++  MultiStatus: 207,
++  AlreadyReported: 208,
++  ImUsed: 226,
++  MultipleChoices: 300,
++  MovedPermanently: 301,
++  Found: 302,
++  SeeOther: 303,
++  NotModified: 304,
++  UseProxy: 305,
++  Unused: 306,
++  TemporaryRedirect: 307,
++  PermanentRedirect: 308,
++  BadRequest: 400,
++  Unauthorized: 401,
++  PaymentRequired: 402,
++  Forbidden: 403,
++  NotFound: 404,
++  MethodNotAllowed: 405,
++  NotAcceptable: 406,
++  ProxyAuthenticationRequired: 407,
++  RequestTimeout: 408,
++  Conflict: 409,
++  Gone: 410,
++  LengthRequired: 411,
++  PreconditionFailed: 412,
++  PayloadTooLarge: 413,
++  UriTooLong: 414,
++  UnsupportedMediaType: 415,
++  RangeNotSatisfiable: 416,
++  ExpectationFailed: 417,
++  ImATeapot: 418,
++  MisdirectedRequest: 421,
++  UnprocessableEntity: 422,
++  Locked: 423,
++  FailedDependency: 424,
++  TooEarly: 425,
++  UpgradeRequired: 426,
++  PreconditionRequired: 428,
++  TooManyRequests: 429,
++  RequestHeaderFieldsTooLarge: 431,
++  UnavailableForLegalReasons: 451,
++  InternalServerError: 500,
++  NotImplemented: 501,
++  BadGateway: 502,
++  ServiceUnavailable: 503,
++  GatewayTimeout: 504,
++  HttpVersionNotSupported: 505,
++  VariantAlsoNegotiates: 506,
++  InsufficientStorage: 507,
++  LoopDetected: 508,
++  NotExtended: 510,
++  NetworkAuthenticationRequired: 511
++};
++HttpStatusCode[HttpStatusCode.Continue] = 'Continue';
++HttpStatusCode[HttpStatusCode.SwitchingProtocols] = 'SwitchingProtocols';
++HttpStatusCode[HttpStatusCode.Processing] = 'Processing';
++HttpStatusCode[HttpStatusCode.EarlyHints] = 'EarlyHints';
++HttpStatusCode[HttpStatusCode.Ok] = 'Ok';
++HttpStatusCode[HttpStatusCode.Created] = 'Created';
++HttpStatusCode[HttpStatusCode.Accepted] = 'Accepted';
++HttpStatusCode[HttpStatusCode.NonAuthoritativeInformation] = 'NonAuthoritativeInformation';
++HttpStatusCode[HttpStatusCode.NoContent] = 'NoContent';
++HttpStatusCode[HttpStatusCode.ResetContent] = 'ResetContent';
++HttpStatusCode[HttpStatusCode.PartialContent] = 'PartialContent';
++HttpStatusCode[HttpStatusCode.MultiStatus] = 'MultiStatus';
++HttpStatusCode[HttpStatusCode.AlreadyReported] = 'AlreadyReported';
++HttpStatusCode[HttpStatusCode.ImUsed] = 'ImUsed';
++HttpStatusCode[HttpStatusCode.MultipleChoices] = 'MultipleChoices';
++HttpStatusCode[HttpStatusCode.MovedPermanently] = 'MovedPermanently';
++HttpStatusCode[HttpStatusCode.Found] = 'Found';
++HttpStatusCode[HttpStatusCode.SeeOther] = 'SeeOther';
++HttpStatusCode[HttpStatusCode.NotModified] = 'NotModified';
++HttpStatusCode[HttpStatusCode.UseProxy] = 'UseProxy';
++HttpStatusCode[HttpStatusCode.Unused] = 'Unused';
++HttpStatusCode[HttpStatusCode.TemporaryRedirect] = 'TemporaryRedirect';
++HttpStatusCode[HttpStatusCode.PermanentRedirect] = 'PermanentRedirect';
++HttpStatusCode[HttpStatusCode.BadRequest] = 'BadRequest';
++HttpStatusCode[HttpStatusCode.Unauthorized] = 'Unauthorized';
++HttpStatusCode[HttpStatusCode.PaymentRequired] = 'PaymentRequired';
++HttpStatusCode[HttpStatusCode.Forbidden] = 'Forbidden';
++HttpStatusCode[HttpStatusCode.NotFound] = 'NotFound';
++HttpStatusCode[HttpStatusCode.MethodNotAllowed] = 'MethodNotAllowed';
++HttpStatusCode[HttpStatusCode.NotAcceptable] = 'NotAcceptable';
++HttpStatusCode[HttpStatusCode.ProxyAuthenticationRequired] = 'ProxyAuthenticationRequired';
++HttpStatusCode[HttpStatusCode.RequestTimeout] = 'RequestTimeout';
++HttpStatusCode[HttpStatusCode.Conflict] = 'Conflict';
++HttpStatusCode[HttpStatusCode.Gone] = 'Gone';
++HttpStatusCode[HttpStatusCode.LengthRequired] = 'LengthRequired';
++HttpStatusCode[HttpStatusCode.PreconditionFailed] = 'PreconditionFailed';
++HttpStatusCode[HttpStatusCode.PayloadTooLarge] = 'PayloadTooLarge';
++HttpStatusCode[HttpStatusCode.UriTooLong] = 'UriTooLong';
++HttpStatusCode[HttpStatusCode.UnsupportedMediaType] = 'UnsupportedMediaType';
++HttpStatusCode[HttpStatusCode.RangeNotSatisfiable] = 'RangeNotSatisfiable';
++HttpStatusCode[HttpStatusCode.ExpectationFailed] = 'ExpectationFailed';
++HttpStatusCode[HttpStatusCode.ImATeapot] = 'ImATeapot';
++HttpStatusCode[HttpStatusCode.MisdirectedRequest] = 'MisdirectedRequest';
++HttpStatusCode[HttpStatusCode.UnprocessableEntity] = 'UnprocessableEntity';
++HttpStatusCode[HttpStatusCode.Locked] = 'Locked';
++HttpStatusCode[HttpStatusCode.FailedDependency] = 'FailedDependency';
++HttpStatusCode[HttpStatusCode.TooEarly] = 'TooEarly';
++HttpStatusCode[HttpStatusCode.UpgradeRequired] = 'UpgradeRequired';
++HttpStatusCode[HttpStatusCode.PreconditionRequired] = 'PreconditionRequired';
++HttpStatusCode[HttpStatusCode.TooManyRequests] = 'TooManyRequests';
++HttpStatusCode[HttpStatusCode.RequestHeaderFieldsTooLarge] = 'RequestHeaderFieldsTooLarge';
++HttpStatusCode[HttpStatusCode.UnavailableForLegalReasons] = 'UnavailableForLegalReasons';
++HttpStatusCode[HttpStatusCode.InternalServerError] = 'InternalServerError';
++HttpStatusCode[HttpStatusCode.NotImplemented] = 'NotImplemented';
++HttpStatusCode[HttpStatusCode.BadGateway] = 'BadGateway';
++HttpStatusCode[HttpStatusCode.ServiceUnavailable] = 'ServiceUnavailable';
++HttpStatusCode[HttpStatusCode.GatewayTimeout] = 'GatewayTimeout';
++HttpStatusCode[HttpStatusCode.HttpVersionNotSupported] = 'HttpVersionNotSupported';
++HttpStatusCode[HttpStatusCode.VariantAlsoNegotiates] = 'VariantAlsoNegotiates';
++HttpStatusCode[HttpStatusCode.InsufficientStorage] = 'InsufficientStorage';
++HttpStatusCode[HttpStatusCode.LoopDetected] = 'LoopDetected';
++HttpStatusCode[HttpStatusCode.NotExtended] = 'NotExtended';
++HttpStatusCode[HttpStatusCode.NetworkAuthenticationRequired] = 'NetworkAuthenticationRequired';
+ 
+ const XSSI_PREFIX$1 = /^\)\]\}',?\n/;
+ const FETCH_BACKEND = new InjectionToken(typeof ngDevMode === 'undefined' || ngDevMode ? 'FETCH_BACKEND' : '');
+@@ -1942,16 +2009,22 @@ i0.ɵɵngDeclareClassMetadata({
+   }]
+ });
+ 
+-var HttpFeatureKind;
+-(function (HttpFeatureKind) {
+-  HttpFeatureKind[HttpFeatureKind["Interceptors"] = 0] = "Interceptors";
+-  HttpFeatureKind[HttpFeatureKind["LegacyInterceptors"] = 1] = "LegacyInterceptors";
+-  HttpFeatureKind[HttpFeatureKind["CustomXsrfConfiguration"] = 2] = "CustomXsrfConfiguration";
+-  HttpFeatureKind[HttpFeatureKind["NoXsrfProtection"] = 3] = "NoXsrfProtection";
+-  HttpFeatureKind[HttpFeatureKind["JsonpSupport"] = 4] = "JsonpSupport";
+-  HttpFeatureKind[HttpFeatureKind["RequestsMadeViaParent"] = 5] = "RequestsMadeViaParent";
+-  HttpFeatureKind[HttpFeatureKind["Fetch"] = 6] = "Fetch";
+-})(HttpFeatureKind || (HttpFeatureKind = {}));
++const HttpFeatureKind = {
++  Interceptors: 0,
++  LegacyInterceptors: 1,
++  CustomXsrfConfiguration: 2,
++  NoXsrfProtection: 3,
++  JsonpSupport: 4,
++  RequestsMadeViaParent: 5,
++  Fetch: 6
++};
++HttpFeatureKind[HttpFeatureKind.Interceptors] = 'Interceptors';
++HttpFeatureKind[HttpFeatureKind.LegacyInterceptors] = 'LegacyInterceptors';
++HttpFeatureKind[HttpFeatureKind.CustomXsrfConfiguration] = 'CustomXsrfConfiguration';
++HttpFeatureKind[HttpFeatureKind.NoXsrfProtection] = 'NoXsrfProtection';
++HttpFeatureKind[HttpFeatureKind.JsonpSupport] = 'JsonpSupport';
++HttpFeatureKind[HttpFeatureKind.RequestsMadeViaParent] = 'RequestsMadeViaParent';
++HttpFeatureKind[HttpFeatureKind.Fetch] = 'Fetch';
+ function makeHttpFeature(kind, providers) {
+   return {
+     ɵkind: kind,
+diff --git a/node_modules/@angular/common/http/index.d.ts b/node_modules/@angular/common/http/index.d.ts
+new file mode 100644
+index 0000000..c299eb3
+--- /dev/null
++++ b/node_modules/@angular/common/http/index.d.ts
+@@ -0,0 +1 @@
++export * from '../types/http.js';
+\ No newline at end of file

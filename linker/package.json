@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@angular/compiler": "21.0.8",
+    "@angular/compiler-cli": "21.0.8",
+    "@babel/core": "7.16.0",
+    "baseline-browser-mapping": "^2.9.14",
+    "caniuse-lite": "^1.0.30001764"
+  }
+}

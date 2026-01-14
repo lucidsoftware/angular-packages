@@ -1,0 +1,50 @@
+diff --git a/node_modules/@angular/platform-browser-dynamic/testing/index.d.ts b/node_modules/@angular/platform-browser-dynamic/testing/index.d.ts
+new file mode 100644
+index 0000000..27569ee
+--- /dev/null
++++ b/node_modules/@angular/platform-browser-dynamic/testing/index.d.ts
+@@ -0,0 +1 @@
++export * from '../types/testing.js';
+\ No newline at end of file
+diff --git a/node_modules/@angular/platform-browser-dynamic/types/platform-browser-dynamic.d.ts b/node_modules/@angular/platform-browser-dynamic/types/platform-browser-dynamic.d.ts
+index 67c93a5..808e1a8 100755
+--- a/node_modules/@angular/platform-browser-dynamic/types/platform-browser-dynamic.d.ts
++++ b/node_modules/@angular/platform-browser-dynamic/types/platform-browser-dynamic.d.ts
+@@ -4,7 +4,7 @@
+  * License: MIT
+  */
+ 
+-import { Version, CompilerFactory, CompilerOptions, Compiler, StaticProvider, PlatformRef } from '@angular/core';
++import { Version, CompilerFactory, CompilerOptions, Compiler, StaticProvider, PlatformRef, Injector } from '@angular/core';
+ 
+ /**
+  * @module
+@@ -32,6 +32,6 @@ declare class JitCompilerFactory implements CompilerFactory {
+  * @deprecated Use the `platformBrowser` function instead from `@angular/platform-browser`.
+  * In case you are not in a CLI app and rely on JIT compilation, you will also need to import `@angular/compiler`
+  */
+-declare const platformBrowserDynamic: (extraProviders?: StaticProvider[]) => PlatformRef;
++declare const platformBrowserDynamic: (extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef;
+ 
+ export { JitCompilerFactory, VERSION, platformBrowserDynamic };
+diff --git a/node_modules/@angular/platform-browser-dynamic/types/testing.d.ts b/node_modules/@angular/platform-browser-dynamic/types/testing.d.ts
+index 045992c..797770b 100755
+--- a/node_modules/@angular/platform-browser-dynamic/types/testing.d.ts
++++ b/node_modules/@angular/platform-browser-dynamic/types/testing.d.ts
+@@ -5,14 +5,14 @@
+  */
+ 
+ import * as i0 from '@angular/core';
+-import { StaticProvider, PlatformRef } from '@angular/core';
++import { StaticProvider, PlatformRef, Injector } from '@angular/core';
+ import * as i1 from '@angular/platform-browser/testing';
+ 
+ /**
+  * @deprecated Use the `platformBrowserTesting` function instead from `@angular/platform-browser/testing`.
+  * In case you are not in a CLI app and rely on JIT compilation, you might also need to import `@angular/compiler`
+  */
+-declare const platformBrowserDynamicTesting: (extraProviders?: StaticProvider[]) => PlatformRef;
++declare const platformBrowserDynamicTesting: (extraProviders?: StaticProvider[], parentInjector?: Injector) => PlatformRef;
+ /**
+  * NgModule for testing.
+  *

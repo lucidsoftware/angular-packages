@@ -1,8 +1,8 @@
 diff --git a/node_modules/@angular/compiler-cli/package.json b/node_modules/@angular/compiler-cli/package.json
-index dc285ff..6d041e2 100755
+index 4708164..8b900ab 100755
 --- a/node_modules/@angular/compiler-cli/package.json
 +++ b/node_modules/@angular/compiler-cli/package.json
-@@ -9,6 +9,7 @@
+@@ -8,6 +8,7 @@
      "ng-xi18n": "./bundles/src/bin/ng_xi18n.js"
    },
    "type": "module",

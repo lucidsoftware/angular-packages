@@ -1,0 +1,124 @@
+diff --git a/node_modules/@angular/router/fesm2022/_router-chunk.mjs b/node_modules/@angular/router/fesm2022/_router-chunk.mjs
+index f7b7ef7..3760901 100755
+--- a/node_modules/@angular/router/fesm2022/_router-chunk.mjs
++++ b/node_modules/@angular/router/fesm2022/_router-chunk.mjs
+@@ -889,26 +889,42 @@ function compare(path, params, segment) {
+ }
+ 
+ const IMPERATIVE_NAVIGATION = 'imperative';
+-var EventType;
+-(function (EventType) {
+-  EventType[EventType["NavigationStart"] = 0] = "NavigationStart";
+-  EventType[EventType["NavigationEnd"] = 1] = "NavigationEnd";
+-  EventType[EventType["NavigationCancel"] = 2] = "NavigationCancel";
+-  EventType[EventType["NavigationError"] = 3] = "NavigationError";
+-  EventType[EventType["RoutesRecognized"] = 4] = "RoutesRecognized";
+-  EventType[EventType["ResolveStart"] = 5] = "ResolveStart";
+-  EventType[EventType["ResolveEnd"] = 6] = "ResolveEnd";
+-  EventType[EventType["GuardsCheckStart"] = 7] = "GuardsCheckStart";
+-  EventType[EventType["GuardsCheckEnd"] = 8] = "GuardsCheckEnd";
+-  EventType[EventType["RouteConfigLoadStart"] = 9] = "RouteConfigLoadStart";
+-  EventType[EventType["RouteConfigLoadEnd"] = 10] = "RouteConfigLoadEnd";
+-  EventType[EventType["ChildActivationStart"] = 11] = "ChildActivationStart";
+-  EventType[EventType["ChildActivationEnd"] = 12] = "ChildActivationEnd";
+-  EventType[EventType["ActivationStart"] = 13] = "ActivationStart";
+-  EventType[EventType["ActivationEnd"] = 14] = "ActivationEnd";
+-  EventType[EventType["Scroll"] = 15] = "Scroll";
+-  EventType[EventType["NavigationSkipped"] = 16] = "NavigationSkipped";
+-})(EventType || (EventType = {}));
++const EventType = {
++  NavigationStart: 0,
++  NavigationEnd: 1,
++  NavigationCancel: 2,
++  NavigationError: 3,
++  RoutesRecognized: 4,
++  ResolveStart: 5,
++  ResolveEnd: 6,
++  GuardsCheckStart: 7,
++  GuardsCheckEnd: 8,
++  RouteConfigLoadStart: 9,
++  RouteConfigLoadEnd: 10,
++  ChildActivationStart: 11,
++  ChildActivationEnd: 12,
++  ActivationStart: 13,
++  ActivationEnd: 14,
++  Scroll: 15,
++  NavigationSkipped: 16
++};
++EventType[EventType.NavigationStart] = 'NavigationStart';
++EventType[EventType.NavigationEnd] = 'NavigationEnd';
++EventType[EventType.NavigationCancel] = 'NavigationCancel';
++EventType[EventType.NavigationError] = 'NavigationError';
++EventType[EventType.RoutesRecognized] = 'RoutesRecognized';
++EventType[EventType.ResolveStart] = 'ResolveStart';
++EventType[EventType.ResolveEnd] = 'ResolveEnd';
++EventType[EventType.GuardsCheckStart] = 'GuardsCheckStart';
++EventType[EventType.GuardsCheckEnd] = 'GuardsCheckEnd';
++EventType[EventType.RouteConfigLoadStart] = 'RouteConfigLoadStart';
++EventType[EventType.RouteConfigLoadEnd] = 'RouteConfigLoadEnd';
++EventType[EventType.ChildActivationStart] = 'ChildActivationStart';
++EventType[EventType.ChildActivationEnd] = 'ChildActivationEnd';
++EventType[EventType.ActivationStart] = 'ActivationStart';
++EventType[EventType.ActivationEnd] = 'ActivationEnd';
++EventType[EventType.Scroll] = 'Scroll';
++EventType[EventType.NavigationSkipped] = 'NavigationSkipped';
+ class RouterEvent {
+   id;
+   url;
+@@ -941,19 +957,24 @@ class NavigationEnd extends RouterEvent {
+     return `NavigationEnd(id: ${this.id}, url: '${this.url}', urlAfterRedirects: '${this.urlAfterRedirects}')`;
+   }
+ }
+-var NavigationCancellationCode;
+-(function (NavigationCancellationCode) {
+-  NavigationCancellationCode[NavigationCancellationCode["Redirect"] = 0] = "Redirect";
+-  NavigationCancellationCode[NavigationCancellationCode["SupersededByNewNavigation"] = 1] = "SupersededByNewNavigation";
+-  NavigationCancellationCode[NavigationCancellationCode["NoDataFromResolver"] = 2] = "NoDataFromResolver";
+-  NavigationCancellationCode[NavigationCancellationCode["GuardRejected"] = 3] = "GuardRejected";
+-  NavigationCancellationCode[NavigationCancellationCode["Aborted"] = 4] = "Aborted";
+-})(NavigationCancellationCode || (NavigationCancellationCode = {}));
+-var NavigationSkippedCode;
+-(function (NavigationSkippedCode) {
+-  NavigationSkippedCode[NavigationSkippedCode["IgnoredSameUrlNavigation"] = 0] = "IgnoredSameUrlNavigation";
+-  NavigationSkippedCode[NavigationSkippedCode["IgnoredByUrlHandlingStrategy"] = 1] = "IgnoredByUrlHandlingStrategy";
+-})(NavigationSkippedCode || (NavigationSkippedCode = {}));
++const NavigationCancellationCode = {
++  Redirect: 0,
++  SupersededByNewNavigation: 1,
++  NoDataFromResolver: 2,
++  GuardRejected: 3,
++  Aborted: 4
++};
++NavigationCancellationCode[NavigationCancellationCode.Redirect] = 'Redirect';
++NavigationCancellationCode[NavigationCancellationCode.SupersededByNewNavigation] = 'SupersededByNewNavigation';
++NavigationCancellationCode[NavigationCancellationCode.NoDataFromResolver] = 'NoDataFromResolver';
++NavigationCancellationCode[NavigationCancellationCode.GuardRejected] = 'GuardRejected';
++NavigationCancellationCode[NavigationCancellationCode.Aborted] = 'Aborted';
++const NavigationSkippedCode = {
++  IgnoredSameUrlNavigation: 0,
++  IgnoredByUrlHandlingStrategy: 1
++};
++NavigationSkippedCode[NavigationSkippedCode.IgnoredSameUrlNavigation] = 'IgnoredSameUrlNavigation';
++NavigationSkippedCode[NavigationSkippedCode.IgnoredByUrlHandlingStrategy] = 'IgnoredByUrlHandlingStrategy';
+ class NavigationCancel extends RouterEvent {
+   reason;
+   code;
+@@ -4952,9 +4973,7 @@ class Router {
+       currentSnapshot: this.routerState.snapshot,
+       currentRouterState: this.routerState
+     });
+-    return promise.catch(e => {
+-      return Promise.reject(e);
+-    });
++    return promise.catch(Promise.reject.bind(Promise));
+   }
+   static ɵfac = i0.ɵɵngDeclareFactory({
+     minVersion: "12.0.0",
+diff --git a/node_modules/@angular/router/testing/index.d.ts b/node_modules/@angular/router/testing/index.d.ts
+new file mode 100644
+index 0000000..27569ee
+--- /dev/null
++++ b/node_modules/@angular/router/testing/index.d.ts
+@@ -0,0 +1 @@
++export * from '../types/testing.js';
+\ No newline at end of file
