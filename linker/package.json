@@ -3,7 +3,11 @@
     "@angular/compiler": "21.0.8",
     "@angular/compiler-cli": "21.0.8",
     "@babel/core": "7.16.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.3.0",
     "baseline-browser-mapping": "^2.9.14",
-    "caniuse-lite": "^1.0.30001764"
+    "caniuse-lite": "^1.0.30001764",
+    "rollup": "^4.28.1",
+    "rollup-plugin-dts": "^6.1.1"
   }
 }

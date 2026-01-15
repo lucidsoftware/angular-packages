@@ -66,13 +66,6 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/upgrade@21.0.8":
-  version "21.0.8"
-  resolved "https://registry.yarnpkg.com/@angular/upgrade/-/upgrade-21.0.8.tgz#fdf77b948c7367fdca7814f49a172260c99fc25a"
-  integrity sha512-hvzSuSPhmFaqVZWmq8fv8WMn50XIpdQzuxQSRKdvJfm5HBLZRUvjwueSYCpsZVbXZ+iCnzdzPedFyVfKuKCSnw==
-  dependencies:
-    tslib "^2.3.0"
-
 "@babel/code-frame@^7.27.1":
   version "7.27.1"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.27.1.tgz#200f715e66d52a23b221a9435534a91cc13ad5be"

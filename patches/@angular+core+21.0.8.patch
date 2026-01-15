@@ -486,7 +486,7 @@ index 16cea0a..c05b58f 100755
  let _isRefreshingViews = false;
  function getElementDepthCount() {
 diff --git a/node_modules/@angular/core/fesm2022/core.mjs b/node_modules/@angular/core/fesm2022/core.mjs
-index ef64bc9..a8f9db5 100755
+index ef64bc9..7366035 100755
 --- a/node_modules/@angular/core/fesm2022/core.mjs
 +++ b/node_modules/@angular/core/fesm2022/core.mjs
 @@ -57,34 +57,45 @@ function createInputSignal(initialValue, options) {
@@ -562,6 +562,39 @@ index ef64bc9..a8f9db5 100755
  
  class HostAttributeToken {
    attributeName;
+@@ -791,19 +802,19 @@ function createPlatform(injector) {
+ function createPlatformFactory(parentPlatformFactory, name, providers = []) {
+   const desc = `Platform: ${name}`;
+   const marker = new InjectionToken(desc);
+-  return (extraProviders = []) => {
++  return (extraProviders = [], parentInjector) => {
+     let platform = getPlatform();
+     if (!platform) {
+       const platformProviders = [...providers, ...extraProviders, {
+         provide: marker,
+         useValue: true
+       }];
+-      platform = parentPlatformFactory?.(platformProviders) ?? createPlatform(createPlatformInjector(platformProviders, desc));
++      platform = parentPlatformFactory?.(platformProviders, parentInjector) ?? createPlatform(createPlatformInjector(platformProviders, desc, parentInjector));
+     }
+     return typeof ngServerMode !== 'undefined' && ngServerMode ? platform : assertPlatform(marker);
+   };
+ }
+-function createPlatformInjector(providers = [], name) {
++function createPlatformInjector(providers = [], name, parentInjector) {
+   return Injector.create({
+     name,
+     providers: [{
+@@ -812,7 +823,8 @@ function createPlatformInjector(providers = [], name) {
+     }, {
+       provide: PLATFORM_DESTROY_LISTENERS,
+       useValue: new Set([() => _platformInjector = null])
+-    }, ...providers]
++    }, ...providers],
++    parent: parentInjector,
+   });
+ }
+ function assertPlatform(requiredToken) {
 diff --git a/node_modules/@angular/core/fesm2022/primitives-event-dispatch.mjs b/node_modules/@angular/core/fesm2022/primitives-event-dispatch.mjs
 index 97ad7ac..5e1e40e 100755
 --- a/node_modules/@angular/core/fesm2022/primitives-event-dispatch.mjs

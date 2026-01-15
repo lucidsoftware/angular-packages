@@ -7,7 +7,7 @@ patch-package
 # find node_modules/@angular/**/esm2022 -maxdepth 0 -type d -exec rm -r {} \;
 find node_modules/@angular/ -name '*.map' -delete
 # Run Angular's Babel linker to produce AoT output
-find node_modules/@angular/**/fesm2022 -name '*.mjs' -not -path "node_modules/@angular/compiler/*" -not -path "node_modules/@angular/compiler-cli/*" -exec node linker/linker.mjs {} {} \;
+find node_modules/@angular/**/fesm2022 -name '*.mjs' -not -name '_*' -not -path "node_modules/@angular/compiler/*" -not -path "node_modules/@angular/compiler-cli/*" -exec node linker/linker.mjs {} {} \;
 # find node_modules/@angular/compiler/fesm2022 -name '*.mjs' -exec node linker/linker.mjs {} {} \;
 # Run ngcc for pre APF13 packages
 # ngcc --tsconfig closure.tsconfig.json --target ngx-monaco-editor --loglevel debug --no-async

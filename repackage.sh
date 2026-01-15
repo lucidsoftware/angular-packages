@@ -10,7 +10,6 @@ PACKAGES=(
   "@angular/platform-browser-dynamic"
   "@angular/platform-browser"
   "@angular/router"
-  "@angular/upgrade"
 )
 
 mkdir -p dist
