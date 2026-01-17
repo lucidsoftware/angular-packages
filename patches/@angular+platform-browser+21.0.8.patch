@@ -29,14 +29,6 @@ index 32a7f41..3c0cb6c 100755
  function hydrationFeature(ɵkind, ɵproviders = [], ɵoptions = {}) {
    return {
      ɵkind,
-diff --git a/node_modules/@angular/platform-browser/testing/index.d.ts b/node_modules/@angular/platform-browser/testing/index.d.ts
-new file mode 100644
-index 0000000..27569ee
---- /dev/null
-+++ b/node_modules/@angular/platform-browser/testing/index.d.ts
-@@ -0,0 +1 @@
-+export * from '../types/testing.js';
-\ No newline at end of file
 diff --git a/node_modules/@angular/platform-browser/types/_browser-chunk.d.ts b/node_modules/@angular/platform-browser/types/_browser-chunk.d.ts
 index fe2126a..d82e7b8 100755
 --- a/node_modules/@angular/platform-browser/types/_browser-chunk.d.ts

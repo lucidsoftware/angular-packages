@@ -395,11 +395,3 @@ index 126add8..4e1f05a 100755
  function makeHttpFeature(kind, providers) {
    return {
      ɵkind: kind,
-diff --git a/node_modules/@angular/common/http/index.d.ts b/node_modules/@angular/common/http/index.d.ts
-new file mode 100644
-index 0000000..c299eb3
---- /dev/null
-+++ b/node_modules/@angular/common/http/index.d.ts
-@@ -0,0 +1 @@
-+export * from '../types/http.js';
-\ No newline at end of file

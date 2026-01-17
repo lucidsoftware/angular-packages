@@ -114,11 +114,3 @@ index f7b7ef7..3760901 100755
    }
    static ɵfac = i0.ɵɵngDeclareFactory({
      minVersion: "12.0.0",
-diff --git a/node_modules/@angular/router/testing/index.d.ts b/node_modules/@angular/router/testing/index.d.ts
-new file mode 100644
-index 0000000..27569ee
---- /dev/null
-+++ b/node_modules/@angular/router/testing/index.d.ts
-@@ -0,0 +1 @@
-+export * from '../types/testing.js';
-\ No newline at end of file

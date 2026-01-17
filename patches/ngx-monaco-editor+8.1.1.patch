@@ -1,57 +1,20 @@
-diff --git a/node_modules/ngx-monaco-editor/lib/diff-editor.component.d.ts b/node_modules/ngx-monaco-editor/lib/diff-editor.component.d.ts
-index 90725a0..2268167 100644
---- a/node_modules/ngx-monaco-editor/lib/diff-editor.component.d.ts
-+++ b/node_modules/ngx-monaco-editor/lib/diff-editor.component.d.ts
-@@ -1,6 +1,7 @@
- import { BaseEditor } from './base-editor';
- import { NgxMonacoEditorConfig } from './config';
- import { DiffEditorModel } from './types';
-+import * as i0 from '@angular/core';
- export declare class DiffEditorComponent extends BaseEditor {
-     private editorConfig;
-     _originalModel: DiffEditorModel;
-@@ -10,4 +11,7 @@ export declare class DiffEditorComponent extends BaseEditor {
-     modifiedModel: DiffEditorModel;
-     constructor(editorConfig: NgxMonacoEditorConfig);
-     protected initMonaco(options: any): void;
-+
-+    static ɵfac: i0.ɵɵFactoryDeclaration<DiffEditorComponent, [typeof NgxMonacoEditorConfig]>;
-+    static ɵcmp: i0.ɵɵComponentDeclaration<DiffEditorComponent, "ngx-monaco-editor", never, {"options": {"alias": "options"; required: false}; "originalModel": {"alias": "originalModel"; required: false}; "modifiedModel": {"alias": "modifiedModel"; required: false};}, {"onInit": "onInit"}, never, never>;
- }
-diff --git a/node_modules/ngx-monaco-editor/lib/editor.component.d.ts b/node_modules/ngx-monaco-editor/lib/editor.component.d.ts
-index 0b0347c..93b6da2 100644
---- a/node_modules/ngx-monaco-editor/lib/editor.component.d.ts
-+++ b/node_modules/ngx-monaco-editor/lib/editor.component.d.ts
-@@ -3,6 +3,7 @@ import { ControlValueAccessor } from '@angular/forms';
- import { BaseEditor } from './base-editor';
- import { NgxMonacoEditorConfig } from './config';
- import { NgxEditorModel } from './types';
-+import * as i0 from '@angular/core';
- export declare class EditorComponent extends BaseEditor implements ControlValueAccessor {
-     private zone;
-     private editorConfig;
-@@ -16,4 +17,7 @@ export declare class EditorComponent extends BaseEditor implements ControlValueA
-     registerOnChange(fn: any): void;
-     registerOnTouched(fn: any): void;
-     protected initMonaco(options: any): void;
-+
-+    static ɵfac: i0.ɵɵFactoryDeclaration<EditorComponent, [typeof NgZone, typeof NgxMonacoEditorConfig]>;
-+    static ɵcmp: i0.ɵɵComponentDeclaration<EditorComponent, "ngx-monaco-editor", never, {"options": {"alias": "options"; required: false}; "model": {"alias": "model"; required: false};}, {"onInit": "onInit"}, never, never>;
- }
-diff --git a/node_modules/ngx-monaco-editor/lib/editor.module.d.ts b/node_modules/ngx-monaco-editor/lib/editor.module.d.ts
-index 4c3994a..79dcc5c 100644
---- a/node_modules/ngx-monaco-editor/lib/editor.module.d.ts
-+++ b/node_modules/ngx-monaco-editor/lib/editor.module.d.ts
-@@ -1,5 +1,11 @@
--import { ModuleWithProviders } from '@angular/core';
-+import { CommonModule } from '@angular/common';
-+import { ModuleWithProviders, ɵɵFactoryDeclaration, ɵɵNgModuleDeclaration, ɵɵInjectorDeclaration } from '@angular/core';
- import { NgxMonacoEditorConfig } from './config';
-+import { EditorComponent } from './editor.component';
-+import { DiffEditorComponent } from './diff-editor.component';
- export declare class MonacoEditorModule {
-     static forRoot(config?: NgxMonacoEditorConfig): ModuleWithProviders<MonacoEditorModule>;
-+    static ɵfac: ɵɵFactoryDeclaration<MonacoEditorModule, never>;
-+    static ɵmod: ɵɵNgModuleDeclaration<MonacoEditorModule, [typeof EditorComponent, typeof DiffEditorComponent], [typeof CommonModule], [typeof EditorComponent, typeof DiffEditorComponent]>;
-+    static ɵinj: ɵɵInjectorDeclaration<MonacoEditorModule>;
- }
+diff --git a/node_modules/ngx-monaco-editor/fesm2015/ngx-monaco-editor.js b/node_modules/ngx-monaco-editor/fesm2015/ngx-monaco-editor.js
+index 3ebd1bf..1ff11ed 100644
+--- a/node_modules/ngx-monaco-editor/fesm2015/ngx-monaco-editor.js
++++ b/node_modules/ngx-monaco-editor/fesm2015/ngx-monaco-editor.js
+@@ -293,6 +293,7 @@ EditorComponent.decorators = [
+     { type: Component, args: [{
+                 selector: 'ngx-monaco-editor',
+                 template: '<div class="editor-container" #editorContainer></div>',
++                standalone: false,
+                 providers: [{
+                         provide: NG_VALUE_ACCESSOR,
+                         useExisting: forwardRef((/**
+@@ -435,6 +436,7 @@ DiffEditorComponent.decorators = [
+     { type: Component, args: [{
+                 selector: 'ngx-monaco-diff-editor',
+                 template: '<div class="editor-container" #editorContainer></div>',
++                standalone: false,
+                 styles: [`
+     :host {
+       display: block;
