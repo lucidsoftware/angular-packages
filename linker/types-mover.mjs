@@ -56,6 +56,9 @@ if (packageJson.typings && packageJson.typings.startsWith('./types/')) {
     console.error(`  Updated "typings" field to ./index.d.ts`);
 }
 
+// Collect exports to normalize (exports that need path changes)
+const exportsToNormalize = [];
+
 // Iterate through all exports and update types paths
 for (const [exportPath, exportConfig] of Object.entries(packageJson.exports)) {
     // Skip non-object exports
@@ -82,10 +85,42 @@ for (const [exportPath, exportConfig] of Object.entries(packageJson.exports)) {
     }
 
     exportConfig.types = newTypesPath;
+
+    // Also update the default path to use the file basename (normalize path)
+    if (exportConfig.default) {
+        const defaultFileName = path.basename(exportConfig.default);
+        exportConfig.default = `./fesm2022/${defaultFileName}`;
+    }
+
     packageJsonModified = true;
     movedCount++;
 
+    // Check if export path needs normalization (e.g., "./primitives/signals" -> "./primitives-signals")
+    // This happens when the export path has slashes but the file uses dashes
+    const fileBaseName = fileName.replace('.d.ts', ''); // e.g., 'primitives-signals.d.ts' -> 'primitives-signals'
+    const exportPathClean = exportPath.replace(/^\.\//, ''); // remove leading ./
+    const expectedExportPath = fileBaseName;
+
+    if (exportPath !== '.' && exportPathClean !== expectedExportPath) {
+        // Export path doesn't match file name, needs normalization
+        const normalizedExportPath = `./${expectedExportPath}`;
+        exportsToNormalize.push({
+            oldPath: exportPath,
+            newPath: normalizedExportPath,
+            config: exportConfig
+        });
+        console.error(`  Will normalize export path: "${exportPath}" -> "${normalizedExportPath}"`);
+    }
+
     console.error(`  Updated export "${exportPath}": ${oldTypesPath} -> ${newTypesPath}`);
+}
+
+// Apply export path normalizations
+for (const { oldPath, newPath, config } of exportsToNormalize) {
+    delete packageJson.exports[oldPath];
+    packageJson.exports[newPath] = config;
+    packageJsonModified = true;
+    console.error(`  Renamed export path: "${oldPath}" -> "${newPath}"`);
 }
 
 // Write back package.json if modified
