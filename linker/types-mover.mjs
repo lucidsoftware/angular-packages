@@ -115,12 +115,11 @@ for (const [exportPath, exportConfig] of Object.entries(packageJson.exports)) {
     console.error(`  Updated export "${exportPath}": ${oldTypesPath} -> ${newTypesPath}`);
 }
 
-// Apply export path normalizations
+// Apply export path normalizations — keep the original path and add the normalized one too
 for (const { oldPath, newPath, config } of exportsToNormalize) {
-    delete packageJson.exports[oldPath];
-    packageJson.exports[newPath] = config;
+    packageJson.exports[newPath] = { ...config };
     packageJsonModified = true;
-    console.error(`  Renamed export path: "${oldPath}" -> "${newPath}"`);
+    console.error(`  Added export path: "${newPath}" (keeping "${oldPath}")`);
 }
 
 // Write back package.json if modified
