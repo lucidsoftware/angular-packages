@@ -12,8 +12,8 @@ if [ "$PATCHES_ONLY" = true ]; then
     exit 0
 fi
 
-(cd linker && yarn install)
-(cd ngcc-tools && yarn install)
+(cd linker && npx yarn install)
+(cd ngcc-tools && npx yarn install)
 # Remove unused packages and files
 # find node_modules/@angular/**/esm2022 -maxdepth 0 -type d -exec rm -r {} \;
 find node_modules/@angular/ -name '*.map' -delete
