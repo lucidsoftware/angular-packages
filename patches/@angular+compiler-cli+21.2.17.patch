@@ -1,0 +1,124 @@
+diff --git a/node_modules/@angular/compiler-cli/package.json b/node_modules/@angular/compiler-cli/package.json
+--- a/node_modules/@angular/compiler-cli/package.json
++++ b/node_modules/@angular/compiler-cli/package.json
+@@ -7,7 +7,8 @@
+     "ngc": "./bundles/src/bin/ngc.js",
+     "ng-xi18n": "./bundles/src/bin/ng_xi18n.js"
+   },
+   "type": "module",
++  "main": "./bundles/index.js",
+   "exports": {
+     ".": {
+       "types": "./index.d.ts",
+diff --git a/node_modules/@angular/compiler-cli/bundles/private/preprocessor.js b/node_modules/@angular/compiler-cli/bundles/private/preprocessor.js
+new file mode 100644
+index 0000000..4a4e44c
+--- /dev/null
++++ b/node_modules/@angular/compiler-cli/bundles/private/preprocessor.js
+@@ -0,0 +1,99 @@
++import "../index.js";
++import ts from "typescript";
++import {
++  NgCompiler,
++  NgCompilerHost,
++  TrackedIncrementalBuildStrategy,
++  freshCompilationTicket,
++  incrementalFromCompilerTicket
++} from "../chunk-PMBD6IFV.js";
++import {
++  ActivePerfRecorder,
++  PerfPhase,
++  TsCreateProgramDriver
++} from "../chunk-XMX6JBER.js";
++
++class NgtscIsolatedPreprocessor {
++  compiler;
++  tsProgram;
++  host;
++  incrementalStrategy;
++  constructor(rootNames, options, delegateHost, oldProgram) {
++    this.options = {
++      ...options,
++      _experimentalEmitIntermediateTs: true
++    };
++    const perfRecorder = ActivePerfRecorder.zeroedToNow();
++    perfRecorder.phase(PerfPhase.Setup);
++    const reuseProgram = oldProgram?.compiler.getCurrentProgram();
++    this.host = NgCompilerHost.wrap(delegateHost, rootNames, options, reuseProgram ?? null);
++    this.tsProgram = ts.createProgram(this.host.inputFiles, options, this.host, reuseProgram);
++    const programDriver = new TsCreateProgramDriver(
++      this.tsProgram,
++      this.host,
++      this.options,
++      this.host.shimExtensionPrefixes
++    );
++    this.incrementalStrategy = oldProgram !== void 0
++      ? oldProgram.incrementalStrategy.toNextBuildStrategy()
++      : new TrackedIncrementalBuildStrategy();
++    let ticket;
++    if (oldProgram === void 0) {
++      ticket = freshCompilationTicket(
++        this.tsProgram,
++        this.options,
++        this.incrementalStrategy,
++        programDriver,
++        perfRecorder,
++        !!this.options._enableTemplateTypeChecker,
++        false
++      );
++    } else {
++      ticket = incrementalFromCompilerTicket(
++        oldProgram.compiler,
++        this.tsProgram,
++        this.incrementalStrategy,
++        programDriver,
++        new Set(),
++        perfRecorder
++      );
++    }
++    this.compiler = NgCompiler.fromTicket(ticket, this.host);
++  }
++  transformAndPrint() {
++    this.compiler["ensureAnalyzed"]().templateTypeChecker.generateAllTypeCheckBlocks();
++    const transformers = this.compiler.prepareEmit().transformers;
++    const beforeTransformers = transformers.before || [];
++    const result = [];
++    const printer = ts.createPrinter({
++      newLine: ts.NewLineKind.LineFeed,
++      removeComments: false
++    });
++    const program = this.compiler.getCurrentProgram();
++    for (const sf of program.getSourceFiles()) {
++      if (sf.isDeclarationFile) {
++        continue;
++      }
++      if (sf.fileName.endsWith(".ngtypecheck.ts")) {
++        result.push({fileName: sf.fileName, content: printer.printFile(sf)});
++        continue;
++      }
++      const transformationResult = ts.transform(sf, beforeTransformers, this.options);
++      if (transformationResult.transformed.length !== 1) {
++        transformationResult.dispose();
++        throw new Error(
++          `Expected exactly one transformed file, got ${transformationResult.transformed.length}`
++        );
++      }
++      const transformedSf = transformationResult.transformed[0];
++      result.push({fileName: sf.fileName, content: printer.printFile(transformedSf)});
++      transformationResult.dispose();
++      this.compiler.incrementalCompilation.recordSuccessfulEmit(sf);
++    }
++    return result;
++  }
++}
++
++export {
++  NgtscIsolatedPreprocessor
++};
+diff --git a/node_modules/@angular/compiler-cli/private/preprocessor.d.ts b/node_modules/@angular/compiler-cli/private/preprocessor.d.ts
+new file mode 100644
+index 0000000..a26659e
+--- /dev/null
++++ b/node_modules/@angular/compiler-cli/private/preprocessor.d.ts
+@@ -0,0 +1 @@
++export {NgtscIsolatedPreprocessor} from '../src/ngtsc/preprocessor';

@@ -1,5 +1,5 @@
 diff --git a/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs b/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
-index db1d87d..909d1c2 100755
+index 271f3e8..e38daf6 100755
 --- a/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
 +++ b/node_modules/@angular/common/fesm2022/_common_module-chunk.mjs
 @@ -245,41 +245,56 @@ const CURRENCIES_EN = {
@@ -128,7 +128,7 @@ index db1d87d..909d1c2 100755
    return _findLocaleData(locale)[_LocaleDataIndex.LocaleId];
  }
 diff --git a/node_modules/@angular/common/fesm2022/_module-chunk.mjs b/node_modules/@angular/common/fesm2022/_module-chunk.mjs
-index 126add8..4e1f05a 100755
+index a607498..6ee8215 100755
 --- a/node_modules/@angular/common/fesm2022/_module-chunk.mjs
 +++ b/node_modules/@angular/common/fesm2022/_module-chunk.mjs
 @@ -608,15 +608,20 @@ class HttpRequest {
@@ -362,7 +362,7 @@ index 126add8..4e1f05a 100755
  
  const XSSI_PREFIX$1 = /^\)\]\}',?\n/;
  const FETCH_BACKEND = new InjectionToken(typeof ngDevMode === 'undefined' || ngDevMode ? 'FETCH_BACKEND' : '');
-@@ -1942,16 +2009,22 @@ i0.ɵɵngDeclareClassMetadata({
+@@ -1954,16 +2021,22 @@ i0.ɵɵngDeclareClassMetadata({
    }]
  });
  

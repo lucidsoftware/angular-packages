@@ -1,0 +1,32 @@
+diff --git a/node_modules/@angular/compiler/package.json b/node_modules/@angular/compiler/package.json
+--- a/node_modules/@angular/compiler/package.json
++++ b/node_modules/@angular/compiler/package.json
+@@ -39,6 +39,7 @@
+     "./fesm2022/compiler.mjs"
+   ],
+   "module": "./fesm2022/compiler.mjs",
++  "main": "./fesm2022/compiler.mjs",
+   "typings": "./types/compiler.d.ts",
+   "type": "module",
+   "exports": {
+diff --git a/node_modules/@angular/compiler/fesm2022/compiler.mjs b/node_modules/@angular/compiler/fesm2022/compiler.mjs
+index 29181af..f5a105a 100755
+--- a/node_modules/@angular/compiler/fesm2022/compiler.mjs
++++ b/node_modules/@angular/compiler/fesm2022/compiler.mjs
+@@ -1656,6 +1656,7 @@ class SpreadElementExpr extends Expression {
+ }
+ const NULL_EXPR = new LiteralExpr(null, null, null);
+ const TYPED_NULL_EXPR = new LiteralExpr(null, INFERRED_TYPE, null);
++const UNDEFINED_EXPR = new LiteralExpr(undefined, null, null);
+ var StmtModifier;
+ (function (StmtModifier) {
+   StmtModifier[StmtModifier["None"] = 0] = "None";
+@@ -10686,7 +10687,7 @@ function ternaryTransform(e) {
+   if (!(e instanceof SafeTernaryExpr)) {
+     return e;
+   }
+-  return new ParenthesizedExpr(new ConditionalExpr(new BinaryOperatorExpr(BinaryOperator.Equals, e.guard, NULL_EXPR), NULL_EXPR, e.expr));
++  return new ParenthesizedExpr(new ConditionalExpr(new BinaryOperatorExpr(BinaryOperator.Equals, e.guard, NULL_EXPR), UNDEFINED_EXPR, e.expr));
+ }
+ 
+ const ESCAPE$1 = '\uFFFD';

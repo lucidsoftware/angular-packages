@@ -1,8 +1,8 @@
 diff --git a/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs b/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
-index 32a7f41..3c0cb6c 100755
+index f68c26e..e98aa5b 100755
 --- a/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
 +++ b/node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
-@@ -629,14 +629,18 @@ i0.ɵɵngDeclareClassMetadata({
+@@ -633,14 +633,18 @@ i0.ɵɵngDeclareClassMetadata({
    }]
  });
  
@@ -30,19 +30,19 @@ index 32a7f41..3c0cb6c 100755
    return {
      ɵkind,
 diff --git a/node_modules/@angular/platform-browser/types/_browser-chunk.d.ts b/node_modules/@angular/platform-browser/types/_browser-chunk.d.ts
-index fe2126a..d82e7b8 100755
+index 89fd6bd..0d8b69f 100755
 --- a/node_modules/@angular/platform-browser/types/_browser-chunk.d.ts
 +++ b/node_modules/@angular/platform-browser/types/_browser-chunk.d.ts
 @@ -5,7 +5,7 @@
   */
  
  import * as i0 from '@angular/core';
--import { PlatformRef, Type, ApplicationConfig, ApplicationRef, Provider, StaticProvider } from '@angular/core';
-+import { PlatformRef, Type, ApplicationConfig, ApplicationRef, Provider, StaticProvider, Injector } from '@angular/core';
+-import { PlatformRef, Type, ApplicationConfig, ApplicationRef, StaticProvider, Provider } from '@angular/core';
++import { PlatformRef, Type, ApplicationConfig, ApplicationRef, StaticProvider, Provider, Injector } from '@angular/core';
  import * as i1 from '@angular/common';
  
  /**
-@@ -114,7 +114,7 @@ declare function provideProtractorTestingSupport(): Provider[];
+@@ -115,7 +115,7 @@ declare function provideProtractorTestingSupport(): Provider[];
   *
   * @publicApi
   */
@@ -52,7 +52,7 @@ index fe2126a..d82e7b8 100755
   * Exports required infrastructure for all Angular apps.
   * Included by default in all Angular apps created with the CLI
 diff --git a/node_modules/@angular/platform-browser/types/testing.d.ts b/node_modules/@angular/platform-browser/types/testing.d.ts
-index c12e21b..1802c60 100755
+index b6e5ab4..0e2d5a6 100755
 --- a/node_modules/@angular/platform-browser/types/testing.d.ts
 +++ b/node_modules/@angular/platform-browser/types/testing.d.ts
 @@ -5,7 +5,7 @@
