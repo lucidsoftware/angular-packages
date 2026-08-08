@@ -19,5 +19,3 @@ for p in "${PACKAGES[@]}"; do
   (cd "node_modules/${p}" && npm pack --pack-destination "../../../dist/" > /dev/null 2>&1)
 done
 
-echo "Packaging ngx-monaco-editor"
-(cd "node_modules/ngx-monaco-editor" && npm pack --pack-destination "../../dist/" > /dev/null 2>&1)
