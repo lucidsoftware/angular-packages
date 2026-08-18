@@ -1,5 +1,5 @@
 diff --git a/node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs b/node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs
-index de68540..94fa769 100755
+index 829e0d0..7115a94 100755
 --- a/node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs
 +++ b/node_modules/@angular/core/fesm2022/_debug_node-chunk.mjs
 @@ -422,35 +422,60 @@ const profiler = function (event, instance = null, eventFn) {
@@ -92,25 +92,28 @@ index de68540..94fa769 100755
  
  function registerPreOrderHooks(directiveIndex, directiveDef, tView) {
    ngDevMode && assertFirstCreatePass(tView);
-@@ -1439,11 +1464,12 @@ function isI18nInSkipHydrationBlock(parentTNode) {
+@@ -1440,12 +1465,14 @@ function isI18nInSkipHydrationBlock(parentTNode) {
    return hasInSkipHydrationBlockFlag(parentTNode) || hasSkipHydrationAttrOnTNode(parentTNode) || isInSkipHydrationBlock(parentTNode);
  }
  
 -var ChangeDetectionStrategy;
 -(function (ChangeDetectionStrategy) {
 -  ChangeDetectionStrategy[ChangeDetectionStrategy["OnPush"] = 0] = "OnPush";
+-  ChangeDetectionStrategy[ChangeDetectionStrategy["Eager"] = 1] = "Eager";
 -  ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 1] = "Default";
 -})(ChangeDetectionStrategy || (ChangeDetectionStrategy = {}));
 +const ChangeDetectionStrategy = {
 +  OnPush: 0,
++  Eager: 1,
 +  Default: 1
 +};
 +ChangeDetectionStrategy[ChangeDetectionStrategy.OnPush] = 'OnPush';
++ChangeDetectionStrategy[ChangeDetectionStrategy.Eager] = 'Eager';
 +ChangeDetectionStrategy[ChangeDetectionStrategy.Default] = 'Default';
  
  const TRACKED_LVIEWS = new Map();
  let uniqueIdCounter = 0;
-@@ -1787,16 +1813,18 @@ function getDirectives(node) {
+@@ -1789,16 +1816,18 @@ function getDirectives(node) {
    }
    return context.directives === null ? [] : [...context.directives];
  }
@@ -139,7 +142,7 @@ index de68540..94fa769 100755
  function getDirectiveMetadata$1(directiveOrComponentInstance) {
    const {
      constructor
-@@ -2416,12 +2444,14 @@ function processTextNodeMarkersBeforeHydration(node) {
+@@ -2431,12 +2460,14 @@ function processTextNodeMarkersBeforeHydration(node) {
      }
    }
  }
@@ -160,7 +163,7 @@ index de68540..94fa769 100755
  const HYDRATION_INFO_KEY = '__ngDebugHydrationInfo__';
  function patchHydrationInfo(node, info) {
    node[HYDRATION_INFO_KEY] = info;
-@@ -2744,13 +2774,16 @@ function executeContentQueries(tView, tNode, lView) {
+@@ -2759,13 +2790,16 @@ function executeContentQueries(tView, tNode, lView) {
    }
  }
  
@@ -184,37 +187,7 @@ index de68540..94fa769 100755
  
  const CUSTOM_ELEMENTS_SCHEMA = {
    name: 'custom-elements'
-@@ -3279,15 +3312,20 @@ function enforceIframeSecurity(iframe) {
-   nativeRemoveNode(lView[RENDERER], iframe);
- }
- 
--var SecurityContext;
--(function (SecurityContext) {
--  SecurityContext[SecurityContext["NONE"] = 0] = "NONE";
--  SecurityContext[SecurityContext["HTML"] = 1] = "HTML";
--  SecurityContext[SecurityContext["STYLE"] = 2] = "STYLE";
--  SecurityContext[SecurityContext["SCRIPT"] = 3] = "SCRIPT";
--  SecurityContext[SecurityContext["URL"] = 4] = "URL";
--  SecurityContext[SecurityContext["RESOURCE_URL"] = 5] = "RESOURCE_URL";
--})(SecurityContext || (SecurityContext = {}));
-+const SecurityContext = {
-+  NONE: 0,
-+  HTML: 1,
-+  STYLE: 2,
-+  SCRIPT: 3,
-+  URL: 4,
-+  RESOURCE_URL: 5
-+};
-+SecurityContext[SecurityContext.NONE] = 'NONE';
-+SecurityContext[SecurityContext.HTML] = 'HTML';
-+SecurityContext[SecurityContext.STYLE] = 'STYLE';
-+SecurityContext[SecurityContext.SCRIPT] = 'SCRIPT';
-+SecurityContext[SecurityContext.URL] = 'URL';
-+SecurityContext[SecurityContext.RESOURCE_URL] = 'RESOURCE_URL';
- 
- function ɵɵsanitizeHtml(unsafeHtml) {
-   const sanitizer = getSanitizer();
-@@ -3937,12 +3975,14 @@ function selectIndexInternal(tView, lView, index, checkNoChangesMode) {
+@@ -4019,12 +4053,14 @@ function selectIndexInternal(tView, lView, index, checkNoChangesMode) {
    setSelectedIndex(index);
  }
  
@@ -235,7 +208,7 @@ index de68540..94fa769 100755
  
  function writeToDirectiveInput(def, instance, publicName, value) {
    const prevConsumer = setActiveConsumer(null);
-@@ -3976,11 +4016,12 @@ function writeToDirectiveInput(def, instance, publicName, value) {
+@@ -4058,11 +4094,12 @@ function writeToDirectiveInput(def, instance, publicName, value) {
    }
  }
  
@@ -253,7 +226,7 @@ index de68540..94fa769 100755
  
  let _icuContainerIterate;
  function icuContainerIterate(tIcuContainerNode, lView) {
-@@ -4090,11 +4131,12 @@ function determineLongestAnimationFromElementAnimations(el, animationsMap, anima
+@@ -4350,11 +4387,12 @@ function determineLongestAnimationFromElementAnimations(el, animationsMap, anima
  }
  const allLeavingAnimations = new Set();
  
@@ -271,7 +244,7 @@ index de68540..94fa769 100755
  const TracingService = new InjectionToken(typeof ngDevMode !== 'undefined' && ngDevMode ? 'TracingService' : '');
  
  const markedFeatures = new Set();
-@@ -9870,26 +9912,32 @@ function enableLocateOrCreateContainerAnchorImpl() {
+@@ -10375,26 +10413,32 @@ function enableLocateOrCreateContainerAnchorImpl() {
    _locateOrCreateContainerAnchor = locateOrCreateContainerAnchorImpl;
  }
  
@@ -322,7 +295,7 @@ index de68540..94fa769 100755
  const NEXT_DEFER_BLOCK_STATE = 0;
  const DEFER_BLOCK_STATE = 1;
  const STATE_IS_FROZEN_UNTIL = 2;
-@@ -9900,11 +9948,12 @@ const SSR_UNIQUE_ID = 6;
+@@ -10405,11 +10449,12 @@ const SSR_UNIQUE_ID = 6;
  const SSR_BLOCK_STATE = 7;
  const ON_COMPLETE_FNS = 8;
  const HYDRATE_TRIGGER_CLEANUP_FNS = 9;
@@ -340,9 +313,9 @@ index de68540..94fa769 100755
  
  function storeTriggerCleanupFn(type, lDetails, cleanupFn) {
    const key = getCleanupFnKeyByType(type);
-@@ -14583,31 +14632,52 @@ function getLocaleData(normalizedLocale) {
+@@ -14479,31 +14524,52 @@ function getLocaleData(normalizedLocale) {
  function unregisterAllLocaleData() {
-   LOCALE_DATA = {};
+   LOCALE_DATA = Object.create(null);
  }
 -var LocaleDataIndex;
 -(function (LocaleDataIndex) {
@@ -418,7 +391,7 @@ index de68540..94fa769 100755
  function normalizeLocale(locale) {
    return locale.toLowerCase().replace(/_/g, '-');
  }
-@@ -14627,12 +14697,14 @@ const ELEMENT_MARKER = {
+@@ -14523,12 +14589,14 @@ const ELEMENT_MARKER = {
  const ICU_MARKER = {
    marker: 'ICU'
  };
@@ -439,7 +412,7 @@ index de68540..94fa769 100755
  
  let LOCALE_ID$1 = DEFAULT_LOCALE_ID;
  function setLocaleId(localeId) {
-@@ -18453,12 +18525,14 @@ const DEFAULT_CURRENCY_CODE = new InjectionToken(typeof ngDevMode !== 'undefined
+@@ -18431,12 +18499,14 @@ const DEFAULT_CURRENCY_CODE = new InjectionToken(typeof ngDevMode !== 'undefined
  });
  const TRANSLATIONS = new InjectionToken(typeof ngDevMode !== 'undefined' && ngDevMode ? 'Translations' : '');
  const TRANSLATIONS_FORMAT = new InjectionToken(typeof ngDevMode !== 'undefined' && ngDevMode ? 'TranslationsFormat' : '');
@@ -460,11 +433,44 @@ index de68540..94fa769 100755
  
  class DebugEventListener {
    name;
-diff --git a/node_modules/@angular/core/fesm2022/_untracked-chunk.mjs b/node_modules/@angular/core/fesm2022/_untracked-chunk.mjs
-index 16cea0a..c05b58f 100755
---- a/node_modules/@angular/core/fesm2022/_untracked-chunk.mjs
-+++ b/node_modules/@angular/core/fesm2022/_untracked-chunk.mjs
-@@ -1797,12 +1797,14 @@ const instructionState = {
+diff --git a/node_modules/@angular/core/fesm2022/_effect-chunk2.mjs b/node_modules/@angular/core/fesm2022/_effect-chunk2.mjs
+index 7d154a2..91f5ddd 100755
+--- a/node_modules/@angular/core/fesm2022/_effect-chunk2.mjs
++++ b/node_modules/@angular/core/fesm2022/_effect-chunk2.mjs
+@@ -1642,16 +1642,22 @@ function assertNodeInjector(lView, injectorIndex) {
+   assertNumber(lView[injectorIndex + 8], 'injectorIndex should point to parent injector');
+ }
+ 
+-var SecurityContext;
+-(function (SecurityContext) {
+-  SecurityContext[SecurityContext["NONE"] = 0] = "NONE";
+-  SecurityContext[SecurityContext["HTML"] = 1] = "HTML";
+-  SecurityContext[SecurityContext["STYLE"] = 2] = "STYLE";
+-  SecurityContext[SecurityContext["SCRIPT"] = 3] = "SCRIPT";
+-  SecurityContext[SecurityContext["URL"] = 4] = "URL";
+-  SecurityContext[SecurityContext["RESOURCE_URL"] = 5] = "RESOURCE_URL";
+-  SecurityContext[SecurityContext["ATTRIBUTE_NO_BINDING"] = 6] = "ATTRIBUTE_NO_BINDING";
+-})(SecurityContext || (SecurityContext = {}));
++const SecurityContext = {
++  NONE: 0,
++  HTML: 1,
++  STYLE: 2,
++  SCRIPT: 3,
++  URL: 4,
++  RESOURCE_URL: 5,
++  ATTRIBUTE_NO_BINDING: 6
++};
++SecurityContext[SecurityContext.NONE] = 'NONE';
++SecurityContext[SecurityContext.HTML] = 'HTML';
++SecurityContext[SecurityContext.STYLE] = 'STYLE';
++SecurityContext[SecurityContext.SCRIPT] = 'SCRIPT';
++SecurityContext[SecurityContext.URL] = 'URL';
++SecurityContext[SecurityContext.RESOURCE_URL] = 'RESOURCE_URL';
++SecurityContext[SecurityContext.ATTRIBUTE_NO_BINDING] = 'ATTRIBUTE_NO_BINDING';
+ let _SECURITY_SCHEMA;
+ const SVG_NAMESPACE = 'svg';
+ const MATH_ML_NAMESPACE = 'math';
+@@ -1849,12 +1855,14 @@ const instructionState = {
    bindingsEnabled: true,
    skipHydrationRootTNode: null
  };
@@ -486,7 +492,7 @@ index 16cea0a..c05b58f 100755
  let _isRefreshingViews = false;
  function getElementDepthCount() {
 diff --git a/node_modules/@angular/core/fesm2022/core.mjs b/node_modules/@angular/core/fesm2022/core.mjs
-index ef64bc9..7366035 100755
+index 2e36a00..6547741 100755
 --- a/node_modules/@angular/core/fesm2022/core.mjs
 +++ b/node_modules/@angular/core/fesm2022/core.mjs
 @@ -57,34 +57,45 @@ function createInputSignal(initialValue, options) {
@@ -596,10 +602,10 @@ index ef64bc9..7366035 100755
  }
  function assertPlatform(requiredToken) {
 diff --git a/node_modules/@angular/core/fesm2022/primitives-event-dispatch.mjs b/node_modules/@angular/core/fesm2022/primitives-event-dispatch.mjs
-index 97ad7ac..5e1e40e 100755
+index 40aafad..e15d57b 100755
 --- a/node_modules/@angular/core/fesm2022/primitives-event-dispatch.mjs
 +++ b/node_modules/@angular/core/fesm2022/primitives-event-dispatch.mjs
-@@ -465,10 +465,10 @@ class ActionResolver {
+@@ -443,10 +443,10 @@ class ActionResolver {
    }
  }
  
@@ -615,7 +621,7 @@ index 97ad7ac..5e1e40e 100755
  class Dispatcher {
    dispatchDelegate;
 diff --git a/node_modules/@angular/core/fesm2022/testing.mjs b/node_modules/@angular/core/fesm2022/testing.mjs
-index 5d69dd7..5814d25 100755
+index 9fddace..e56110f 100755
 --- a/node_modules/@angular/core/fesm2022/testing.mjs
 +++ b/node_modules/@angular/core/fesm2022/testing.mjs
 @@ -497,11 +497,12 @@ class NgModuleResolver extends OverrideResolver {
@@ -637,10 +643,10 @@ index 5d69dd7..5814d25 100755
    return value === TestingModuleOverride.DECLARATION || value === TestingModuleOverride.OVERRIDE_TEMPLATE;
  }
 diff --git a/node_modules/@angular/core/types/_discovery-chunk.d.ts b/node_modules/@angular/core/types/_discovery-chunk.d.ts
-index f2a7d9d..5a4460b 100755
+index 47b068e..a8808f3 100755
 --- a/node_modules/@angular/core/types/_discovery-chunk.d.ts
 +++ b/node_modules/@angular/core/types/_discovery-chunk.d.ts
-@@ -6231,7 +6231,7 @@ declare abstract class ComponentFactory<C> {
+@@ -6319,7 +6319,7 @@ declare abstract class ComponentFactory<C> {
   *
   * @publicApi
   */
@@ -649,7 +655,7 @@ index f2a7d9d..5a4460b 100755
      /**
       * Creates an instance of this class that can
       * deliver events synchronously or asynchronously.
-@@ -6244,9 +6244,10 @@ interface EventEmitter<T> extends Subject<T>, OutputRef<T> {
+@@ -6332,9 +6332,10 @@ interface EventEmitter<T> extends Subject<T>, OutputRef<T> {
       * Emits an event containing a given value.
       * @param value The value to emit.
       */
@@ -661,7 +667,7 @@ index f2a7d9d..5a4460b 100755
       * @param next When supplied, a custom handler for emitted events.
       * @param error When supplied, a custom handler for an error notification from this emitter.
       * @param complete When supplied, a custom handler for a completion notification from this
-@@ -6255,6 +6256,7 @@ interface EventEmitter<T> extends Subject<T>, OutputRef<T> {
+@@ -6343,6 +6344,7 @@ interface EventEmitter<T> extends Subject<T>, OutputRef<T> {
      subscribe(next?: (value: T) => void, error?: (error: any) => void, complete?: () => void): Subscription;
      /**
       * Registers handlers for events emitted by this instance.
@@ -669,7 +675,7 @@ index f2a7d9d..5a4460b 100755
       * @param observerOrNext When supplied, a custom handler for emitted events, or an observer
       *     object.
       * @param error When supplied, a custom handler for an error notification from this emitter.
-@@ -6267,7 +6269,7 @@ interface EventEmitter<T> extends Subject<T>, OutputRef<T> {
+@@ -6355,7 +6357,7 @@ interface EventEmitter<T> extends Subject<T>, OutputRef<T> {
   * @publicApi
   */
  declare const EventEmitter: {
@@ -679,10 +685,10 @@ index f2a7d9d..5a4460b 100755
      readonly prototype: EventEmitter<any>;
  };
 diff --git a/node_modules/@angular/core/types/core.d.ts b/node_modules/@angular/core/types/core.d.ts
-index 45b4af6..82ead0e 100755
+index 89b4831..adc59bd 100755
 --- a/node_modules/@angular/core/types/core.d.ts
 +++ b/node_modules/@angular/core/types/core.d.ts
-@@ -3770,7 +3770,7 @@ declare function createPlatform(injector: Injector): PlatformRef;
+@@ -3799,7 +3799,7 @@ declare function createPlatform(injector: Injector): PlatformRef;
   *
   * @publicApi
   */
